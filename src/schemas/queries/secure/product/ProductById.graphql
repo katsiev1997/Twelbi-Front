@@ -1,0 +1,14 @@
+query ProductById($id: Int!) {
+	productById(id: $id) {
+		name
+		about
+		sku
+		posterPath
+		videoPath
+		imagesPaths
+		prices {
+			price
+			minQuantity
+		}
+	}
+}

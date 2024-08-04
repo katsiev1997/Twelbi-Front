@@ -1,0 +1,12 @@
+mutation JwtLogin($data: JwtAuthLoginInput!) {
+	jwtLogin(data: $data) {
+		user {
+			profile {
+				email
+				login
+				phone
+			}
+			role
+		}
+	}
+}

@@ -1,0 +1,3 @@
+mutation ToggleAdvertising($id: Int!) {
+	toggleAdvertising(id: $id)
+}

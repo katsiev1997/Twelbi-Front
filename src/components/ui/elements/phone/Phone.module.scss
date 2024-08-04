@@ -1,0 +1,26 @@
+.phone {
+	@apply whitespace-nowrap btn-green rounded-full font-medium flex justify-center items-center gap-1 px-6 min-w-fit;
+	padding-top: 7px;
+	padding-bottom: 7px;
+
+	span {
+		@apply text-medium-lg font-semibold;
+	}
+
+	img {
+		@apply max-w-6 max-h-6;
+	}
+}
+.fill {
+	@apply flex flex-col;
+}
+
+@media (max-width: 1000px) {
+	.phone {
+		@apply px-4 py-1.5;
+
+		span {
+			@apply text-medium;
+		}
+	}
+}

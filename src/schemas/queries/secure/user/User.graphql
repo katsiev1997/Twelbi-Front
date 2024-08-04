@@ -1,0 +1,10 @@
+query User {
+	user {
+		profile {
+			email
+			login
+			phone
+		}
+		role
+	}
+}

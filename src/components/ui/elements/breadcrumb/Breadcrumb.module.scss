@@ -1,0 +1,14 @@
+.list {
+	@apply flex items-center gap-2.5 text-small font-medium;
+}
+.item:not(:first-child) {
+	@apply relative;
+	padding-left: 15px;
+
+	&::before {
+		@apply absolute left-0 top-0 bottom-0 my-auto bg-green-base rounded-full;
+		content: '';
+		width: 5px;
+		height: 5px;
+	}
+}

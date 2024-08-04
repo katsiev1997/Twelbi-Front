@@ -1,0 +1,3 @@
+mutation DuplicateAdvertising($id: Int!) {
+	duplicateAdvertising(id: $id)
+}

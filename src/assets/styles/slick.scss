@@ -1,0 +1,27 @@
+.slick-dots {
+	@apply items-center justify-center gap-0.5;
+	display: flex !important;
+	bottom: -25px;
+
+	> li {
+		@apply m-0 w-4 h-4 flex items-center justify-center;
+
+		> button {
+			@apply p-0 w-1.5 h-1.5 rounded-lg transition-all duration-100;
+			background-color: #eaeaea;
+
+			&::before {
+				@apply content-none;
+			}
+		}
+
+		&.slick-active > button {
+			@apply bg-green-base w-2.5 h-2.5;
+		}
+	}
+}
+.slic-track {
+	&::before {
+		@apply content-none;
+	}
+}

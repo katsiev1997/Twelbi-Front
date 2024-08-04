@@ -1,0 +1,76 @@
+.vip {
+	@apply mb-6;
+}
+.categories,
+.popularCategories,
+.products {
+	@apply mb-8;
+}
+.brands {
+	@apply mb-12;
+}
+.info {
+	@apply mb-11;
+}
+
+@media (max-width: 1100px) {
+	.categories,
+	.popularCategories,
+	.products {
+		@apply mb-7;
+	}
+	.brands,
+	.info {
+		@apply mb-10;
+	}
+}
+
+@media (max-width: 800px) {
+	.vip {
+		@apply mb-4;
+	}
+}
+
+@media (max-width: 700px) {
+	.categories,
+	.popularCategories,
+	.products {
+		@apply mb-6;
+	}
+	.brands,
+	.info {
+		@apply mb-8;
+	}
+}
+
+@media (max-width: 550px) {
+	.vip {
+		@apply mb-2;
+	}
+	.categories,
+	.popularCategories,
+	.products {
+		@apply mb-5;
+	}
+	.brands,
+	.info {
+		@apply mb-6;
+	}
+}
+
+@media (max-width: 440px) {
+	.categories,
+	.popularCategories,
+	.products {
+		@apply mb-4;
+	}
+	.brands {
+		@apply mb-5;
+	}
+}
+
+@media (max-width: 420px) {
+	.vip {
+		@apply mb-1;
+	}
+}

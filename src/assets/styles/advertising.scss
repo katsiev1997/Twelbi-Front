@@ -1,0 +1,184 @@
+.advertising {
+	@apply relative;
+
+	img {
+		@apply image-like-bg-cover rounded-xl;
+	}
+}
+.large-advertising {
+	height: 100px;
+}
+.small-advertising {
+	height: 135px;
+}
+.card-advertising {
+	max-width: calc(100% / 3 - 15px);
+	aspect-ratio: 1.75 / 1;
+}
+.banner-advertising {
+	min-width: calc(100% - 850px);
+	max-width: calc(100% - 850px);
+	min-height: 535px;
+	max-height: 535px;
+}
+
+@media (max-width: 1600px) {
+	.small-advertising {
+		height: 125px;
+	}
+	.sellerAdd {
+		min-height: 526px;
+		max-height: 526px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.sellerAdd {
+		min-height: 490px;
+		max-height: 490px;
+		min-width: calc(100% - 772px);
+		max-width: calc(100% - 772px);
+	}
+	.large-advertising {
+		height: 90px;
+	}
+	.small-advertising {
+		height: 120px;
+	}
+}
+
+@media (max-width: 1300px) {
+	.small-advertising {
+		height: 110px;
+	}
+	.sellerAdd {
+		min-height: 463px;
+		max-height: 463px;
+		min-width: calc(100% - 722px);
+		max-width: calc(100% - 722px);
+	}
+}
+
+@media (max-width: 1200px) {
+	.small-advertising {
+		height: 100px;
+	}
+	.large-advertising {
+		height: 80px;
+	}
+	.sellerAdd {
+		min-height: 426px;
+		max-height: 426px;
+		min-width: calc(100% - 642px);
+		max-width: calc(100% - 642px);
+	}
+}
+
+@media (max-width: 1100px) {
+	.small-advertising {
+		height: 90px;
+	}
+	.card-advertising {
+		max-width: calc(100% / 3 - 11px);
+	}
+	.sellerAdd {
+		min-height: 465px;
+		max-height: 465px;
+		min-width: calc(100% - 532px);
+		max-width: calc(100% - 532px);
+	}
+}
+
+@media (max-width: 1000px) {
+	.sellerAdd {
+		min-height: 425px;
+		max-height: 425px;
+		min-width: calc(100% - 472px);
+		max-width: calc(100% - 472px);
+	}
+	.small-advertising {
+		height: 80px;
+	}
+	.advertising {
+		@apply rounded-lg;
+
+		img {
+			@apply rounded-lg;
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.sellerAdd {
+		min-height: 390px;
+		max-height: 390px;
+		min-width: calc(100% - 422px);
+		max-width: calc(100% - 422px);
+	}
+	.large-advertising {
+		height: 75px;
+	}
+	.small-advertising {
+		height: 70px;
+	}
+}
+
+@media (max-width: 850px) {
+	.card-advertising {
+		max-width: calc(50% - 8px);
+	}
+}
+
+@media (max-width: 800px) {
+	.sellerAdd {
+		@apply min-w-full max-w-full;
+		aspect-ratio: 4.06 / 1;
+		max-height: none;
+		min-height: auto;
+	}
+}
+
+@media (max-width: 750px) {
+	.card-advertising {
+		max-width: calc(50% - 8px);
+	}
+}
+
+@media (max-width: 700px) {
+	.small-advertising {
+		height: 62px;
+	}
+}
+
+@media (max-width: 650px) {
+	.large-advertising {
+		height: 65px;
+	}
+}
+
+@media (max-width: 600px) {
+	.small-advertising {
+		height: 58px;
+	}
+}
+
+@media (max-width: 550px) {
+	.card-advertising {
+		@apply max-w-full;
+	}
+	.large-advertising {
+		height: 50px;
+	}
+}
+
+@media (max-width: 500px) {
+	.large-advertising {
+		height: 45px;
+	}
+}
+
+@media (max-width: 420px) {
+	.large-advertising {
+		height: 40px;
+	}
+}

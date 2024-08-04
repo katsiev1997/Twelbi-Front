@@ -1,0 +1,111 @@
+.search {
+	@apply flex items-center justify-between rounded-lg green-border gap-8 py-1 pl-3.5 pr-1;
+}
+.input {
+	@apply w-full text-medium-xl text-gray-500 font-medium;
+}
+.mobileBtn {
+	@apply hidden;
+}
+.button {
+	@apply btn-green h-full py-2.5 px-3.5 text-2lg flex items-center gap-1.5 font-semibold rounded-lg;
+
+	> svg {
+		@apply w-5 h-5;
+	}
+}
+
+@media (max-width: 1600px) {
+	.button {
+		@apply text-lg;
+
+		> svg {
+			width: 19px;
+			height: 19px;
+		}
+	}
+}
+
+@media (max-width: 1400px) {
+	.input {
+		font-size: 13px;
+	}
+	.button {
+		@apply py-2 text-medium-xl;
+	}
+}
+
+@media (max-width: 1200px) {
+	.search {
+		@apply py-0 pl-3.5 pr-0;
+	}
+	.button {
+		@apply rounded-tr-md rounded-br-md rounded-tl-none rounded-bl-none px-3;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.input,
+	.button {
+		@apply text-medium-lg;
+	}
+	.button > svg {
+		width: 18px;
+		height: 18px;
+	}
+}
+
+@media (max-width: 800px) {
+	.button > span {
+		@apply hidden;
+	}
+}
+
+@media (max-width: 700px) {
+	.search {
+		@apply border-none relative gap-5 p-0;
+
+		> input {
+			@apply absolute z-1 invisible pointer-events-none opacity-0 transition-opacity py-2 px-3 rounded-md green-border text-medium;
+			top: calc(100% + 8px);
+			transform: translateX(calc(-100% / 3 - 4px));
+			min-width: 200px;
+			max-width: 200px;
+
+			&.active {
+				@apply visible pointer-events-auto opacity-100;
+			}
+		}
+	}
+	.button {
+		@apply hidden;
+	}
+	.mobileBtn {
+		@apply flex h-full p-0 green-hover bg-transparent flex-col items-center justify-end gap-0.5 text-medium-lg text-gray-base font-medium;
+
+		> svg {
+			@apply stroke-green-base w-5 h-5;
+			stroke-width: 1.3px;
+		}
+
+		> span {
+			@apply block text-small;
+		}
+
+		&:hover {
+			@apply bg-transparent;
+		}
+	}
+}
+
+@media (max-width: 430px) {
+	.mobileBtn > span {
+		font-size: 9px;
+	}
+	.search > input.active {
+		@apply text-small;
+		top: calc(100% + 10px);
+		transform: translateX(calc(-100% / 3));
+	}
+}

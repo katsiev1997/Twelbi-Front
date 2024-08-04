@@ -1,0 +1,15 @@
+query Advertisements($query: FullestQueryInput!) {
+	advertisements(query: $query) {
+		advertisements {
+			id
+			smallImagePath
+			bigImagePath
+			url
+			alt
+			resolution
+			type
+			visibility
+		}
+		count
+	}
+}

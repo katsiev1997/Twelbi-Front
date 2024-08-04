@@ -1,0 +1,98 @@
+.filters {
+	@apply flex items-center justify-between gap-10 mb-5 flex-wrap;
+}
+.fill,
+.items {
+	@apply flex gap-4;
+}
+.grids {
+	@apply flex gap-2.5;
+}
+.grid {
+	@apply up-hover;
+}
+.label {
+	@apply rounded-full bg-green-base text-white py-2 px-6 text-medium font-medium lowercase;
+
+	&::first-letter {
+		@apply uppercase;
+	}
+}
+.burger,
+.close {
+	@apply hidden green-hover;
+
+	> svg {
+		stroke-width: 1.3px;
+	}
+}
+.close {
+	@apply absolute right-3;
+	top: 18px;
+}
+.heading {
+	@apply hidden text-3lg font-bold;
+}
+
+@media (max-width: 1000px) {
+	.filters {
+		@apply gap-5;
+	}
+	.label {
+		@apply hidden;
+	}
+	.grid {
+		width: 22px;
+		height: 22px;
+	}
+	.fill,
+	.items {
+		@apply gap-2.5;
+	}
+}
+
+@media (max-width: 800px) {
+	.burger,
+	.close,
+	.heading {
+		@apply block;
+	}
+	.fill {
+		@apply bg-white shadow-md fixed z-1 right-0 top-0 bottom-0 h-screen w-full flex-col transition-transform gap-10 py-5 px-4;
+		max-width: 320px;
+		transform: translateX(120%);
+
+		&.active {
+			transform: translateX(0);
+		}
+	}
+	.items {
+		@apply w-full h-full flex-col gap-6;
+	}
+	.grid {
+		@apply w-5 h-5;
+	}
+}
+
+@media (max-width: 600px) {
+	.filters {
+		@apply mb-3;
+	}
+	.burger > svg {
+		width: 23px;
+		height: 23px;
+	}
+	.grid {
+		width: 18px;
+		height: 18px;
+	}
+}
+
+@media (max-width: 420px) {
+	.heading {
+		font-size: 18px;
+	}
+	.fill {
+		@apply max-w-full;
+	}
+}

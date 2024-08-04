@@ -1,0 +1,113 @@
+.review {
+	@apply w-full py-8 px-10 bg-white shadow-effect rounded-2xl flex flex-col items-start gap-8;
+}
+.top {
+	@apply w-full flex items-start justify-between gap-12 overflow-hidden;
+}
+.user {
+	@apply flex items-center gap-2.5 overflow-hidden;
+}
+.avatar {
+	@apply rounded-full bg-gray-200 flex items-center justify-center;
+	min-width: 65px;
+	max-width: 65px;
+	min-height: 65px;
+	max-height: 65px;
+}
+.info {
+	@apply flex flex-col items-start gap-1.5 overflow-hidden;
+}
+.name {
+	@apply ellipse-text max-w-full text-lg font-semibold;
+}
+.created {
+	@apply font-medium text-gray-400 ellipse-text max-w-full;
+	font-size: 13px;
+}
+.comment {
+	@apply text-medium-xl font-light leading-lg;
+}
+.toggle {
+	@apply ml-auto mt-auto text-medium-xl font-medium pb-1 border-b border-dashed border-green-base;
+	color: #777777;
+}
+
+@media (max-width: 1600px) {
+	.name {
+		@apply text-medium-xl;
+	}
+	.avatar {
+		min-width: 60px;
+		max-width: 60px;
+		min-height: 60px;
+		max-height: 60px;
+	}
+	.comment,
+	.toggle {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.review {
+		@apply p-7;
+	}
+	.created {
+		@apply text-medium-lg;
+	}
+}
+
+@media (max-width: 900px) {
+	.review {
+		@apply gap-5;
+	}
+	.avatar {
+		min-width: 50px;
+		max-width: 50px;
+		min-height: 50px;
+		max-height: 50px;
+
+		img {
+			max-width: 60%;
+			max-height: 60%;
+		}
+	}
+	.name {
+		font-size: 13px;
+	}
+	.created {
+		font-size: 11px;
+	}
+	.comment,
+	.toggle {
+		@apply text-medium-lg;
+	}
+}
+
+@media (max-width: 600px) {
+	.top {
+		@apply gap-6;
+	}
+	.review {
+		@apply gap-4 p-5;
+	}
+	.avatar {
+		min-width: 45px;
+		max-width: 45px;
+		min-height: 45px;
+		max-height: 45px;
+	}
+	.name {
+		@apply text-medium-lg;
+	}
+	.created {
+		@apply text-small;
+	}
+	.comment,
+	.toggle {
+		font-size: 11px;
+	}
+	.comment {
+		@apply leading-3lg;
+	}
+}

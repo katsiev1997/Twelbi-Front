@@ -1,0 +1,29 @@
+.pagination {
+	@apply flex justify-center items-center gap-2.5;
+}
+.list {
+	@apply flex gap-0.5;
+}
+.button,
+.prev,
+.next {
+	@apply green-hover flex items-center text-small;
+}
+.button {
+	@apply rounded-full justify-center bg-transparent transition-colors;
+	width: 25px;
+	height: 25px;
+
+	&.active {
+		@apply bg-green-base text-white;
+	}
+}
+.prev,
+.next {
+	@apply gap-1.5;
+
+	> svg {
+		@apply w-3 h-3;
+		stroke-width: 3px;
+	}
+}

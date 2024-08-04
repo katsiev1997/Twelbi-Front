@@ -1,0 +1,112 @@
+.category {
+	@apply w-full;
+
+	&.card {
+		@apply aspect-square;
+
+		&:hover {
+			.name {
+				@apply btn-green;
+			}
+		}
+
+		.link {
+			@apply bg-gray-100 rounded-xl gap-3 px-4 py-6 justify-end;
+		}
+
+		.name {
+			@apply w-full bg-gray-900 text-white rounded-full px-4 text-medium-lg text-center transition-colors ellipse-text;
+			min-height: 42px;
+			max-height: 42px;
+			line-height: 42px;
+			max-width: 190px;
+		}
+
+		.preview {
+			@apply transition-transform;
+
+			img {
+				max-height: 95%;
+				max-width: 95%;
+			}
+		}
+	}
+
+	&.circle {
+		@apply up-green-hover;
+
+		.link {
+			@apply gap-1.5;
+		}
+
+		.name {
+			@apply font-medium text-medium-lg text-center leading-lg;
+		}
+
+		.preview {
+			@apply bg-gray-100 rounded-full aspect-square;
+
+			img {
+				max-width: 85%;
+				max-height: 65%;
+			}
+		}
+	}
+}
+.link {
+	@apply h-full w-full flex flex-col items-center;
+}
+.preview {
+	@apply w-full flex items-center justify-center;
+}
+
+@media (max-width: 1300px) {
+	.category.circle .name,
+	.category.card .name {
+		font-size: 11px;
+	}
+	.category.card .name {
+		min-height: 35px;
+		max-height: 35px;
+		line-height: 35px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.category.card {
+		.link {
+			@apply px-3 py-3.5;
+		}
+		.name {
+			min-height: 28px;
+			max-height: 28px;
+			line-height: 28px;
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	.category.circle .name,
+	.category.card .name {
+		font-size: 10px;
+	}
+
+	.category.card .name {
+		max-width: 115px;
+	}
+}
+
+@media (max-width: 500px) {
+	.category.circle .name,
+	.category.card .name {
+		font-size: 9px;
+	}
+}
+
+@media (max-width: 420px) {
+	.category.category.card .name {
+		min-height: 21px;
+		max-height: 21px;
+		line-height: 21px;
+	}
+}

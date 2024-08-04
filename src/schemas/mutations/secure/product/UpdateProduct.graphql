@@ -1,0 +1,21 @@
+mutation UpdateProduct($id: Int!, $data: ProductInput!) {
+	updateProduct(id: $id, data: $data) {
+		id
+		name
+		posterPath
+		minPrice
+		maxPrice
+		rating
+		ratesCount
+		category {
+			name
+			slug
+		}
+		provider {
+			name
+			slug
+			logoPath
+		}
+		visibility
+	}
+}

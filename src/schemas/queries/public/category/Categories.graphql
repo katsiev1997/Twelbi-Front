@@ -1,0 +1,11 @@
+query Categories($query: CategoryQueryInput!) {
+	categories(query: $query) {
+		categories {
+			name
+			slug
+			smallImagePath
+			bigImagePath
+		}
+		count
+	}
+}

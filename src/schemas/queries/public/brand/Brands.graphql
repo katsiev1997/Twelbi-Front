@@ -1,0 +1,17 @@
+query Brands($query: BrandQueryInput!) {
+	brands(query: $query) {
+		brands {
+			id
+			name
+			slug
+			logoPath
+			rating
+			reviewsCount
+			category {
+				name
+				slug
+			}
+		}
+		count
+	}
+}

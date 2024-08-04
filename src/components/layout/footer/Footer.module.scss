@@ -1,0 +1,152 @@
+.footer {
+	padding-bottom: 75px;
+}
+.wrapper {
+	@apply bg-gray-100 rounded-xl py-9 px-10 flex justify-between gap-14;
+}
+.box {
+	min-width: 240px;
+	max-width: 240px;
+}
+.copyright {
+	@apply text-2lg font-semibold mb-1;
+}
+.slogan,
+.menu {
+	@apply text-medium;
+}
+.menu {
+	@apply mt-6 flex flex-col items-start gap-4;
+
+	a {
+		@apply underline underline-offset-4 green-hover;
+	}
+}
+.info {
+	@apply w-full text-center text-medium-lg flex flex-col items-center justify-between;
+	max-width: 750px;
+}
+.call {
+	@apply underline underline-offset-4 green-hover;
+}
+.social {
+	@apply flex gap-2.5;
+
+	> li {
+		@apply flex;
+	}
+
+	img {
+		@apply min-w-10 min-h-10 max-w-10 max-h-10 up-hover;
+	}
+}
+
+@media (max-width: 1600px) {
+	.footer {
+		padding-bottom: 60px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.footer {
+		padding-bottom: 45px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.footer {
+		@apply pb-7;
+	}
+}
+
+@media (max-width: 1300px) {
+	.social img {
+		@apply min-w-9 min-h-9 max-w-9 max-h-9;
+	}
+	.copyright {
+		@apply text-lg;
+	}
+	.menu {
+		@apply mt-5 gap-3;
+	}
+}
+
+@media (max-width: 1000px) {
+	.footer {
+		@apply pb-6;
+	}
+	.copyright {
+		@apply text-medium-xl;
+	}
+	.info {
+		@apply text-medium;
+	}
+	.social {
+		@apply gap-1.5;
+
+		img {
+			@apply min-w-8 min-h-8 max-w-8 max-h-8;
+		}
+	}
+	.menu {
+		@apply mt-3.5 gap-2.5;
+	}
+}
+
+@media (max-width: 900px) {
+	.footer {
+		@apply pb-5;
+	}
+	.wrapper {
+		@apply flex-wrap gap-6 p-8;
+	}
+	.box {
+		order: 1;
+	}
+	.social {
+		order: 2;
+	}
+	.info {
+		@apply gap-5 text-left;
+		order: 3;
+	}
+}
+
+@media (max-width: 550px) {
+	.wrapper {
+		@apply gap-x-7 gap-y-4 p-7;
+	}
+	.box {
+		max-width: none;
+		min-width: auto;
+	}
+	.copyright {
+		font-size: 13px;
+	}
+	.menu {
+		@apply mt-2.5;
+	}
+	.social img {
+		@apply min-w-7 min-h-7 max-w-7 max-h-7;
+	}
+	.info {
+		@apply gap-4;
+	}
+}
+
+@media (max-width: 420px) {
+	.wrapper {
+		@apply p-5;
+	}
+	.copyright {
+		@apply text-medium-lg;
+	}
+	.slogan,
+	.menu,
+	.info {
+		@apply text-small;
+	}
+	.social img {
+		@apply min-w-6 max-w-6 min-h-6 max-h-6;
+	}
+}

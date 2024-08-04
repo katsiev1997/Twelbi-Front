@@ -1,0 +1,15 @@
+.add {
+	@apply font-medium rounded-md flex flex-col gap-3 items-center justify-center border-2 bg-white transition-colors;
+
+	> svg {
+		@apply w-7 h-7;
+		stroke-width: 1.5px;
+	}
+
+	&:hover {
+		@apply border-green-base text-green-base;
+	}
+}
+.list {
+	@apply flex gap-1.5;
+}

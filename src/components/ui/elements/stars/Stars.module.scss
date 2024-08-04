@@ -1,0 +1,63 @@
+.stars {
+	@apply relative flex;
+	gap: 5px;
+
+	img,
+	svg {
+		@apply min-w-fit;
+	}
+
+	svg {
+		@apply fill-orange-base stroke-orange-base;
+		stroke-width: 1.1px;
+	}
+}
+.fill {
+	@apply absolute left-0 top-0 bottom-0 h-full bg-orange-base;
+}
+
+@media (max-width: 1600px) {
+	.stars.small img,
+	.stars.small svg {
+		height: 23px;
+		width: 23px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.stars.big img,
+	.stars.big svg {
+		height: 26px;
+		width: 26px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.stars.big img,
+	.stars.big svg {
+		@apply w-6 h-6;
+	}
+}
+
+@media (max-width: 1000px) {
+	.stars.big img,
+	.stars.big svg {
+		@apply w-5 h-5;
+	}
+}
+
+@media (max-width: 1600px) {
+	.stars.small img,
+	.stars.small svg {
+		@apply w-5 h-5;
+	}
+}
+
+@media (max-width: 600px) {
+	.stars.big img,
+	.stars.small img,
+	.stars.big svg,
+	.stars.small svg {
+		@apply w-4 h-4;
+	}
+}

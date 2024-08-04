@@ -1,0 +1,11 @@
+query AdvertisementsByTypes($types: [AdvertisingType!]!) {
+	advertisementsByTypes(types: $types) {
+		id
+		smallImagePath
+		bigImagePath
+		url
+		alt
+		resolution
+		type
+	}
+}

@@ -1,0 +1,19 @@
+.field {
+	@apply w-full flex flex-col gap-1.5;
+}
+.input {
+	@apply px-4 w-full rounded-sm border border-gray-300;
+	padding-top: 11px;
+	padding-bottom: 11px;
+
+	&::placeholder {
+		@apply text-gray-500;
+	}
+}
+.label,
+.error {
+	font-size: 13px;
+}
+.error {
+	@apply text-red-error;
+}

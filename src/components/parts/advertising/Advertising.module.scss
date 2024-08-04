@@ -1,0 +1,13 @@
+.advertising {
+	@apply w-full;
+}
+.fill {
+	@apply relative w-full h-full brightness-hover;
+
+	img {
+		@apply image-like-bg-cover;
+	}
+}
+.link {
+	@apply w-full h-full relative;
+}

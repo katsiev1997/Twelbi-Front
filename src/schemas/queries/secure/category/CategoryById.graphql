@@ -1,0 +1,12 @@
+query CategoryById($id: Int!) {
+	categoryById(id: $id) {
+		name
+		slug
+		smallImagePath
+		bigImagePath
+		seo {
+			title
+			description
+		}
+	}
+}

@@ -1,0 +1,122 @@
+.filter {
+	@apply relative;
+}
+.toggle {
+	@apply flex items-center justify-center gap-2 text-medium h-full bg-white rounded-full px-6 shadow-md;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+	min-width: 180px;
+
+	> svg {
+		@apply transition-transform w-4 h-4;
+		stroke-width: 1.3px;
+	}
+
+	&.active > svg {
+		@apply rotate-180;
+	}
+
+	> img {
+		width: 17px;
+		height: 17px;
+	}
+}
+.fill {
+	@apply invisible pointer-events-none opacity-0 absolute z-1 bg-white w-full left-0 right-0 rounded-2lg transition-opacity max-w-fit min-w-fit mx-auto;
+	top: calc(100% + 20px);
+	filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+	padding: 23px 5px 16px 13px;
+
+	&::before {
+		@apply w-0 h-0 absolute left-0 right-0 mx-auto;
+		content: '';
+		top: -14px;
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		border-bottom: 15px solid white;
+	}
+
+	&.active {
+		@apply pointer-events-auto opacity-100 visible;
+	}
+}
+.list {
+	@apply flex flex-col items-start gap-1.5 scrollbar-y pr-4;
+	max-height: 130px;
+}
+.item {
+	@apply w-full;
+}
+.button {
+	@apply text-left text-medium ellipse-text w-full green-hover;
+
+	&:hover,
+	&.active {
+		.radio {
+			@apply border-green-base;
+
+			> span {
+				@apply bg-green-base;
+			}
+		}
+	}
+}
+.radio {
+	@apply border border-gray-400 rounded-full inline-flex items-center justify-center transition-colors mr-1.5;
+	min-width: 13px;
+	max-width: 13px;
+	min-height: 13px;
+	max-height: 13px;
+
+	> span {
+		@apply bg-transparent rounded-full transition-colors;
+		width: 7px;
+		height: 7px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.toggle {
+		@apply py-1.5 px-4 text-small;
+		min-width: 150px;
+
+		> img {
+			width: 16px;
+			height: 15px;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.filter {
+		@apply flex flex-col items-start gap-3;
+	}
+	.toggle {
+		@apply shadow-none font-bold cursor-default justify-start p-0;
+		font-size: 13px;
+
+		> svg {
+			@apply hidden;
+		}
+	}
+	.fill {
+		@apply p-0 w-full static visible opacity-100 pointer-events-auto filter-none;
+
+		&::before {
+			@apply content-none;
+		}
+	}
+	.list {
+		@apply pb-4 flex-row scrollbar-x;
+	}
+	.button {
+		@apply rounded-full px-2 py-1.5 transition-colors border border-solid border-gray-500;
+
+		&:hover,
+		&.active {
+			@apply bg-green-base text-white border-green-base;
+		}
+	}
+	.radio {
+		@apply hidden;
+	}
+}

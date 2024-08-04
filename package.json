@@ -1,24 +1,56 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.4"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1"
-  }
+	"name": "client",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"graphql": "graphql-codegen --w"
+	},
+	"dependencies": {
+		"@apollo/client": "^3.9.5",
+		"apollo-upload-client": "^18.0.1",
+		"clsx": "^2.1.0",
+		"graphql": "^16.8.1",
+		"graphql-ws": "^5.16.0",
+		"iron-session": "github:renchris/iron-session#v8-as-dependency",
+		"jodit-react": "^4.1.2",
+		"lucide-react": "^0.314.0",
+		"next": "14.2.4",
+		"nextjs-toploader": "^1.6.11",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-dropzone": "^14.2.3",
+		"react-hook-form": "^7.49.3",
+		"react-hot-toast": "^2.4.1",
+		"react-image-crop": "^11.0.6",
+		"react-imask": "^7.6.1",
+		"react-responsive": "^10.0.0",
+		"react-select": "^5.8.0",
+		"react-slick": "^0.30.2",
+		"sharp": "^0.33.3",
+		"slick-carousel": "^1.8.1",
+		"string-strip-html": "^13.4.8",
+		"zustand": "^4.5.2"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^5.0.0",
+		"@graphql-codegen/client-preset": "^4.1.0",
+		"@graphql-codegen/typescript-operations": "^4.0.1",
+		"@graphql-codegen/typescript-react-apollo": "^4.1.0",
+		"@parcel/watcher": "^2.3.0",
+		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@types/apollo-upload-client": "^18.0.0",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"@types/react-slick": "^0.23.13",
+		"autoprefixer": "^10.0.1",
+		"postcss": "^8",
+		"sass": "^1.70.0",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }

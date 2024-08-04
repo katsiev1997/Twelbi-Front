@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	scroll-behavior: smooth;
+}
+
+a {
+	@apply inline-block;
+	color: inherit;
+	text-decoration: none;
+}
+
+input,
+button,
+textarea {
+	outline: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+input {
+	&::-ms-reveal,
+	&::-ms-clear {
+		display: none;
+	}
+}
+
+ul,
+li {
+	@apply list-none;
+}
+
+body {
+	@apply text-gray-base leading-md font-montserrat;
+	font-size: 13px;
+}

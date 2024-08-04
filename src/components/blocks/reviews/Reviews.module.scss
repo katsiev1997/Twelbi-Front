@@ -1,0 +1,125 @@
+.top {
+	@apply flex flex-wrap items-center justify-between gap-y-1 mb-5;
+}
+.heading {
+	@apply w-full font-semibold;
+}
+.rating {
+	@apply flex items-end gap-1.5 font-medium;
+}
+.rate {
+	@apply text-4lg;
+}
+.count {
+	@apply text-lg text-gray-400;
+}
+.more {
+	@apply py-3 px-14 rounded-full bg-green-base/30 text-green-base text-medium-lg font-semibold;
+}
+
+@media (max-width: 1600px) {
+	.heading {
+		font-size: 23px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.top {
+		@apply mb-2 gap-0;
+	}
+	.more {
+		@apply py-3 px-10;
+	}
+	.rate {
+		@apply text-3lg;
+	}
+	.count {
+		@apply text-medium-xl;
+	}
+	.heading {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.heading {
+		font-size: 18px;
+	}
+	.rating {
+		@apply items-center;
+	}
+	.rate {
+		font-size: 18px;
+	}
+	.count {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.more {
+		@apply px-8;
+		font-size: 11px;
+	}
+	.heading {
+		@apply text-2lg;
+	}
+	.rate {
+		font-size: 17px;
+	}
+	.count {
+		@apply text-medium-lg;
+	}
+	.rating {
+		@apply gap-2;
+	}
+}
+
+@media (max-width: 900px) {
+	.top {
+		@apply mb-1;
+	}
+}
+
+@media (max-width: 600px) {
+	.heading {
+		font-size: 15px;
+	}
+	.more {
+		@apply px-5 text-small py-2.5;
+	}
+	.top {
+		@apply items-end;
+	}
+	.rate {
+		@apply text-2lg;
+	}
+}
+
+@media (max-width: 500px) {
+	.rate {
+		@apply text-medium-xl;
+	}
+	.count {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 440px) {
+	.rating {
+		@apply gap-1.5;
+	}
+	.rate {
+		font-size: 13px;
+	}
+	.count {
+		@apply text-small;
+	}
+	.top {
+		@apply items-center gap-2.5;
+	}
+	.more {
+		@apply px-4;
+		font-size: 9px;
+	}
+}

@@ -1,0 +1,17 @@
+schema:
+  - ${GRAPHQL_SERVER_URL: "https://back.keeywork.store/api/mygraphql"}
+documents:
+  - 'src/schemas/**/*.graphql'
+generates:
+  ./src/__generated__/output.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      skipTypename: true
+      withHooks: true
+      withComponent: false
+      withHOC: false
+      reactApolloVersion: 3
+      withSsr: true

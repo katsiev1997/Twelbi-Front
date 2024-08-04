@@ -1,0 +1,33 @@
+{
+	"trailingComma": "es5",
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": true,
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"^@/(.*)$",
+		"^@/components/(.*)$",
+		"^@/api/(.*)$",
+		"^@/app/(.*)$",
+		"^@/assets/(.*)$",
+		"^@/constants/(.*)$",
+		"^@/data/(.*)$",
+		"^@/hooks/(.*)$",
+		"^@/libs/(.*)$",
+		"^@/providers/(.*)$",
+		"^@/schemas/(.*)$",
+		"^@/seo/(.*)$",
+		"^@/server/(.*)$",
+		"^@/services/(.*)$",
+		"^@/shared/(.*)$",
+		"^@/store/(.*)$",
+		"^@/translates/(.*)$",
+		"^@/utils/(.*)$",
+		"^../(.*)",
+		"^./(.*)",
+		"(.scss)$"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}

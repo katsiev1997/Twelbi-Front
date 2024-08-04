@@ -1,0 +1,23 @@
+query Brand($slug: String!) {
+	brand(slug: $slug) {
+		id
+		name
+		logoPath
+		city
+		postedCount
+		rating
+		phoneNumber
+		isSubscribed
+		isBrandOwner
+		about
+		reviews {
+			id
+			authorName
+			comment
+			rating
+			createdAt
+		}
+		reviewsCount
+		createdAt
+	}
+}
