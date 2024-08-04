@@ -1,7 +1,7 @@
-import type { IClassName } from '@/shared/interfaces/class-name/class-name.interface'
 import cn from 'clsx'
 import type { FC, PropsWithChildren } from 'react'
 import styles from './Section.module.scss'
+import type { IClassName } from '@/shared/interfaces/common/class-name/class-name.interface'
 
 const Section: FC<PropsWithChildren<IClassName>> = ({
 	children,

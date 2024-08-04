@@ -1,5 +1,5 @@
 import { EnumStorage } from '@/constants/enums.constants'
-import type { IAuthStore } from '@/shared/interfaces/global/store/store.interface'
+import type { IAuthStore } from '@/shared/interfaces/common/store/store.interface'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

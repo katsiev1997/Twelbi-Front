@@ -1,5 +1,5 @@
 import { Sort } from '@/__generated__/output'
-import type { ISelectItem } from '@/components/ui/common/form/custom-select/interface/select.interface'
+import type { ISelectItem } from '@/shared/interfaces/common/form/form.interface'
 
 export const SORT_FILTER_DATA: ISelectItem<Sort>[] = [
 	{

@@ -1,5 +1,5 @@
 import { ACCENT_COLOR } from '@/constants/global.constants'
-import type { IMiniLoader } from '@/shared/interfaces/global/loader/loader.interface'
+import type { IMiniLoader } from '@/shared/interfaces/common/loader/loader.interface'
 import type { FC } from 'react'
 
 const MiniLoader: FC<IMiniLoader> = ({ color, className }) => {
