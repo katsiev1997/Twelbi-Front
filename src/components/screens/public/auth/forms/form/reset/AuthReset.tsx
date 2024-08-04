@@ -5,9 +5,9 @@ import Section from '@/components/ui/common/section/Section'
 import PasswordField from '@/components/ui/elements/form/password/PasswordField'
 import { LENGTH_VALIDATION } from '@/components/ui/elements/form/validation/form.validation'
 import { useJwtAuthReset } from '@/hooks/mutations/auth/jwt/useJwtReset'
-import type { IPageSearchParam } from '@/shared/interfaces/global/param/param.interface'
 import type { FC } from 'react'
 import styles from '../../Auth.module.scss'
+import type { IPageSearchParam } from '@/shared/interfaces/common/param/param.interface'
 
 const AuthReset: FC<IPageSearchParam> = ({ searchParams }) => {
 	const { registerInput, handleSubmit, onSubmit, errors, loading } =
