@@ -1,6 +1,13 @@
 .stars {
-	@apply relative flex;
-	gap: 5px;
+	@apply relative;
+
+	> li {
+		@apply inline-block;
+
+		& + li {
+			margin-left: 5px;
+		}
+	}
 
 	img,
 	svg {
