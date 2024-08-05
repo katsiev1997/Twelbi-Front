@@ -7,7 +7,11 @@ import { useState, type FC } from 'react'
 import Picture from '../../common/picture/Picture'
 import styles from './Subscribe.module.scss'
 
-const Subscribe: FC<ISubscribe> = ({ initialSubscription, className }) => {
+const Subscribe: FC<ISubscribe> = ({
+	initialSubscription,
+	brandId,
+	className,
+}) => {
 	const [isSubscribed, setIsSubscribed] = useState(initialSubscription)
 
 	return (

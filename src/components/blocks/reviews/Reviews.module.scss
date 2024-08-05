@@ -2,7 +2,7 @@
 	@apply flex flex-wrap items-center justify-between gap-y-1 mb-5;
 }
 .heading {
-	@apply w-full font-semibold;
+	@apply text-4lg leading-none w-full font-semibold;
 }
 .rating {
 	@apply flex items-end gap-1.5 font-medium;
@@ -82,44 +82,22 @@
 }
 
 @media (max-width: 600px) {
+	.count {
+		@apply text-small;
+	}
 	.heading {
 		font-size: 15px;
 	}
-	.more {
-		@apply px-5 text-small py-2.5;
-	}
 	.top {
-		@apply items-end;
+		@apply items-end gap-2;
 	}
 	.rate {
 		@apply text-2lg;
 	}
-}
-
-@media (max-width: 500px) {
-	.rate {
-		@apply text-medium-xl;
-	}
-	.count {
-		font-size: 11px;
-	}
-}
-
-@media (max-width: 440px) {
 	.rating {
-		@apply gap-1.5;
-	}
-	.rate {
-		font-size: 13px;
-	}
-	.count {
-		@apply text-small;
-	}
-	.top {
-		@apply items-center gap-2.5;
+		@apply gap-1.5 items-end;
 	}
 	.more {
-		@apply px-4;
-		font-size: 9px;
+		@apply block w-fit mt-7 mx-auto py-3 px-14;
 	}
 }

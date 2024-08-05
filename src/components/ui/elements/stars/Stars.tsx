@@ -16,7 +16,7 @@ const Stars: FC<IStars> = ({ variant, rating, className }) => {
 			)}
 		>
 			{[1, 2, 3, 4, 5].map((i) => (
-				<li>
+				<li key={i}>
 					<Star />
 				</li>
 			))}

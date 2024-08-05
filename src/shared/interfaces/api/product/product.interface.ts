@@ -16,6 +16,7 @@ export interface IProductsFiltersProps {
 }
 
 export interface IProductsFilters extends IProductsFiltersProps {
+	wrapperClassName?: string
 	isBig: boolean
 	setIsBig: Dispatch<SetStateAction<boolean>>
 }
@@ -40,6 +41,7 @@ export interface IProducts extends AllProducts {
 	hasMoreBtn?: boolean
 	hasWrapper?: boolean
 	wrapperClassName?: string
+	filtersClassName?: string
 	listClassName?: string
 	smallClassName?: string
 	bigClassName?: string

@@ -1,11 +1,17 @@
 .subscribe {
-	@apply whitespace-nowrap btn-green rounded-full font-medium flex justify-center items-center gap-1 px-6 min-w-fit;
+	@apply whitespace-nowrap btn-green rounded-full font-medium flex justify-center items-center gap-1.5 px-6 min-w-fit;
 	padding-top: 7px;
 	padding-bottom: 7px;
 }
 
 @media (max-width: 1000px) {
 	.subscribe {
-		@apply px-4 py-1.5;
+		@apply px-5 py-1.5;
+	}
+}
+
+@media (max-width: 600px) {
+	.subscribe {
+		@apply w-full px-4;
 	}
 }

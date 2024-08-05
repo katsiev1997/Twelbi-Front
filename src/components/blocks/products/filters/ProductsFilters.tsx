@@ -21,6 +21,7 @@ import {
 } from './data/products-filters.data'
 
 const ProductsFilters: FC<IProductsFilters> = ({
+	wrapperClassName,
 	isBig,
 	setIsBig,
 	hasSize,
@@ -32,7 +33,7 @@ const ProductsFilters: FC<IProductsFilters> = ({
 
 	return (
 		<>
-			<div className={styles.filters}>
+			<div className={cn(styles.filters, wrapperClassName && wrapperClassName)}>
 				<button className={styles.burger} onClick={() => setIsShow(!isShow)}>
 					<Settings2 />
 				</button>

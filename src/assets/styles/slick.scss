@@ -1,7 +1,7 @@
 .slick-dots {
 	@apply items-center justify-center gap-0.5;
 	display: flex !important;
-	bottom: -25px;
+	bottom: -15px;
 
 	> li {
 		@apply m-0 w-4 h-4 flex items-center justify-center;
@@ -20,8 +20,6 @@
 		}
 	}
 }
-.slic-track {
-	&::before {
-		@apply content-none;
-	}
+.slick-track::before {
+	@apply content-none;
 }

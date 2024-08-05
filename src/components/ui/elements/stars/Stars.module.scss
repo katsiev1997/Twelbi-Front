@@ -54,9 +54,7 @@
 }
 
 @media (max-width: 600px) {
-	.stars.big img,
 	.stars.small img,
-	.stars.big svg,
 	.stars.small svg {
 		@apply w-4 h-4;
 	}

@@ -58,9 +58,6 @@
 }
 
 @media (max-width: 900px) {
-	.review {
-		@apply gap-5;
-	}
 	.avatar {
 		min-width: 50px;
 		max-width: 50px;
@@ -89,7 +86,7 @@
 		@apply gap-6;
 	}
 	.review {
-		@apply gap-4 p-5;
+		@apply p-6;
 	}
 	.avatar {
 		min-width: 45px;
@@ -109,5 +106,27 @@
 	}
 	.comment {
 		@apply leading-3lg;
+	}
+}
+
+@media (max-width: 420px) {
+	.comment,
+	.toggle {
+		@apply text-small;
+	}
+	.avatar {
+		min-width: 40px;
+		max-width: 40px;
+		min-height: 40px;
+		max-height: 40px;
+	}
+	.info {
+		@apply gap-1;
+	}
+	.name {
+		@apply text-medium;
+	}
+	.created {
+		font-size: 8px;
 	}
 }

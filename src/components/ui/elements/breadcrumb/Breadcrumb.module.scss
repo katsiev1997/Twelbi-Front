@@ -1,5 +1,18 @@
+.wrapper {
+	@apply flex items-center gap-10 justify-between;
+}
 .list {
 	@apply flex items-center gap-2.5 text-small font-medium;
+}
+.catalog {
+	@apply hidden py-1 px-3 rounded-full bg-gray-200 items-center gap-1.5 font-medium;
+	font-size: 8px;
+	color: #686868;
+
+	> svg {
+		@apply stroke-green-base w-3.5 h-3.5;
+		stroke-width: 1.3px;
+	}
 }
 .item:not(:first-child) {
 	@apply relative;
@@ -11,4 +24,23 @@
 		width: 5px;
 		height: 5px;
 	}
+}
+
+@media (max-width: 600px) {
+	.catalog {
+		@apply flex;
+	}
+	.list {
+		font-size: 8px;
+
+		img {
+			@apply max-w-4 max-h-4;
+		}
+	}
+	.item:not(:first-child) {
+		@apply pl-3;
+	}
+}
+
+@media (max-width: 420px) {
 }

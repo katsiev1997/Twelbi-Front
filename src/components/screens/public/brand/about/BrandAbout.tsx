@@ -24,8 +24,8 @@ const BrandAbout: FC<IBrand> = ({ brand }) => {
 							<Picture src={brand.logoPath} alt={brand.name} />
 						</div>
 						<div className={styles.about}>
-							<h1 className={styles.name}>{brand.name}</h1>
-							<div className={styles.fill}>
+							<div className={styles.top}>
+								<h1 className={styles.name}>{brand.name}</h1>
 								<List
 									items={[
 										{
@@ -56,51 +56,58 @@ const BrandAbout: FC<IBrand> = ({ brand }) => {
 									listClassName={styles.terms}
 									itemClassName={styles.term}
 								/>
+							</div>
+							<div className={styles.center}>
 								<div className={styles.rating}>
 									<Star />
 									{brand.rating} средний рейтинг товаров поставщика
 								</div>
-								<div className={styles.buttons}>
-									<div className={styles.actions}>
-										<Phone phone={brand.phoneNumber} />
-										{!brand.isBrandOwner && (
-											<Subscribe
-												brandId={brand.id}
-												initialSubscription={brand.isSubscribed}
-											/>
-										)}
-									</div>
-									<div className={styles.contacts}>
-										<Link className={styles.message} href="">
-											<Picture src={messageIcon.src} alt="Написать сообщение" />
-											Написать сообщение
-										</Link>
-										<List
-											items={[
-												{
-													image: {
-														src: telegramIcon.src,
-														width: telegramIcon.width,
-														height: telegramIcon.height,
-														alt: 'Telegram',
-													},
-													href: `https://t.me/${brand.phoneNumber}`,
-												},
-												{
-													image: {
-														src: whatsappIcon.src,
-														width: whatsappIcon.width,
-														height: whatsappIcon.height,
-														alt: 'Whatsapp',
-													},
-													href: `https://api.whatsapp.com/send?phone=${brand.phoneNumber.slice(
-														1
-													)}`,
-												},
-											]}
-											listClassName={styles.social}
+								<div className={styles.postedMobile}>
+									Опубликовано
+									<span>{brand.postedCount} товаров</span>
+								</div>
+							</div>
+							<div className={styles.buttons}>
+								<div className={styles.actions}>
+									<Phone className={styles.phone} phone={brand.phoneNumber} />
+									{!brand.isBrandOwner && (
+										<Subscribe
+											className={styles.subscribe}
+											brandId={brand.id}
+											initialSubscription={brand.isSubscribed}
 										/>
-									</div>
+									)}
+								</div>
+								<div className={styles.contacts}>
+									<Link className={styles.message} href="">
+										<Picture src={messageIcon.src} alt="Написать сообщение" />
+										Написать сообщение
+									</Link>
+									<List
+										items={[
+											{
+												image: {
+													src: telegramIcon.src,
+													width: telegramIcon.width,
+													height: telegramIcon.height,
+													alt: 'Telegram',
+												},
+												href: `https://t.me/${brand.phoneNumber}`,
+											},
+											{
+												image: {
+													src: whatsappIcon.src,
+													width: whatsappIcon.width,
+													height: whatsappIcon.height,
+													alt: 'Whatsapp',
+												},
+												href: `https://api.whatsapp.com/send?phone=${brand.phoneNumber.slice(
+													1
+												)}`,
+											},
+										]}
+										listClassName={styles.social}
+									/>
 								</div>
 							</div>
 						</div>

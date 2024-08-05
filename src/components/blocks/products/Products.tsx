@@ -26,6 +26,7 @@ const Products: FC<IProducts> = ({
 	count,
 	hasWrapper = true,
 	wrapperClassName,
+	filtersClassName,
 	listClassName,
 	smallClassName,
 	bigClassName,
@@ -52,6 +53,7 @@ const Products: FC<IProducts> = ({
 			)}
 			{filters && (
 				<ProductsFilters
+					wrapperClassName={filtersClassName}
 					isBig={isBig}
 					setIsBig={setIsBig}
 					hasSize={filters.hasSize}

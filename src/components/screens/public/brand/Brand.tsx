@@ -20,7 +20,7 @@ const Brand: FC<IBrand & IUserIsAdmin> = ({ brand, searchParams, isAdmin }) => {
 	return (
 		<div className={styles.brand}>
 			<Breadcrumb
-				listClassName={styles.breadcrumb}
+				className={styles.breadcrumb}
 				items={[
 					{
 						image: {
@@ -61,6 +61,7 @@ const Brand: FC<IBrand & IUserIsAdmin> = ({ brand, searchParams, isAdmin }) => {
 					}}
 					products={products}
 					count={count}
+					filtersClassName={styles.productsFilters}
 					smallClassName={styles.product}
 					pagination={{
 						page,

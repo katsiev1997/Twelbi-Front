@@ -15,7 +15,7 @@ const Picture: FC<IPicture> = ({
 			{sources?.map((source, index) => (
 				<source
 					key={index}
-					src={source.src}
+					srcSet={source.src}
 					media={`(max-width: ${source.resolution}px)`}
 				/>
 			))}
