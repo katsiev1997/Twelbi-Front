@@ -11,8 +11,10 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.9.5",
+		"@types/fslightbox-react": "^1.7.7",
 		"apollo-upload-client": "^18.0.1",
 		"clsx": "^2.1.0",
+		"fslightbox-react": "^1.7.6",
 		"graphql": "^16.8.1",
 		"graphql-ws": "^5.16.0",
 		"iron-session": "github:renchris/iron-session#v8-as-dependency",

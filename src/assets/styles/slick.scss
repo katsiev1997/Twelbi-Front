@@ -1,3 +1,6 @@
+.slick-disabled {
+	@apply hidden;
+}
 .slick-dots {
 	@apply items-center justify-center gap-0.5;
 	display: flex !important;
@@ -22,4 +25,7 @@
 }
 .slick-track::before {
 	@apply content-none;
+}
+.slick-vertical .slick-slide {
+	border: none !important;
 }

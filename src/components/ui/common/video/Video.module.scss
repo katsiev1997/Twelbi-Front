@@ -1,0 +1,18 @@
+.video {
+	@apply w-full h-full bg-white relative flex items-center justify-center;
+
+	> video {
+		@apply w-full h-full absolute left-0 right-0 top-0 bottom-0 z-0;
+	}
+
+	&:hover .toggle {
+		@apply opacity-100 visible pointer-events-auto;
+	}
+}
+.toggle {
+	@apply w-fit h-fit relative z-1;
+
+	&.animate {
+		@apply opacity-0 invisible pointer-events-none transition-opacity;
+	}
+}

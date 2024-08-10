@@ -11,9 +11,11 @@ export interface IReviewCard extends IClassName {
 export interface IReviews extends AllReviews {
 	isAdmin: boolean
 	brandId?: number
+	productId?: number
 	wrapperClassName?: string
 	listClassName?: string
 	reviewClassName?: string
 	heading: string
 	rating: string
+	type: 'product' | 'brand'
 }

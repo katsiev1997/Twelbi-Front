@@ -314,6 +314,17 @@ export type NestedCategory = {
   slug: Scalars['String']['output'];
 };
 
+export type NestedProductBrand = {
+  id: Scalars['Int']['output'];
+  isBrandOwner: Scalars['Boolean']['output'];
+  isSubscribed: Scalars['Boolean']['output'];
+  logoPath: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  phoneNumber: Scalars['String']['output'];
+  rating: Scalars['String']['output'];
+  slug: Scalars['String']['output'];
+};
+
 export type Price = {
   minQuantity: Scalars['Int']['output'];
   price: Scalars['Int']['output'];
@@ -326,12 +337,21 @@ export type PriceInput = {
 
 export type Product = {
   about: Scalars['String']['output'];
+  category: NestedCategory;
+  createdAt: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
   imagesPaths: Array<Scalars['String']['output']>;
   name: Scalars['String']['output'];
   posterPath: Scalars['String']['output'];
   prices: Array<Price>;
+  provider: NestedProductBrand;
+  rating: Scalars['String']['output'];
+  reviews: Array<ReviewCard>;
+  reviewsCount: Scalars['Int']['output'];
   sku: Scalars['String']['output'];
   videoPath?: Maybe<Scalars['String']['output']>;
+  views: Scalars['Int']['output'];
+  visibility: Visibility;
 };
 
 export type ProductCard = {
@@ -383,6 +403,7 @@ export type Query = {
   brands: AllBrands;
   categories: AllCategories;
   categoryById: Category;
+  currentProduct: Product;
   jwtRegister: SessionUserResponse;
   productById: Product;
   products: AllProducts;
@@ -422,6 +443,11 @@ export type QueryCategoriesArgs = {
 
 
 export type QueryCategoryByIdArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type QueryCurrentProductArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -676,6 +702,13 @@ export type CategoriesQueryVariables = Exact<{
 
 
 export type CategoriesQuery = { categories: { count: number, categories: Array<{ name: string, slug: string, smallImagePath: string, bigImagePath: string }> } };
+
+export type CurrentProductQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+
+export type CurrentProductQuery = { currentProduct: { id: number, name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, rating: string, reviewsCount: number, views: number, createdAt: string, visibility: Visibility, prices: Array<{ price: number, minQuantity: number }>, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }>, category: { name: string, slug: string }, provider: { id: number, rating: string, phoneNumber: string, name: string, slug: string, logoPath: string, isSubscribed: boolean, isBrandOwner: boolean } } };
 
 export type ProductsQueryVariables = Exact<{
   query: ProductQueryInput;
@@ -1653,6 +1686,82 @@ export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesSuspenseQueryHookResult = ReturnType<typeof useCategoriesSuspenseQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const CurrentProductDocument = gql`
+    query CurrentProduct($id: Int!) {
+  currentProduct(id: $id) {
+    id
+    name
+    about
+    sku
+    posterPath
+    videoPath
+    imagesPaths
+    prices {
+      price
+      minQuantity
+    }
+    rating
+    reviews {
+      id
+      authorName
+      comment
+      rating
+      createdAt
+    }
+    reviewsCount
+    category {
+      name
+      slug
+    }
+    provider {
+      id
+      rating
+      phoneNumber
+      name
+      slug
+      logoPath
+      isSubscribed
+      isBrandOwner
+    }
+    views
+    createdAt
+    visibility
+  }
+}
+    `;
+
+/**
+ * __useCurrentProductQuery__
+ *
+ * To run a query within a React component, call `useCurrentProductQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentProductQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentProductQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useCurrentProductQuery(baseOptions: Apollo.QueryHookOptions<CurrentProductQuery, CurrentProductQueryVariables> & ({ variables: CurrentProductQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CurrentProductQuery, CurrentProductQueryVariables>(CurrentProductDocument, options);
+      }
+export function useCurrentProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentProductQuery, CurrentProductQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CurrentProductQuery, CurrentProductQueryVariables>(CurrentProductDocument, options);
+        }
+export function useCurrentProductSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<CurrentProductQuery, CurrentProductQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<CurrentProductQuery, CurrentProductQueryVariables>(CurrentProductDocument, options);
+        }
+export type CurrentProductQueryHookResult = ReturnType<typeof useCurrentProductQuery>;
+export type CurrentProductLazyQueryHookResult = ReturnType<typeof useCurrentProductLazyQuery>;
+export type CurrentProductSuspenseQueryHookResult = ReturnType<typeof useCurrentProductSuspenseQuery>;
+export type CurrentProductQueryResult = Apollo.QueryResult<CurrentProductQuery, CurrentProductQueryVariables>;
 export const ProductsDocument = gql`
     query Products($query: ProductQueryInput!) {
   products(query: $query) {

@@ -17,7 +17,7 @@ const Subscribe: FC<ISubscribe> = ({
 	return (
 		<button className={cn(styles.subscribe, className && className)}>
 			<Picture src={subscribeIcon.src} alt="Подписка" />
-			{isSubscribed ? 'Отписаться' : 'Подписаться'}
+			<span>{isSubscribed ? 'Отписаться' : 'Подписаться'}</span>
 		</button>
 	)
 }

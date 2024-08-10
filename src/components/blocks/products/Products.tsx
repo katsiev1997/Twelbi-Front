@@ -41,13 +41,7 @@ const Products: FC<IProducts> = ({
 	const productsComponent = (
 		<>
 			{heading && (
-				<Heading
-					className={cn(styles.heading, heading.className)}
-					variant={heading.variant}
-					hasLine={heading.hasLine}
-					label={heading.label}
-					button={heading.button}
-				>
+				<Heading className={cn(styles.heading, heading.className)} {...heading}>
 					{heading.children}
 				</Heading>
 			)}

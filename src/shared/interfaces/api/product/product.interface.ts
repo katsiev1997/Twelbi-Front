@@ -1,12 +1,18 @@
 import type {
 	Advertising,
 	AllProducts,
+	Product,
 	ProductCard,
 } from '@/__generated__/output'
 import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
 import type { IHeading } from '../../common/heading/heading.interface'
 import type { IPagination } from '../../common/pagination/pagination.interface'
+import type { IPageSearchParam } from '../../common/param/param.interface'
+
+export interface IProduct extends IPageSearchParam {
+	product: Product
+}
 
 export interface IProductsFiltersProps {
 	hasSize?: boolean

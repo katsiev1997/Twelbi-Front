@@ -7,6 +7,7 @@ import Stars from '@/components/ui/elements/stars/Stars'
 import { PUBLIC_PAGES } from '@/constants/url.constants'
 import type { IReviews } from '@/shared/interfaces/api/review/review.interface'
 import { formatNumber } from '@/utils/formats/format-number.util'
+import cn from 'clsx'
 import Link from 'next/link'
 import { useEffect, useState, type FC } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -16,10 +17,13 @@ import 'slick-carousel/slick/slick.css'
 import '@/assets/styles/reviews-slick.scss'
 import '@/assets/styles/slick.scss'
 import styles from './Reviews.module.scss'
+import ReviewSend from './send/ReviewSend'
 
 const Reviews: FC<IReviews> = ({
 	isAdmin,
+	type,
 	brandId,
+	productId,
 	reviews: queriedReviews,
 	count,
 	heading,
@@ -45,6 +49,9 @@ const Reviews: FC<IReviews> = ({
 
 	if (!isMounted) return null
 
+	const isProduct = type === 'product'
+	const id = brandId || productId
+
 	return (
 		<Section className={wrapperClassName && wrapperClassName}>
 			<Container>
@@ -55,14 +62,22 @@ const Reviews: FC<IReviews> = ({
 						<Stars rating={+rating} variant="big" />
 						<span className={styles.count}>{formatNumber(count)} оценок</span>
 					</div>
-					{brandId && !isMobile && (
+					{id && !isMobile && !isProduct && (
 						<Link
-							className={styles.more}
-							href={PUBLIC_PAGES.ALL_REVIEWS(brandId)}
+							className={cn(
+								styles.more,
+								isProduct ? styles.product : styles.brand
+							)}
+							href={
+								isProduct
+									? PUBLIC_PAGES.PRODUCT_REVIEWS(id)
+									: PUBLIC_PAGES.BRAND_REVIEWS(id)
+							}
 						>
 							Смотреть все отзывы
 						</Link>
 					)}
+					{isProduct && id && <ReviewSend />}
 				</div>
 				{isSlider ? (
 					<Slider
@@ -96,10 +111,17 @@ const Reviews: FC<IReviews> = ({
 						))}
 					</div>
 				)}
-				{isMobile && brandId && (
+				{id && (isMobile || isProduct) && (
 					<Link
-						className={styles.more}
-						href={PUBLIC_PAGES.ALL_REVIEWS(brandId)}
+						className={cn(
+							styles.more,
+							isProduct ? styles.product : styles.brand
+						)}
+						href={
+							isProduct
+								? PUBLIC_PAGES.PRODUCT_REVIEWS(id)
+								: PUBLIC_PAGES.BRAND_REVIEWS(id)
+						}
 					>
 						Смотреть все отзывы
 					</Link>

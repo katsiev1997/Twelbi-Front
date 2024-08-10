@@ -23,7 +23,7 @@
 	}
 }
 .info {
-	@apply w-full text-center text-medium-lg flex flex-col items-center justify-between;
+	@apply w-full text-center text-medium-lg flex flex-col items-center justify-between leading-3lg;
 	max-width: 750px;
 }
 .call {

@@ -1,11 +1,12 @@
-import type { IClassName } from '../class-name/class-name.interface'
+import type { ImgHTMLAttributes } from 'react'
 
 export interface IPictureSource {
 	src: string
 	resolution: number
 }
 
-export interface IPicture extends IClassName {
+export interface IPicture extends ImgHTMLAttributes<HTMLImageElement> {
+	className?: string
 	src: string
 	width?: number
 	height?: number

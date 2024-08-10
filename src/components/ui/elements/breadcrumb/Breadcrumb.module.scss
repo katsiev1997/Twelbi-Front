@@ -2,33 +2,86 @@
 	@apply flex items-center gap-10 justify-between;
 }
 .list {
-	@apply flex items-center gap-2.5 text-small font-medium;
+	@apply overflow-hidden flex items-center gap-2.5 text-small font-medium;
 }
 .catalog {
-	@apply hidden py-1 px-3 rounded-full bg-gray-200 items-center gap-1.5 font-medium;
-	font-size: 8px;
+	@apply hidden font-medium whitespace-nowrap rounded-full bg-gray-200 items-center gap-1.5 text-small px-5 py-1;
 	color: #686868;
 
 	> svg {
-		@apply stroke-green-base w-3.5 h-3.5;
+		@apply w-5 h-5 stroke-green-base;
 		stroke-width: 1.3px;
 	}
 }
-.item:not(:first-child) {
-	@apply relative;
-	padding-left: 15px;
+.catalog.notHidden {
+	@apply flex;
+}
+.mobileLabel {
+	@apply hidden;
+}
+.item {
+	@apply ellipse-text;
 
-	&::before {
-		@apply absolute left-0 top-0 bottom-0 my-auto bg-green-base rounded-full;
-		content: '';
-		width: 5px;
-		height: 5px;
+	&:not(:first-child) {
+		@apply relative;
+		padding-left: 15px;
+
+		&::before {
+			@apply absolute left-0 top-0 bottom-0 my-auto bg-green-base rounded-full;
+			content: '';
+			width: 5px;
+			height: 5px;
+		}
+	}
+
+	> a {
+		@apply ellipse-text;
+	}
+}
+
+@media (max-width: 1200px) {
+	.catalog {
+		font-size: 9px;
+
+		> svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.wrapper {
+		@apply gap-8;
+	}
+	.catalog {
+		@apply py-1 px-3;
+		font-size: 8px;
+
+		> svg {
+			@apply w-4 h-4;
+		}
 	}
 }
 
 @media (max-width: 600px) {
+	.wrapper {
+		@apply gap-6;
+	}
+	.mobileLabel {
+		@apply inline-block;
+	}
+	.label.hasMobile {
+		@apply hidden;
+	}
 	.catalog {
 		@apply flex;
+		font-size: 8px;
+
+		> svg {
+			@apply w-3.5 h-3.5 stroke-green-base;
+			stroke-width: 1.3px;
+		}
 	}
 	.list {
 		font-size: 8px;
@@ -42,5 +95,23 @@
 	}
 }
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
+	.list {
+		@apply gap-1.5;
+	}
+	.item,
+	.catalog {
+		font-size: 6px;
+	}
+	.catalog > svg {
+		@apply w-2.5 h-2.5;
+	}
+	.item:not(:first-child) {
+		@apply pl-1.5;
+
+		&::before {
+			width: 2px;
+			height: 2px;
+		}
+	}
 }

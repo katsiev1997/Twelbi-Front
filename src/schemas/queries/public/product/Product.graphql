@@ -1,0 +1,41 @@
+query CurrentProduct($id: Int!) {
+	currentProduct(id: $id) {
+		id
+		name
+		about
+		sku
+		posterPath
+		videoPath
+		imagesPaths
+		prices {
+			price
+			minQuantity
+		}
+		rating
+		reviews {
+			id
+			authorName
+			comment
+			rating
+			createdAt
+		}
+		reviewsCount
+		category {
+			name
+			slug
+		}
+		provider {
+			id
+			rating
+			phoneNumber
+			name
+			slug
+			logoPath
+			isSubscribed
+			isBrandOwner
+		}
+		views
+		createdAt
+		visibility
+	}
+}

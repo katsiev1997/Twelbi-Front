@@ -21,6 +21,7 @@ const Brand: FC<IBrand & IUserIsAdmin> = ({ brand, searchParams, isAdmin }) => {
 		<div className={styles.brand}>
 			<Breadcrumb
 				className={styles.breadcrumb}
+				isButtonMobile
 				items={[
 					{
 						image: {
@@ -46,6 +47,7 @@ const Brand: FC<IBrand & IUserIsAdmin> = ({ brand, searchParams, isAdmin }) => {
 					listClassName={styles.reviews}
 					reviewClassName={styles.review}
 					isAdmin={isAdmin}
+					type="brand"
 					brandId={brand.id}
 					heading="Отзывы о товарах"
 					rating={brand.rating}

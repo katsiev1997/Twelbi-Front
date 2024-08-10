@@ -12,6 +12,11 @@
 
 @media (max-width: 600px) {
 	.subscribe {
-		@apply w-full px-4;
+		@apply px-4 w-full;
+		max-width: 70px;
+
+		> span {
+			@apply hidden;
+		}
 	}
 }

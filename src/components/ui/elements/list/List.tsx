@@ -3,7 +3,7 @@ import type {
 	IListItem,
 } from '@/shared/interfaces/common/list/list.interface'
 import Link from 'next/link'
-import { type FC } from 'react'
+import type { FC } from 'react'
 import Picture from '../../common/picture/Picture'
 
 const List: FC<IList> = ({
@@ -15,7 +15,14 @@ const List: FC<IList> = ({
 	const renderContent = (item: IListItem) => (
 		<>
 			{item.icon && <item.icon />}
-			{item.image && <Picture src={item.image.src} alt={item.image.alt} />}
+			{item.image && (
+				<Picture
+					src={item.image.src}
+					width={item.image.width}
+					height={item.image.height}
+					alt={item.image.alt}
+				/>
+			)}
 			{item.label}
 		</>
 	)

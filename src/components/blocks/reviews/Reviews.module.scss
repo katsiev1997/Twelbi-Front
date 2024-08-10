@@ -16,10 +16,24 @@
 .more {
 	@apply py-3 px-14 rounded-full bg-green-base/30 text-green-base text-medium-lg font-semibold;
 }
+.more.product {
+	@apply mt-6;
+}
+.toggle {
+	@apply flex items-center gap-1.5 font-medium text-medium-xl;
+}
 
 @media (max-width: 1600px) {
 	.heading {
 		font-size: 23px;
+	}
+	.toggle {
+		font-size: 13px;
+
+		> img {
+			width: 27px;
+			height: 27px;
+		}
 	}
 }
 
@@ -27,7 +41,7 @@
 	.top {
 		@apply mb-2 gap-0;
 	}
-	.more {
+	.more.brand {
 		@apply py-3 px-10;
 	}
 	.rate {
@@ -54,10 +68,21 @@
 	.count {
 		font-size: 13px;
 	}
+	.more.product {
+		@apply mt-4;
+	}
 }
 
 @media (max-width: 1000px) {
-	.more {
+	.toggle {
+		@apply text-medium-lg;
+
+		> img {
+			width: 25px;
+			height: 25px;
+		}
+	}
+	.more.brand {
 		@apply px-8;
 		font-size: 11px;
 	}
@@ -82,6 +107,15 @@
 }
 
 @media (max-width: 600px) {
+	.toggle {
+		@apply items-end;
+		font-size: 11px;
+
+		> img {
+			width: 20px;
+			height: 20px;
+		}
+	}
 	.count {
 		@apply text-small;
 	}
@@ -98,6 +132,42 @@
 		@apply gap-1.5 items-end;
 	}
 	.more {
-		@apply block w-fit mt-7 mx-auto py-3 px-14;
+		@apply block w-fit mt-7 mx-auto;
+	}
+	.more.brand {
+		@apply py-3 px-14;
+	}
+}
+
+@media (max-width: 450px) {
+	.toggle {
+		@apply text-small;
+
+		> img {
+			@apply w-4 h-4;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.more.product {
+		@apply mt-6;
+	}
+}
+
+@media (max-width: 400px) {
+	.rate {
+		@apply text-lg;
+	}
+}
+
+@media (max-width: 350px) {
+	.toggle {
+		@apply gap-1;
+		font-size: 9px;
+
+		> img {
+			@apply w-3.5 h-3.5;
+		}
 	}
 }

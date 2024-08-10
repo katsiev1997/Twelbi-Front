@@ -88,7 +88,7 @@
 	@apply flex items-center gap-1.5;
 
 	> svg {
-		@apply fill-orange-base stroke-orange-base w-5 h-5;
+		@apply fill-orange-base stroke-orange-base w-4 h-4;
 	}
 }
 .count {
@@ -160,8 +160,12 @@
 }
 
 @media (max-width: 700px) {
-	.rating > svg {
-		@apply w-4 h-4;
+	.rating {
+		@apply gap-1;
+
+		> svg {
+			@apply w-3 h-3;
+		}
 	}
 	.label {
 		@apply hidden;

@@ -1,5 +1,5 @@
 .stars {
-	@apply relative;
+	@apply relative flex;
 
 	> li {
 		@apply inline-block;
@@ -26,43 +26,66 @@
 @media (max-width: 1600px) {
 	.stars.small img,
 	.stars.small svg {
-		height: 23px;
-		width: 23px;
+		min-width: 23px;
+		max-width: 23px;
+		min-height: 23px;
+		max-height: 23px;
 	}
 }
 
 @media (max-width: 1400px) {
 	.stars.big img,
 	.stars.big svg {
-		height: 26px;
-		width: 26px;
+		min-width: 26px;
+		max-width: 26px;
+		min-height: 26px;
+		max-height: 26px;
 	}
 }
 
 @media (max-width: 1200px) {
 	.stars.big img,
 	.stars.big svg {
-		@apply w-6 h-6;
+		@apply min-w-6 max-w-6 min-h-6 max-h-6;
 	}
 }
 
 @media (max-width: 1000px) {
 	.stars.big img,
 	.stars.big svg {
-		@apply w-5 h-5;
+		@apply min-w-5 max-w-5 min-h-5 max-h-5;
 	}
 }
 
 @media (max-width: 1600px) {
 	.stars.small img,
 	.stars.small svg {
-		@apply w-5 h-5;
+		@apply min-w-5 max-w-5 min-h-5 max-h-5;
 	}
 }
 
 @media (max-width: 600px) {
 	.stars.small img,
 	.stars.small svg {
-		@apply w-4 h-4;
+		@apply min-w-4 max-w-4 min-h-4 max-h-4;
+	}
+}
+
+@media (max-width: 400px) {
+	.stars.big {
+		img,
+		svg {
+			min-width: 17px;
+			max-width: 17px;
+			min-height: 17px;
+			max-height: 17px;
+		}
+
+		> li + li {
+			@apply ml-1;
+		}
+	}
+	.count {
+		font-size: 9px;
 	}
 }

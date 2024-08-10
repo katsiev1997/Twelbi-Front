@@ -15,18 +15,19 @@
 }
 .preview {
 	@apply rounded-xl bg-gray-100 flex items-center justify-center p-6;
-	max-width: 258px;
-	min-width: 258px;
-	max-height: 258px;
-	min-height: 258px;
+	max-width: 255px;
+	min-width: 255px;
+	max-height: 255px;
+	min-height: 255px;
 
 	> img {
 		@apply max-w-full max-h-full;
 	}
 }
 .about {
-	@apply w-full inline-block text-small;
-	max-width: 322px;
+	@apply inline-block text-small;
+	min-width: 270px;
+	max-width: 270px;
 }
 .name {
 	@apply w-fit text-title font-semibold mb-2.5 leading-none pb-1 border-dashed border-b border-b-green-base ellipse-text max-w-full;
@@ -60,35 +61,16 @@
 		stroke-width: 1.4px;
 	}
 }
-.actions {
-	@apply flex justify-between gap-1.5 mb-2.5;
-}
-.contacts {
-	@apply flex gap-1.5 justify-between;
-}
-.message {
-	@apply w-full py-2 px-6 rounded-full btn-black flex items-center gap-1.5 justify-center font-medium;
-}
-.social {
-	@apply flex gap-1.5;
-
-	img {
-		min-width: 35px;
-		max-width: 35px;
-		min-height: 35px;
-		max-height: 35px;
-	}
-}
 
 @media (max-width: 1600px) {
 	.info {
 		margin-top: 9px;
 	}
 	.preview {
-		max-width: 255px;
-		min-width: 255px;
-		max-height: 255px;
-		min-height: 255px;
+		max-width: 252px;
+		min-width: 252px;
+		max-height: 252px;
+		min-height: 252px;
 	}
 	.title {
 		font-size: 18px;
@@ -103,10 +85,10 @@
 
 @media (max-width: 1400px) {
 	.preview {
-		max-width: 249px;
-		min-width: 249px;
-		max-height: 249px;
-		min-height: 249px;
+		max-width: 248px;
+		min-width: 248px;
+		max-height: 248px;
+		min-height: 248px;
 	}
 	.info {
 		@apply mt-1.5;
@@ -127,10 +109,10 @@
 
 @media (max-width: 1200px) {
 	.preview {
-		max-width: 232px;
-		min-width: 232px;
-		max-height: 232px;
-		min-height: 232px;
+		max-width: 233px;
+		min-width: 233px;
+		max-height: 233px;
+		min-height: 233px;
 	}
 	.title {
 		font-size: 15px;
@@ -148,9 +130,6 @@
 	.rating {
 		@apply mb-3;
 	}
-	.actions {
-		@apply mb-2;
-	}
 }
 
 @media (max-width: 1000px) {
@@ -158,19 +137,16 @@
 		@apply mb-5;
 	}
 	.preview {
-		max-width: 226px;
-		min-width: 226px;
-		max-height: 226px;
-		min-height: 226px;
+		max-width: 228px;
+		min-width: 228px;
+		max-height: 228px;
+		min-height: 228px;
 	}
 	.wrapper {
 		@apply flex-col items-start;
 	}
 	.terms {
 		@apply items-start;
-	}
-	.message {
-		max-width: 288px;
 	}
 	.info {
 		@apply max-w-full;
@@ -197,10 +173,6 @@
 }
 
 @media (max-width: 600px) {
-	.subscribe,
-	.phone {
-		max-width: calc(50% - 3px);
-	}
 	.postedMobile {
 		@apply flex items-center gap-1.5;
 
@@ -229,12 +201,6 @@
 	.box {
 		@apply w-full flex-col items-start gap-2.5;
 	}
-	.actions {
-		@apply justify-start;
-	}
-	.message {
-		@apply max-w-full;
-	}
 	.name {
 		@apply border-none pb-0 mb-0;
 	}
@@ -258,12 +224,6 @@
 			@apply hidden;
 		}
 	}
-	.actions {
-		@apply gap-1.5;
-	}
-	.buttons {
-		@apply w-full;
-	}
 }
 
 @media (max-width: 420px) {
@@ -282,7 +242,7 @@
 		font-size: 8px;
 	}
 	.rating {
-		max-width: 115px;
+		max-width: 120px;
 	}
 	.term {
 		@apply gap-1;

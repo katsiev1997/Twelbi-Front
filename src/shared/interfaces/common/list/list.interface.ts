@@ -7,9 +7,12 @@ export interface IListItem {
 	icon?: LucideIcon
 	image?: {
 		src: string
-		width: number
-		height: number
+		width?: number
+		height?: number
 		alt: string
+	}
+	video?: {
+		src: string
 	}
 	onClick?: () => void
 }
