@@ -251,11 +251,6 @@
 	.about {
 		@apply gap-1.5;
 	}
-	.city {
-		> img {
-			@apply w-3.5 h-3.5;
-		}
-	}
 	.logo {
 		min-width: 80px;
 		max-width: 80px;

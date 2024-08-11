@@ -249,9 +249,6 @@
 			@apply w-3 h-3;
 		}
 	}
-	.city > img {
-		@apply max-w-3;
-	}
 	.pay {
 		min-width: 125px;
 		height: 22px;
@@ -324,12 +321,6 @@
 }
 
 @media (max-width: 420px) {
-	.payments {
-		@apply w-full justify-between;
-	}
-	.actions {
-		@apply justify-between;
-	}
 	.term > img {
 		@apply w-3;
 	}
