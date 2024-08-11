@@ -295,7 +295,7 @@
 	.payment {
 		@apply gap-1.5;
 	}
-	.actions{
+	.actions {
 		@apply gap-1.5;
 	}
 }
@@ -320,6 +320,18 @@
 		@apply px-2.5;
 		font-size: 6px;
 		min-width: auto;
+	}
+}
+
+@media (max-width: 420px) {
+	.payments {
+		@apply w-full justify-between;
+	}
+	.actions {
+		@apply justify-between;
+	}
+	.term > img {
+		@apply w-3;
 	}
 }
 
