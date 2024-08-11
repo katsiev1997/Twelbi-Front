@@ -5,7 +5,7 @@
 	@apply mt-16;
 }
 .mobileDetails {
-	@apply hidden;
+	@apply hidden items-center flex-wrap justify-between gap-2 mt-2;
 }
 .reviews {
 	@apply flex;
@@ -29,9 +29,6 @@
 }
 .terms {
 	@apply flex items-center gap-1.5;
-}
-.mobileDetails {
-	@apply flex items-center flex-wrap justify-between gap-2 mt-2;
 }
 .views,
 .term {

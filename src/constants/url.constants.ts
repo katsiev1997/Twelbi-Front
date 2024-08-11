@@ -33,5 +33,5 @@ export const PUBLIC_PAGES = {
 }
 
 export const USER_PAGES = {
-	PROFILE: '/profile',
+	ACCOUNT: '/my-account',
 }

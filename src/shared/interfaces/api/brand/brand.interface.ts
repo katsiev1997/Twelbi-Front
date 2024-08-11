@@ -1,4 +1,9 @@
-import type { AllBrands, Brand, BrandCard } from '@/__generated__/output'
+import type {
+	AccountBrand,
+	AllBrands,
+	Brand,
+	BrandCard,
+} from '@/__generated__/output'
 import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
 import type { IHeading } from '../../common/heading/heading.interface'
@@ -6,6 +11,10 @@ import type { IPageSearchParam } from '../../common/param/param.interface'
 
 export interface IBrand extends IPageSearchParam {
 	brand: Brand
+}
+
+export interface IAccountBrand {
+	brand: AccountBrand
 }
 
 export interface IBrandCard extends IClassName {

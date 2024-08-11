@@ -1,0 +1,338 @@
+.announcement {
+	@apply w-full flex items-center gap-10 justify-between;
+
+	&.hot .price {
+		@apply text-green-base;
+	}
+}
+.fill {
+	@apply flex items-center gap-4;
+}
+.box {
+	max-width: 360px;
+}
+.poster {
+	@apply relative;
+	min-width: 200px;
+	max-width: 200px;
+	min-height: 200px;
+	max-height: 200px;
+
+	> img {
+		@apply image-like-bg-cover rounded-xl;
+	}
+}
+.terms {
+	@apply flex items-center gap-2.5 text-medium-lg font-medium mb-4;
+}
+.term {
+	@apply text-gray-500 flex items-center gap-1.5;
+
+	&:not(:first-child) {
+		@apply relative pl-3;
+
+		&::before {
+			@apply absolute left-0 top-0 bottom-0 my-auto rounded-full bg-green-base;
+			content: '';
+			width: 3px;
+			height: 3px;
+		}
+	}
+}
+.name {
+	@apply text-3lg font-semibold mb-3.5 ellipse-text max-w-full;
+}
+.price {
+	@apply font-bold text-4lg leading-none mb-3 flex items-center gap-1.5;
+}
+.city {
+	@apply flex items-center gap-1.5 text-small font-medium;
+}
+.actions {
+	@apply mt-6 flex gap-4;
+}
+.action {
+	@apply w-full rounded-full text-center font-medium py-2 px-3.5 bg-gray-100;
+	min-width: 130px;
+	font-size: 8px;
+}
+.actions > li:last-child .action {
+	@apply text-red-400;
+}
+.payments {
+	@apply flex flex-col gap-4;
+}
+.payment {
+	@apply flex items-center gap-2.5;
+}
+.pay {
+	@apply relative w-fit flex items-center justify-center gap-1.5 font-semibold rounded-full;
+	font-size: 8px;
+	height: 26px;
+	min-width: 180px;
+
+	> svg {
+		@apply min-w-5 max-w-5 min-h-5 max-h-5 stroke-red-400 absolute top-0 bottom-0 my-auto;
+		left: -25px;
+	}
+
+	&.active {
+		@apply btn-green;
+	}
+
+	&.payed {
+		@apply bg-gray-100;
+	}
+
+	&.left {
+		@apply text-red-100;
+	}
+}
+.info {
+	min-width: 19px;
+	max-width: 19px;
+	min-height: 19px;
+	max-height: 19px;
+}
+
+@media (max-width: 1400px) {
+	.terms {
+		@apply text-medium mb-3;
+	}
+	.price {
+		@apply text-3lg;
+	}
+	.name {
+		@apply mb-3;
+		font-size: 18px;
+	}
+	.poster {
+		min-width: 180px;
+		max-width: 180px;
+		min-height: 180px;
+		max-height: 180px;
+	}
+}
+
+@media (max-width: 1300px) {
+	.box {
+		max-width: 320px;
+	}
+	.terms {
+		@apply text-small mb-2.5;
+	}
+	.price {
+		font-size: 18px;
+
+		> img {
+			width: 18px;
+			height: 18px;
+		}
+	}
+	.name {
+		@apply text-2lg;
+	}
+	.actions {
+		@apply mt-4;
+	}
+	.poster {
+		min-width: 160px;
+		max-width: 160px;
+		min-height: 160px;
+		max-height: 160px;
+	}
+	.pay {
+		font-size: 7px;
+		min-width: 160px;
+	}
+}
+
+@media (max-width: 900px) {
+	.info {
+		min-width: 17px;
+		max-width: 17px;
+		min-height: 17px;
+		max-height: 17px;
+	}
+	.poster {
+		min-width: 140px;
+		max-width: 140px;
+		min-height: 140px;
+		max-height: 140px;
+	}
+	.announcement {
+		@apply overflow-hidden gap-5;
+	}
+	.fill {
+		@apply w-full;
+	}
+	.box {
+		max-width: 300px;
+	}
+	.pay > svg {
+		@apply hidden;
+	}
+	.actions {
+		@apply gap-2.5;
+	}
+	.name {
+		@apply text-lg;
+	}
+}
+
+@media (max-width: 800px) {
+	.box {
+		max-width: 240px;
+	}
+	.terms {
+		@apply gap-2;
+	}
+	.term > img {
+		@apply w-4;
+	}
+	.term:not(:first-child) {
+		@apply pl-2;
+	}
+	.pay {
+		min-width: 140px;
+	}
+	.name {
+		@apply mb-2.5;
+		font-size: 13px;
+	}
+	.announcement,
+	.fill {
+		@apply gap-3;
+	}
+	.terms {
+		@apply mb-1.5;
+	}
+	.terms,
+	.city {
+		font-size: 7px;
+	}
+	.price {
+		@apply text-2lg mb-2;
+	}
+	.actions {
+		@apply mt-3;
+	}
+	.action {
+		@apply w-fit px-3;
+		min-width: auto;
+		max-width: none;
+		font-size: 7px;
+	}
+	.poster {
+		min-width: 120px;
+		max-width: 120px;
+		min-height: 120px;
+		max-height: 120px;
+	}
+}
+
+@media (max-width: 700px) {
+	.box {
+		@apply flex flex-wrap items-center gap-x-2.5 gap-y-2;
+		max-width: 210px;
+	}
+	.price,
+	.city,
+	.terms,
+	.actions {
+		@apply m-0;
+	}
+	.price {
+		@apply text-medium-lg;
+
+		> img {
+			@apply w-3 h-3;
+		}
+	}
+	.city > img {
+		@apply max-w-3;
+	}
+	.pay {
+		min-width: 125px;
+		height: 22px;
+
+		> img {
+			@apply max-w-3;
+		}
+	}
+	.info {
+		min-width: 15px;
+		max-width: 15px;
+		min-height: 15px;
+		max-height: 15px;
+	}
+	.action {
+		padding-top: 7px;
+		font-size: 6px;
+		padding-bottom: 7px;
+	}
+	.name {
+		@apply w-full text-small;
+	}
+	.name,
+	.price {
+		@apply m-0;
+	}
+	.fill {
+		@apply gap-1.5;
+	}
+	.poster {
+		min-width: 80px;
+		max-width: 80px;
+		min-height: 80px;
+		max-height: 80px;
+
+		> img {
+			@apply rounded-2lg;
+		}
+	}
+	.payments,
+	.payment {
+		@apply gap-1.5;
+	}
+	.actions{
+		@apply gap-1.5;
+	}
+}
+
+@media (max-width: 520px) {
+	.box {
+		@apply max-w-full;
+	}
+	.actions {
+		@apply w-full;
+	}
+	.announcement {
+		@apply flex-col items-start gap-1.5;
+	}
+	.payments {
+		@apply flex-row;
+	}
+	.info {
+		@apply hidden;
+	}
+	.pay {
+		@apply px-2.5;
+		font-size: 6px;
+		min-width: auto;
+	}
+}
+
+@media (max-width: 350px) {
+	.action,
+	.pay {
+		@apply px-2;
+	}
+	.payments {
+		@apply gap-1;
+	}
+	.terms,
+	.city {
+		font-size: 6px;
+	}
+}

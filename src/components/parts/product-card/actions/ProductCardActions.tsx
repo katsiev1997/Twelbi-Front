@@ -1,8 +1,5 @@
-import { Visibility } from '@/__generated__/output'
-import ToggleSwitch from '@/components/ui/elements/form/toggle-switch/ToggleSwitch'
 import Modal from '@/components/ui/templates/modal/Modal'
 import { useProductDelete } from '@/hooks/mutations/product/useProductDelete.hook'
-import { useProductToggle } from '@/hooks/mutations/product/useProductToggle.hook'
 import type { IProductState } from '@/shared/interfaces/api/product/product.interface'
 import type { IVisibility } from '@/shared/interfaces/common/visibility/visibility.interface'
 import { Pencil } from 'lucide-react'
@@ -17,17 +14,12 @@ const ProductCardActions: FC<IProductState & IVisibility> = ({
 }) => {
 	const [isShow, setIsShow] = useState(false)
 	const { deleteHandler } = useProductDelete({ productId, setProducts })
-	const { toggleHandler } = useProductToggle({ productId, setProducts })
 
 	return (
 		<div className={styles.actions}>
 			<button onClick={() => setIsShow(true)}>
 				<Pencil />
 			</button>
-			<ToggleSwitch
-				onChange={toggleHandler}
-				isVisible={visibility === Visibility.Visible}
-			/>
 			<button onClick={deleteHandler}>
 				<Pencil />
 			</button>

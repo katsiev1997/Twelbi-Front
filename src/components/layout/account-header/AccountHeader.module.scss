@@ -1,0 +1,94 @@
+.wrapper {
+	@apply flex items-center gap-10 justify-between pt-7;
+	padding-bottom: 30px;
+}
+.buttons {
+	@apply flex gap-5;
+}
+.button {
+	@apply rounded-full bg-gray-200 flex items-center gap-1.5 text-medium-lg font-medium;
+	height: 33px;
+}
+.account {
+	@apply px-8;
+}
+.logout {
+	@apply px-4;
+}
+
+@media (max-width: 1600px) {
+	.logo {
+		max-width: 175px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.button {
+		@apply text-medium;
+	}
+}
+
+@media (max-width: 1200px) {
+	.wrapper {
+		@apply pb-7;
+	}
+	.logo {
+		max-width: 160px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.wrapper {
+		@apply py-6;
+	}
+	.logo {
+		max-width: 145px;
+	}
+	.buttons {
+		@apply gap-3;
+	}
+	.button {
+		@apply text-small;
+
+		> img {
+			@apply max-w-4 max-h-4;
+		}
+	}
+	.account {
+		@apply px-6;
+	}
+}
+
+@media (max-width: 900px) {
+	.wrapper {
+		@apply py-5;
+	}
+}
+
+@media (max-width: 600px) {
+	.logo {
+		max-width: 130px;
+	}
+	.button {
+		font-size: 9px;
+		height: 30px;
+
+		> img {
+			@apply max-w-3.5 max-h-3.5;
+		}
+	}
+	.account {
+		@apply px-4;
+	}
+}
+
+@media (max-width: 550px) {
+	.wrapper {
+		@apply py-2.5;
+	}
+	.button {
+		@apply px-2.5;
+		height: 25px;
+		font-size: 8px;
+	}
+}

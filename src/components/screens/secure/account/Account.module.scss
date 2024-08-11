@@ -1,0 +1,29 @@
+.wrapper {
+	@apply flex items-start;
+	gap: 30px;
+	padding-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+	.wrapper {
+		@apply gap-5 flex-col;
+	}
+}
+
+@media(max-width: 700px) {
+	.wrapper {
+		@apply gap-2.5;
+	}
+}
+
+@media(max-width: 550px) {
+	.wrapper {
+		@apply pb-5;
+	}
+}
+
+@media(max-width: 400px) {
+	.wrapper {
+		@apply pb-4;
+	}
+}

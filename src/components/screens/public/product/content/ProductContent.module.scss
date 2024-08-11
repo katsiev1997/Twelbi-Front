@@ -145,9 +145,8 @@
 	@apply flex-col;
 }
 .box {
-	@apply w-full bg-white rounded-2xl py-6 px-8 mr-3;
+	@apply w-full bg-white rounded-2xl py-6 px-8 mr-3 black-shadow;
 	max-width: 410px;
-	box-shadow: 1px 1px 20px rgba(117, 117, 117, 0.1);
 }
 .details {
 	@apply flex-wrap items-center gap-y-2.5;
@@ -747,8 +746,7 @@
 		@apply min-w-4 max-w-4 min-h-4 max-h-4;
 	}
 	.text {
-		@apply text-small;
-		max-height: 150px;
+		@apply text-small pr-0 overflow-hidden;
 	}
 	.average,
 	.count,
@@ -812,6 +810,9 @@
 }
 
 @media (max-width: 420px) {
+	.box {
+		@apply max-w-full;
+	}
 	.link,
 	.phone {
 		@apply max-w-full;

@@ -1,0 +1,20 @@
+.check {
+	@apply min-w-4 max-w-4 min-h-4 max-h-4 border border-gray-500;
+	border-radius: 2px;
+
+	> svg {
+		@apply stroke-green-base w-full h-full;
+	}
+}
+
+@media (max-width: 1200px) {
+	.check {
+		@apply min-w-3.5 max-w-3.5 min-h-3.5 max-h-3.5;
+	}
+}
+
+@media (max-width: 700px) {
+	.check {
+		@apply min-w-2.5 max-w-2.5 min-h-2.5 max-h-2.5;
+	}
+}

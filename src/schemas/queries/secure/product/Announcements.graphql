@@ -1,0 +1,21 @@
+query Announcements($query: ProductQueryInput!) {
+	announcements(query: $query) {
+		announcements {
+			id
+			name
+			posterPath
+			minPrice
+			maxPrice
+			city
+			sku
+			views
+			createdAt
+			tariffs {
+				expirationAt
+				isLittleLeft
+				type
+			}
+		}
+		count
+	}
+}

@@ -7,7 +7,7 @@
 	min-width: 180px;
 
 	> svg {
-		@apply transition-transform w-4 h-4;
+		@apply transition-transform min-w-4 max-w-4 min-h-4 max-h-4;
 		stroke-width: 1.3px;
 	}
 

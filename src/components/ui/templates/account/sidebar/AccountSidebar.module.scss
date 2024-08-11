@@ -1,0 +1,332 @@
+.sidebar {
+	@apply min-w-fit flex flex-col gap-8 text-small font-medium;
+}
+.infoContainer,
+.boxContainer {
+	@apply min-w-fit w-full bg-white rounded-2xl black-shadow;
+	max-width: 250px;
+	min-width: 210px;
+}
+.infoContainer {
+	padding: 22px 37px 16px;
+}
+.boxContainer {
+	padding: 30px 37px;
+}
+.box {
+	@apply flex flex-col;
+}
+.about,
+.heading {
+	@apply flex flex-col items-start gap-2.5;
+}
+.logo {
+	@apply w-full aspect-square flex items-center justify-center p-4 rounded-xl bg-gray-100 mb-3;
+	max-width: 145px;
+}
+.name {
+	@apply font-semibold text-lg break-all;
+}
+.terms {
+	@apply flex flex-col items-start gap-3.5;
+}
+.term,
+.city {
+	@apply flex items-center gap-1;
+}
+.term {
+	> span {
+		@apply text-green-base;
+	}
+}
+.contacts,
+.list {
+	@apply flex flex-col items-start;
+}
+.list {
+	@apply gap-2.5;
+}
+.contacts {
+	@apply gap-1.5;
+}
+.contact,
+.item,
+.money,
+.link {
+	@apply flex items-center gap-1.5;
+}
+.contact > img {
+	@apply w-4 h-4;
+}
+.edit,
+.logout {
+	@apply w-full text-center p-2 rounded-full;
+	font-size: 8px;
+}
+.edit {
+	@apply bg-green-base/30 text-green-base mt-1.5;
+}
+.logout {
+	@apply bg-gray-200 text-red-400;
+	margin-top: 18px;
+}
+.more {
+	@apply min-w-fit;
+}
+.city,
+.term,
+.item,
+.money,
+.contact {
+	@apply whitespace-nowrap;
+}
+.money {
+	@apply mb-2;
+}
+.topUp {
+	@apply flex items-center gap-1.5 font-medium py-1 px-5 bg-gray-100 rounded-full;
+	font-size: 8px;
+
+	> span {
+		@apply text-small font-bold;
+	}
+}
+.balance {
+	@apply mb-2;
+}
+
+@media (max-width: 1200px) {
+	.sidebar {
+		@apply flex-row gap-4;
+	}
+	.info {
+		@apply flex gap-3 items-center;
+	}
+	.heading {
+		@apply w-full;
+	}
+	.about {
+		@apply flex-wrap flex-row items-center;
+	}
+	.logo {
+		@apply m-0;
+		min-width: 145px;
+		max-width: 145px;
+		min-height: 145px;
+		max-height: 145px;
+	}
+	.sidebar {
+		@apply w-full;
+	}
+	.infoContainer,
+	.boxContainer {
+		@apply p-5;
+		min-width: auto;
+		max-width: none;
+	}
+	.infoContainer {
+		@apply w-full;
+	}
+	.boxContainer {
+		@apply min-w-fit max-w-fit;
+	}
+	.ters,
+	.contacts {
+		@apply w-full;
+	}
+	.terms,
+	.contacts {
+		@apply flex-row;
+	}
+	.edit {
+		@apply w-fit px-4;
+	}
+}
+
+@media (max-width: 900px) {
+	.sidebar {
+		@apply flex-col;
+	}
+	.boxContainer {
+		@apply min-w-full max-w-full;
+	}
+	.list {
+		@apply flex-row items-center;
+	}
+	.money {
+		@apply m-0;
+	}
+	.balance {
+		@apply flex items-center gap-4 m-0;
+	}
+	.box {
+		@apply gap-3;
+	}
+	.logout {
+		@apply w-fit px-10 m-0;
+	}
+	.list {
+		@apply gap-4;
+	}
+}
+
+@media (max-width: 700px) {
+	.more > img {
+		width: 9px;
+		height: 9px;
+	}
+	.city {
+		@apply whitespace-nowrap min-w-fit;
+	}
+	.about,
+	.heading,
+	.terms,
+	.box {
+		@apply gap-2;
+	}
+	.sidebar {
+		@apply gap-2.5;
+	}
+	.heading {
+		@apply flex-row;
+	}
+	.name {
+		font-size: 13px;
+	}
+	.terms,
+	.contacts,
+	.city,
+	.balance,
+	.list {
+		font-size: 8px;
+	}
+	.logo {
+		min-width: 100px;
+		max-width: 100px;
+		min-height: 100px;
+		max-height: 100px;
+	}
+	.edit {
+		@apply m-0;
+	}
+	.terms,
+	.contacts {
+		@apply flex-wrap;
+	}
+	.edit,
+	.logout,
+	.topUp {
+		@apply px-2.5 py-1.5;
+		font-size: 7px;
+	}
+	.infoContainer {
+		@apply py-4;
+	}
+	.boxContainer {
+		@apply py-2.5;
+	}
+}
+
+@media (max-width: 550px) {
+	.contact,
+	.item,
+	.money,
+	.link {
+		@apply gap-1;
+	}
+	.more > img {
+		@apply w-2 h-2;
+	}
+	.infoContainer,
+	.boxContainer {
+		@apply rounded-2lg;
+	}
+	.terms,
+	.contacts,
+	.city,
+	.balance,
+	.list {
+		font-size: 7px;
+	}
+	.about {
+		@apply gap-1.5;
+	}
+	.city {
+		> img {
+			@apply w-3.5 h-3.5;
+		}
+	}
+	.logo {
+		min-width: 80px;
+		max-width: 80px;
+		min-height: 80px;
+		max-height: 80px;
+	}
+}
+
+@media (max-width: 480px) {
+	.terms,
+	.contacts {
+		@apply flex-col w-full;
+		max-width: calc(50% - 10px);
+	}
+	.contact > img {
+		@apply w-3 h-3;
+	}
+	.logo {
+		min-width: 100px;
+		max-width: 100px;
+		min-height: 100px;
+		max-height: 100px;
+	}
+}
+
+@media (max-width: 400px) {
+	.box {
+		@apply gap-1.5;
+	}
+	.contact,
+	.item,
+	.money,
+	.link {
+		@apply gap-0.5;
+	}
+	.terms,
+	.contacts {
+		@apply gap-1;
+	}
+	.contact > img {
+		@apply w-2 h-2;
+	}
+	.terms,
+	.contacts,
+	.city,
+	.balance,
+	.list {
+		font-size: 6px;
+	}
+	.edit,
+	.logout,
+	.topUp {
+		@apply px-2;
+		font-size: 6px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.topUp > span {
+		font-size: 8px;
+	}
+	.logo {
+		min-width: 80px;
+		max-width: 80px;
+		min-height: 80px;
+		max-height: 80px;
+	}
+	.name {
+		@apply text-medium-lg;
+	}
+	.boxContainer,
+	.infoContainer {
+		@apply px-3;
+	}
+}

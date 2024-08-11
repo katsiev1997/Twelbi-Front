@@ -7,7 +7,7 @@ export const useLogoutRedirect = () => {
 	const pathname = usePathname()
 	const { replace, refresh } = useRouter()
 
-	const userPages = [USER_PAGES.PROFILE]
+	const userPages = [USER_PAGES.ACCOUNT]
 
 	if (userPages.some((page) => pathname === page)) {
 		replace(PUBLIC_PAGES.HOME)

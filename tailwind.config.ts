@@ -34,6 +34,7 @@ const config: Config = {
 			},
 			red: {
 				400: '#ff0c00',
+				100: '#FF8080',
 				error: '#F31559',
 			},
 			blue: {
@@ -228,6 +229,10 @@ const config: Config = {
 						'&:hover': {
 							color: theme('colors.green.base'),
 						},
+					},
+
+					'.black-shadow': {
+						boxShadow: '1px 1px 20px rgba(117, 117, 117, 0.1)',
 					},
 
 					'.up-hover': {

@@ -1,6 +1,7 @@
 import type {
 	Advertising,
 	AllProducts,
+	AnnouncementCard,
 	Product,
 	ProductCard,
 } from '@/__generated__/output'
@@ -14,11 +15,16 @@ export interface IProduct extends IPageSearchParam {
 	product: Product
 }
 
+export interface IAnnouncementCard extends IClassName {
+	announcement: AnnouncementCard
+}
+
 export interface IProductsFiltersProps {
 	hasSize?: boolean
 	hasSort?: boolean
 	hasCity?: boolean
 	hasProvider?: boolean
+	hasDate?: boolean
 }
 
 export interface IProductsFilters extends IProductsFiltersProps {
