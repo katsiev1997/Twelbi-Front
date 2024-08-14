@@ -15,10 +15,10 @@ import AnnouncementSearch from './search/AnnouncementSearch'
 import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
 
 const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
-	const {} = useAnnouncements({
-		perPage: 15,
-		page: 1,
-	})
+	// const {} = useAnnouncements({
+	// 	perPage: 15,
+	// 	page: 1,
+	// })
 	const [checked, setChecked] = useState<number[]>([])
 
 
