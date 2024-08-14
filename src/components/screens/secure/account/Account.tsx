@@ -1,18 +1,40 @@
+'use client'
+
 import Announcements from '@/components/blocks/announcements/Announcements'
 import Container from '@/components/ui/common/container/Container'
 import Section from '@/components/ui/common/section/Section'
 import AccountSidebar from '@/components/ui/templates/account/sidebar/AccountSidebar'
-import type { FC } from 'react'
+import type { IAccount } from '@/shared/interfaces/api/brand/brand.interface'
+import { useState, type FC } from 'react'
 import styles from './Account.module.scss'
-import { ACCOUNT_BRAND } from './data/brand.data'
+import AccountEdit from './edit/AccountEdit'
 
-const Account: FC = () => {
+const Account: FC<IAccount> = ({
+	searchParams,
+	brand: queriedBrand,
+	tariffs,
+	categories,
+}) => {
+	const [brand, setBrand] = useState(queriedBrand)
+	const isEdit = searchParams && searchParams.type === 'edit'
+
 	return (
-		<Section>
+		<Section className={styles.section}>
 			<Container>
 				<div className={styles.wrapper}>
-					<AccountSidebar brand={ACCOUNT_BRAND} />
-					<Announcements />
+					{!brand || isEdit ? (
+						<AccountEdit
+							type={isEdit ? 'edit' : 'create'}
+							categories={categories}
+							brand={brand}
+							setBrand={setBrand}
+						/>
+					) : (
+						<>
+							<AccountSidebar brand={brand} />
+							<Announcements tariffs={tariffs} />
+						</>
+					)}
 				</div>
 			</Container>
 		</Section>

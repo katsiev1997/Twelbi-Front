@@ -1,4 +1,4 @@
-import { Visibility, type AllProducts } from '@/__generated__/output'
+import type { AllProducts } from '@/__generated__/output'
 
 export const HOME_PRODUCTS_DATA: AllProducts = {
 	products: [
@@ -19,7 +19,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 2,
@@ -38,7 +37,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 3,
@@ -57,7 +55,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 4,
@@ -76,7 +73,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 5,
@@ -95,7 +91,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 6,
@@ -114,7 +109,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 7,
@@ -133,7 +127,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 8,
@@ -152,7 +145,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 9,
@@ -171,7 +163,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 10,
@@ -190,7 +181,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 11,
@@ -209,7 +199,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 12,
@@ -228,7 +217,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 13,
@@ -247,7 +235,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 14,
@@ -266,7 +253,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 15,
@@ -285,7 +271,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 16,
@@ -304,7 +289,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 17,
@@ -323,7 +307,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 18,
@@ -342,7 +325,6 @@ export const HOME_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 	],
 	count: 18,
@@ -367,7 +349,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 538,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 2,
@@ -386,7 +367,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.5,
 			ratesCount: 347,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 3,
@@ -405,7 +385,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 5.0,
 			ratesCount: 183,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 4,
@@ -424,7 +403,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 538,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 5,
@@ -443,7 +421,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.5,
 			ratesCount: 347,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 6,
@@ -462,7 +439,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 5.0,
 			ratesCount: 183,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 7,
@@ -481,7 +457,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 538,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 8,
@@ -500,7 +475,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.5,
 			ratesCount: 347,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 9,
@@ -519,7 +493,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 5.0,
 			ratesCount: 183,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 10,
@@ -538,7 +511,6 @@ export const HOME_VIP_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 538,
-			visibility: Visibility.Visible,
 		},
 	],
 	count: 10,

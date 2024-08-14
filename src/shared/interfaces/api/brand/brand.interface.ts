@@ -3,6 +3,8 @@ import type {
 	AllBrands,
 	Brand,
 	BrandCard,
+	SelectCategory,
+	Tariff,
 } from '@/__generated__/output'
 import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
@@ -17,14 +19,34 @@ export interface IAccountBrand {
 	brand: AccountBrand
 }
 
+export interface IAccount extends IPageSearchParam {
+	brand?: AccountBrand | null
+	tariffs: Tariff[]
+	categories: SelectCategory[]
+}
+
+export interface IAccountState {
+	type: 'create' | 'edit'
+	brand: AccountBrand | null | undefined
+	setBrand: Dispatch<SetStateAction<AccountBrand | null | undefined>>
+}
+
+export interface IAccountEdit extends IAccountState {
+	categories: SelectCategory[]
+}
+
+export interface IAccountCategories {
+	setBrand: Dispatch<SetStateAction<AccountBrand | null | undefined>>
+}
+
 export interface IBrandCard extends IClassName {
-	isAdmin: boolean
+	isAdmin?: boolean
 	brand: BrandCard
 	setBrands: Dispatch<SetStateAction<BrandCard[]>>
 }
 
 export interface IBrands extends AllBrands {
-	isAdmin: boolean
+	isAdmin?: boolean
 	heading?: IHeading
 	wrapperClassName?: string
 	listClassName?: string

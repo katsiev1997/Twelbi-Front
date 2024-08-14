@@ -1,8 +1,4 @@
-import {
-	type Advertising,
-	AdvertisingType,
-	Visibility,
-} from '@/__generated__/output'
+import { type Advertising, AdvertisingType } from '@/__generated__/output'
 import type { IAdvertising } from '@/shared/interfaces/api/advertising/advertising.interface'
 
 export const HOME_LARGE_ADVERTISING: IAdvertising = {
@@ -12,7 +8,6 @@ export const HOME_LARGE_ADVERTISING: IAdvertising = {
 		url: '/',
 		alt: 'Реклама',
 		type: AdvertisingType.Large,
-		visibility: Visibility.Visible,
 	},
 }
 
@@ -25,7 +20,6 @@ export const HOME_BANNER_ADVERTISING_DATA: IAdvertising = {
 		alt: 'Реклама',
 		resolution: '550',
 		type: AdvertisingType.Banner,
-		visibility: Visibility.Visible,
 	},
 }
 
@@ -36,7 +30,6 @@ export const HOME_SMALL_ADVERTISING_DATA: IAdvertising = {
 		url: '/',
 		alt: 'Реклама',
 		type: AdvertisingType.Small,
-		visibility: Visibility.Visible,
 	},
 }
 
@@ -59,7 +52,6 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 		alt: 'Реклама',
 		resolution: '550',
 		type: AdvertisingType.Card,
-		visibility: Visibility.Visible,
 	},
 	{
 		id: 2,
@@ -69,7 +61,6 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 		alt: 'Реклама',
 		resolution: '550',
 		type: AdvertisingType.Card,
-		visibility: Visibility.Visible,
 	},
 	{
 		id: 3,
@@ -79,7 +70,6 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 		alt: 'Реклама',
 		resolution: '550',
 		type: AdvertisingType.Card,
-		visibility: Visibility.Visible,
 	},
 ]
 
@@ -92,6 +82,5 @@ export const HOME_CATALOG_ADVERTISING_DATA: IAdvertising = {
 		alt: 'Реклама',
 		resolution: '550',
 		type: AdvertisingType.Catalog,
-		visibility: Visibility.Visible,
 	},
 }

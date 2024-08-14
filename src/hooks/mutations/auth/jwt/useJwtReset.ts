@@ -2,12 +2,11 @@ import {
 	useJwtResetMutation,
 	type JwtAuthResetInput,
 } from '@/__generated__/output'
-import { PUBLIC_PAGES } from '@/constants/url.constants'
-import { useRouter } from 'next/navigation'
+import type { IAuthReset } from '@/shared/interfaces/api/auth/auth.interface'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-export const useJwtAuthReset = (token: string) => {
+export const useJwtAuthReset = ({ token, changeType }: IAuthReset) => {
 	const {
 		register: registerInput,
 		formState: { errors },
@@ -18,7 +17,6 @@ export const useJwtAuthReset = (token: string) => {
 			token,
 		},
 	})
-	const { replace } = useRouter()
 
 	const [reset, { loading }] = useJwtResetMutation()
 
@@ -26,13 +24,14 @@ export const useJwtAuthReset = (token: string) => {
 		if (!token) return toast.error('Токен не найден.')
 
 		await reset({
+			fetchPolicy: 'no-cache',
 			variables: {
 				data,
 			},
 			onCompleted: (data) => {
 				if (data.jwtReset) {
 					toast.success('Пароль успешно обновлен. Войдите с новым паролем.')
-					replace(PUBLIC_PAGES.LOGIN)
+					changeType('login')
 					return
 				}
 

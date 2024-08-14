@@ -1,13 +1,19 @@
 import type { IPicture } from '@/shared/interfaces/common/picture/picture.interface'
 import type { FC } from 'react'
 
-const Picture: FC<IPicture> = (
-	{ src, sources, width, height, alt, title, className },
+const Picture: FC<IPicture> = ({
+	src,
+	sources,
+	width,
+	height,
+	alt,
+	title,
+	className,
 	...rest
-) => {
+}) => {
 	return sources ? (
-		<picture className={className && className}>
-			{sources?.map((source, index) => (
+		<picture className={className}>
+			{sources.map((source, index) => (
 				<source
 					key={index}
 					srcSet={source.src}
@@ -20,12 +26,13 @@ const Picture: FC<IPicture> = (
 				height={height}
 				title={title}
 				alt={alt}
+				className={className}
 				{...rest}
 			/>
 		</picture>
 	) : (
 		<img
-			className={className && className}
+			className={className}
 			src={src}
 			width={width}
 			height={height}

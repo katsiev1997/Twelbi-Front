@@ -2,7 +2,6 @@ import {
 	type FullestQueryInput,
 	type QueryInput,
 	Sort,
-	Visibility,
 } from '@/__generated__/output'
 import type { IClassName } from '../class-name/class-name.interface'
 
@@ -30,8 +29,4 @@ export interface IFullestFilterProps extends IClassName {
 
 export interface ISortFilter extends IFilterProps {
 	sort?: Sort | null
-}
-
-export interface IVisibilityFilter extends IFullestFilterProps {
-	visibility?: Visibility | null
 }

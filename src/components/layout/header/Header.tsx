@@ -9,8 +9,11 @@ import type { FC } from 'react'
 import HeaderButtons from './buttons/HeaderButtons'
 import styles from './Header.module.scss'
 import HeaderSearch from './search/HeaderSearch'
+import { IS_SERVER } from '@/constants/global.constants'
 
 const Header: FC = () => {
+	console.log(IS_SERVER)
+
 	return (
 		<header>
 			<Container>

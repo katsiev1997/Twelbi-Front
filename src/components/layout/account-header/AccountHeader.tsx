@@ -5,12 +5,13 @@ import Picture from '@/components/ui/common/picture/Picture'
 import Logo from '@/components/ui/elements/logo/Logo'
 import Logout from '@/components/ui/elements/logout/Logout'
 import { USER_PAGES } from '@/constants/url.constants'
+import type { IIronUserExist } from '@/shared/interfaces/api/user/user.interface'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { FC } from 'react'
 import styles from './AccountHeader.module.scss'
 
-const AccountHeader: FC = () => {
+const AccountHeader: FC<IIronUserExist> = ({ iron }) => {
 	return (
 		<header>
 			<Container>
@@ -22,7 +23,7 @@ const AccountHeader: FC = () => {
 							href={USER_PAGES.ACCOUNT}
 						>
 							<Picture src={accountIcon.src} alt="Аккаунт" />
-							Василий Иванович
+							{iron.user.profile.login}
 						</Link>
 						<Logout className={cn(styles.button, styles.logout)}>
 							<Picture src={logoutIcon.src} alt="Выйти" />

@@ -32,6 +32,7 @@ export const useJwtAuthConfirmation = () => {
 		}
 
 		await sendConfirmation({
+			fetchPolicy: 'no-cache',
 			variables: {
 				data,
 			},

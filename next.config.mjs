@@ -11,6 +11,7 @@ const nextConfig = {
 		APP_CDN_URL: process.env.APP_CDN_URL,
 		APP_GRAPHQL_SERVER_URL: process.env.GRAPHQL_SERVER_URL,
 		IRON_PASSWORD: process.env.IRON_PASSWORD,
+		BOT_USERNAME: process.env.BOT_USERNAME,
 	},
 	async rewrites() {
 		return [

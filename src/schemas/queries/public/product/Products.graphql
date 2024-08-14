@@ -17,7 +17,6 @@ query Products($query: ProductQueryInput!) {
 				slug
 				logoPath
 			}
-			visibility
 		}
 		count
 	}

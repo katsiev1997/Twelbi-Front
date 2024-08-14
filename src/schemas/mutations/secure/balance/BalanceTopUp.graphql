@@ -1,0 +1,5 @@
+mutation BalanceTopUp($data: YookassaInput!) {
+	balanceTopUp(data: $data) {
+		paymentUrl
+	}
+}

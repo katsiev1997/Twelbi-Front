@@ -16,6 +16,7 @@ import type { FC } from 'react'
 import styles from './AnnouncementCard.module.scss'
 
 const AnnouncementCard: FC<IAnnouncementCard> = ({
+	tariffs,
 	announcement,
 	className,
 }) => {

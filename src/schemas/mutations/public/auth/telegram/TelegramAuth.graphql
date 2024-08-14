@@ -1,0 +1,12 @@
+mutation TelegramAuth($data: TelegramAuthInput!) {
+	telegramAuth(data: $data) {
+		user {
+			profile {
+				email
+				login
+				phone
+			}
+			role
+		}
+	}
+}

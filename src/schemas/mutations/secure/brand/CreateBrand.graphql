@@ -1,0 +1,21 @@
+mutation CreateBrand($data: BrandInput!) {
+	createBrand(data: $data) {
+		id
+		name
+		about
+		balance
+		email
+		phone
+		whatsapp
+		telegram
+		logoPath
+		city
+		postedCount
+		subscribers
+		category {
+			id
+			name
+		}
+		createdAt
+	}
+}

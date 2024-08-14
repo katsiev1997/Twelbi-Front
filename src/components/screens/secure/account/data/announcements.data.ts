@@ -10,7 +10,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -22,7 +22,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -34,7 +34,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -46,7 +46,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -58,7 +58,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -70,7 +70,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -82,7 +82,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -94,7 +94,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 	{
@@ -106,7 +106,7 @@ export const ACCOUNT_ANNOUNCEMENTS_DATA: AnnouncementCard[] = [
 		minPrice: 5500,
 		maxPrice: 6350,
 		views: 8351,
-		tariffs: [],
+		orders: [],
 		createdAt: '13 июля 2024',
 	},
 ]

@@ -18,15 +18,23 @@ export type Scalars = {
   Upload: { input: any; output: any; }
 };
 
+export type Account = {
+  brand?: Maybe<AccountBrand>;
+  categories: Array<SelectCategory>;
+  tariffs: Array<Tariff>;
+};
+
 export type AccountBrand = {
+  about: Scalars['String']['output'];
   balance: Scalars['Int']['output'];
+  category: SelectCategory;
   city: Scalars['String']['output'];
   createdAt: Scalars['String']['output'];
-  email: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   logoPath: Scalars['String']['output'];
   name: Scalars['String']['output'];
-  phone: Scalars['String']['output'];
+  phone?: Maybe<Scalars['String']['output']>;
   postedCount: Scalars['Int']['output'];
   subscribers: Array<Scalars['String']['output']>;
   telegram?: Maybe<Scalars['String']['output']>;
@@ -41,7 +49,6 @@ export type Advertising = {
   smallImagePath?: Maybe<Scalars['String']['output']>;
   type: AdvertisingType;
   url?: Maybe<Scalars['String']['output']>;
-  visibility?: Maybe<Visibility>;
 };
 
 export type AdvertisingInput = {
@@ -105,9 +112,9 @@ export type AnnouncementCard = {
   maxPrice: Scalars['Int']['output'];
   minPrice: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  orders: Array<NestedOrder>;
   posterPath: Scalars['String']['output'];
   sku: Scalars['String']['output'];
-  tariffs: Array<NestedTariff>;
   views: Scalars['Int']['output'];
 };
 
@@ -120,7 +127,7 @@ export type Brand = {
   isSubscribed: Scalars['Boolean']['output'];
   logoPath: Scalars['String']['output'];
   name: Scalars['String']['output'];
-  phoneNumber: Scalars['String']['output'];
+  phoneNumber?: Maybe<Scalars['String']['output']>;
   postedCount: Scalars['Int']['output'];
   rating: Scalars['String']['output'];
   reviews: Array<ReviewCard>;
@@ -137,6 +144,19 @@ export type BrandCard = {
   slug: Scalars['String']['output'];
 };
 
+export type BrandInput = {
+  about: Scalars['String']['input'];
+  category: SelectInput;
+  city: CreatableSelectInput;
+  email?: InputMaybe<Scalars['String']['input']>;
+  logoFile?: InputMaybe<Scalars['Upload']['input']>;
+  logoPath?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  phone?: InputMaybe<Scalars['String']['input']>;
+  telegram?: InputMaybe<Scalars['String']['input']>;
+  whatsapp?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type BrandQueryInput = {
   page?: InputMaybe<Scalars['Int']['input']>;
   perPage?: InputMaybe<Scalars['Int']['input']>;
@@ -144,7 +164,6 @@ export type BrandQueryInput = {
   reviewsCount?: InputMaybe<Sort>;
   searchTerm?: InputMaybe<Scalars['String']['input']>;
   sort: Sort;
-  visibility: Visibility;
 };
 
 export type Category = {
@@ -175,7 +194,11 @@ export type CategoryQueryInput = {
   popular?: InputMaybe<Scalars['Boolean']['input']>;
   searchTerm?: InputMaybe<Scalars['String']['input']>;
   sort: Sort;
-  visibility: Visibility;
+};
+
+export type CreatableSelectInput = {
+  name: Scalars['String']['input'];
+  value: Scalars['String']['input'];
 };
 
 export type CurrentAdvertising = {
@@ -187,7 +210,6 @@ export type CurrentAdvertising = {
   smallImagePath?: Maybe<Scalars['String']['output']>;
   type: AdvertisingType;
   url?: Maybe<Scalars['String']['output']>;
-  visibility?: Maybe<Visibility>;
   weekPrice: Scalars['String']['output'];
 };
 
@@ -196,7 +218,6 @@ export type FullestQueryInput = {
   perPage?: InputMaybe<Scalars['Int']['input']>;
   searchTerm?: InputMaybe<Scalars['String']['input']>;
   sort: Sort;
-  visibility: Visibility;
 };
 
 export type Id = {
@@ -226,24 +247,40 @@ export type JwtAuthVerificationInput = {
 };
 
 export type Mutation = {
+  balanceTopUp: YookassaPayment;
+  buyTariff: NestedOrder;
   createAdvertising: Id;
+  createBrand: AccountBrand;
   createCategory: Scalars['Boolean']['output'];
   createProduct: ProductCard;
   deleteAdvertising: Scalars['Boolean']['output'];
   deleteCategory: Scalars['Boolean']['output'];
   deleteProduct: Scalars['Int']['output'];
-  duplicateAdvertising: Scalars['Boolean']['output'];
-  duplicateCategory: Scalars['Boolean']['output'];
   jwtConfirmation: Scalars['Boolean']['output'];
   jwtLogin: SessionUserResponse;
   jwtReset: Scalars['Boolean']['output'];
   jwtVerification: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
-  toggleAdvertising: Scalars['Boolean']['output'];
-  toggleCategory: Scalars['Boolean']['output'];
+  telegramAuth: SessionUserResponse;
   updateAdvertising: Scalars['Boolean']['output'];
+  updateBrand: AccountBrand;
   updateCategory: Scalars['Boolean']['output'];
   updateProduct: ProductCard;
+};
+
+
+export type MutationBalanceTopUpArgs = {
+  data: YookassaInput;
+};
+
+
+export type MutationBuyTariffArgs = {
+  data: OrderInput;
+};
+
+
+export type MutationCreateBrandArgs = {
+  data: BrandInput;
 };
 
 
@@ -263,16 +300,6 @@ export type MutationDeleteCategoryArgs = {
 
 
 export type MutationDeleteProductArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
-export type MutationDuplicateAdvertisingArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
-export type MutationDuplicateCategoryArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -297,19 +324,19 @@ export type MutationJwtVerificationArgs = {
 };
 
 
-export type MutationToggleAdvertisingArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
-export type MutationToggleCategoryArgs = {
-  id: Scalars['Int']['input'];
+export type MutationTelegramAuthArgs = {
+  data: TelegramAuthInput;
 };
 
 
 export type MutationUpdateAdvertisingArgs = {
   data: AdvertisingInput;
   id: Scalars['Int']['input'];
+};
+
+
+export type MutationUpdateBrandArgs = {
+  data: BrandInput;
 };
 
 
@@ -335,21 +362,30 @@ export type NestedCategory = {
   slug: Scalars['String']['output'];
 };
 
+export type NestedOrder = {
+  expirationDate?: Maybe<Scalars['String']['output']>;
+  isLittleLeft?: Maybe<Scalars['Boolean']['output']>;
+  tariff: NestedTariff;
+};
+
 export type NestedProductBrand = {
   id: Scalars['Int']['output'];
   isBrandOwner: Scalars['Boolean']['output'];
   isSubscribed: Scalars['Boolean']['output'];
   logoPath: Scalars['String']['output'];
   name: Scalars['String']['output'];
-  phoneNumber: Scalars['String']['output'];
+  phoneNumber?: Maybe<Scalars['String']['output']>;
   rating: Scalars['String']['output'];
   slug: Scalars['String']['output'];
 };
 
 export type NestedTariff = {
-  expirationAt: Scalars['String']['output'];
-  isLittleLeft: Scalars['Boolean']['output'];
   type: TariffType;
+};
+
+export type OrderInput = {
+  productId: Scalars['Int']['input'];
+  tariffType: TariffType;
 };
 
 export type Price = {
@@ -378,7 +414,6 @@ export type Product = {
   sku: Scalars['String']['output'];
   videoPath?: Maybe<Scalars['String']['output']>;
   views: Scalars['Int']['output'];
-  visibility: Visibility;
 };
 
 export type ProductCard = {
@@ -391,7 +426,6 @@ export type ProductCard = {
   provider: NestedBrand;
   ratesCount: Scalars['Int']['output'];
   rating: Scalars['Int']['output'];
-  visibility: Visibility;
 };
 
 export type ProductInput = {
@@ -412,18 +446,17 @@ export type ProductQueryInput = {
   searchTerm?: InputMaybe<Scalars['String']['input']>;
   sort: Sort;
   views?: InputMaybe<Sort>;
-  visibility: Visibility;
 };
 
 export type Profile = {
-  email: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
   login: Scalars['String']['output'];
   password: Scalars['String']['output'];
-  phone: Scalars['String']['output'];
+  phone?: Maybe<Scalars['String']['output']>;
 };
 
 export type Query = {
-  accountBrand: AccountBrand;
+  account: Account;
   advertisements: AllAdvertisements;
   advertisementsByTypes: Array<Advertising>;
   advertisingById: CurrentAdvertising;
@@ -520,6 +553,11 @@ export type ReviewCard = {
   rating: Scalars['Int']['output'];
 };
 
+export type SelectCategory = {
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+};
+
 export type SelectInput = {
   name: Scalars['String']['input'];
   value: Scalars['Int']['input'];
@@ -536,9 +574,9 @@ export type SeoInput = {
 };
 
 export type SessionProfile = {
-  email: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
   login: Scalars['String']['output'];
-  phone: Scalars['String']['output'];
+  phone?: Maybe<Scalars['String']['output']>;
 };
 
 export type SessionUser = {
@@ -555,21 +593,37 @@ export enum Sort {
   Desc = 'DESC'
 }
 
+export type Tariff = {
+  description?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  type: TariffType;
+};
+
 export enum TariffType {
-  Hot = 'HOT',
+  Fill = 'FILL',
   Top = 'TOP',
   Vip = 'VIP'
 }
+
+export type TelegramAuthInput = {
+  login: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+};
 
 export enum UserRole {
   Admin = 'ADMIN',
   Provider = 'PROVIDER'
 }
 
-export enum Visibility {
-  Hidden = 'HIDDEN',
-  Visible = 'VISIBLE'
-}
+export type YookassaInput = {
+  amount: Scalars['String']['input'];
+  redirectUrl: Scalars['String']['input'];
+};
+
+export type YookassaPayment = {
+  paymentUrl: Scalars['String']['output'];
+};
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -588,7 +642,7 @@ export type JwtLoginMutationVariables = Exact<{
 }>;
 
 
-export type JwtLoginMutation = { jwtLogin: { user: { role: UserRole, profile: { email: string, login: string, phone: string } } } };
+export type JwtLoginMutation = { jwtLogin: { user: { role: UserRole, profile: { email?: string | null, login: string, phone?: string | null } } } };
 
 export type JwtResetMutationVariables = Exact<{
   data: JwtAuthResetInput;
@@ -604,6 +658,13 @@ export type JwtVerificationMutationVariables = Exact<{
 
 export type JwtVerificationMutation = { jwtVerification: boolean };
 
+export type TelegramAuthMutationVariables = Exact<{
+  data: TelegramAuthInput;
+}>;
+
+
+export type TelegramAuthMutation = { telegramAuth: { user: { role: UserRole, profile: { email?: string | null, login: string, phone?: string | null } } } };
+
 export type CreateAdvertisingMutationVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -616,20 +677,6 @@ export type DeleteAdvertisingMutationVariables = Exact<{
 
 export type DeleteAdvertisingMutation = { deleteAdvertising: boolean };
 
-export type DuplicateAdvertisingMutationVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-
-export type DuplicateAdvertisingMutation = { duplicateAdvertising: boolean };
-
-export type ToggleAdvertisingMutationVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-
-export type ToggleAdvertisingMutation = { toggleAdvertising: boolean };
-
 export type UpdateAdvertisingMutationVariables = Exact<{
   id: Scalars['Int']['input'];
   data: AdvertisingInput;
@@ -637,6 +684,27 @@ export type UpdateAdvertisingMutationVariables = Exact<{
 
 
 export type UpdateAdvertisingMutation = { updateAdvertising: boolean };
+
+export type BalanceTopUpMutationVariables = Exact<{
+  data: YookassaInput;
+}>;
+
+
+export type BalanceTopUpMutation = { balanceTopUp: { paymentUrl: string } };
+
+export type CreateBrandMutationVariables = Exact<{
+  data: BrandInput;
+}>;
+
+
+export type CreateBrandMutation = { createBrand: { id: number, name: string, about: string, balance: number, email?: string | null, phone?: string | null, whatsapp?: string | null, telegram?: string | null, logoPath: string, city: string, postedCount: number, subscribers: Array<string>, createdAt: string, category: { id: number, name: string } } };
+
+export type UpdateBrandMutationVariables = Exact<{
+  data: BrandInput;
+}>;
+
+
+export type UpdateBrandMutation = { updateBrand: { id: number, name: string, about: string, balance: number, email?: string | null, phone?: string | null, whatsapp?: string | null, telegram?: string | null, logoPath: string, city: string, postedCount: number, subscribers: Array<string>, createdAt: string, category: { id: number, name: string } } };
 
 export type CreateCategoryMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -649,20 +717,6 @@ export type DeleteCategoryMutationVariables = Exact<{
 
 
 export type DeleteCategoryMutation = { deleteCategory: boolean };
-
-export type DuplicateCategoryMutationVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-
-export type DuplicateCategoryMutation = { duplicateCategory: boolean };
-
-export type ToggleCategoryMutationVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-
-export type ToggleCategoryMutation = { toggleCategory: boolean };
 
 export type UpdateCategoryMutationVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -685,7 +739,7 @@ export type UpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type UpdateProductMutation = { updateProduct: { id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, rating: number, ratesCount: number, visibility: Visibility, category: { name: string, slug: string }, provider: { name: string, slug: string, logoPath: string } } };
+export type UpdateProductMutation = { updateProduct: { id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, rating: number, ratesCount: number, category: { name: string, slug: string }, provider: { name: string, slug: string, logoPath: string } } };
 
 export type AdvertisementsByTypesQueryVariables = Exact<{
   types: Array<AdvertisingType> | AdvertisingType;
@@ -699,21 +753,21 @@ export type AdvertisementsQueryVariables = Exact<{
 }>;
 
 
-export type AdvertisementsQuery = { advertisements: { count: number, advertisements: Array<{ id: number, smallImagePath?: string | null, bigImagePath: string, url?: string | null, alt?: string | null, resolution?: string | null, type: AdvertisingType, visibility?: Visibility | null }> } };
+export type AdvertisementsQuery = { advertisements: { count: number, advertisements: Array<{ id: number, smallImagePath?: string | null, bigImagePath: string, url?: string | null, alt?: string | null, resolution?: string | null, type: AdvertisingType }> } };
 
 export type JwtRegisterQueryVariables = Exact<{
   token: Scalars['String']['input'];
 }>;
 
 
-export type JwtRegisterQuery = { jwtRegister: { user: { role: UserRole, profile: { email: string, login: string, phone: string } } } };
+export type JwtRegisterQuery = { jwtRegister: { user: { role: UserRole, profile: { email?: string | null, login: string, phone?: string | null } } } };
 
 export type BrandQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type BrandQuery = { brand: { id: number, name: string, logoPath: string, city: string, postedCount: number, rating: string, phoneNumber: string, isSubscribed: boolean, isBrandOwner: boolean, about: string, reviewsCount: number, createdAt: string, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }> } };
+export type BrandQuery = { brand: { id: number, name: string, logoPath: string, city: string, postedCount: number, rating: string, phoneNumber?: string | null, isSubscribed: boolean, isBrandOwner: boolean, about: string, reviewsCount: number, createdAt: string, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }> } };
 
 export type BrandsQueryVariables = Exact<{
   query: BrandQueryInput;
@@ -734,14 +788,14 @@ export type CurrentProductQueryVariables = Exact<{
 }>;
 
 
-export type CurrentProductQuery = { currentProduct: { id: number, name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, rating: string, reviewsCount: number, views: number, createdAt: string, visibility: Visibility, prices: Array<{ price: number, minQuantity: number }>, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }>, category: { name: string, slug: string }, provider: { id: number, rating: string, phoneNumber: string, name: string, slug: string, logoPath: string, isSubscribed: boolean, isBrandOwner: boolean } } };
+export type CurrentProductQuery = { currentProduct: { id: number, name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, rating: string, reviewsCount: number, views: number, createdAt: string, prices: Array<{ price: number, minQuantity: number }>, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }>, category: { name: string, slug: string }, provider: { id: number, rating: string, phoneNumber?: string | null, name: string, slug: string, logoPath: string, isSubscribed: boolean, isBrandOwner: boolean } } };
 
 export type ProductsQueryVariables = Exact<{
   query: ProductQueryInput;
 }>;
 
 
-export type ProductsQuery = { products: { count: number, products: Array<{ id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, rating: number, ratesCount: number, visibility: Visibility, category: { name: string, slug: string }, provider: { name: string, slug: string, logoPath: string } }> } };
+export type ProductsQuery = { products: { count: number, products: Array<{ id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, rating: number, ratesCount: number, category: { name: string, slug: string }, provider: { name: string, slug: string, logoPath: string } }> } };
 
 export type ReviewsQueryVariables = Exact<{
   query: QueryInput;
@@ -757,10 +811,10 @@ export type AdvertisingByIdQueryVariables = Exact<{
 
 export type AdvertisingByIdQuery = { advertisingById: { smallImagePath?: string | null, bigImagePath: string, resolution?: string | null, url?: string | null, alt?: string | null, type: AdvertisingType, weekPrice: string, monthPrice: string } };
 
-export type AccountBrandQueryVariables = Exact<{ [key: string]: never; }>;
+export type AccountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AccountBrandQuery = { accountBrand: { id: number, name: string, balance: number, email: string, phone: string, whatsapp?: string | null, telegram?: string | null, logoPath: string, city: string, postedCount: number, subscribers: Array<string>, createdAt: string } };
+export type AccountQuery = { account: { brand?: { id: number, name: string, about: string, balance: number, email?: string | null, phone?: string | null, whatsapp?: string | null, telegram?: string | null, logoPath: string, city: string, postedCount: number, subscribers: Array<string>, createdAt: string, category: { id: number, name: string } } | null, tariffs: Array<{ price: number, duration?: number | null, description?: string | null, type: TariffType }>, categories: Array<{ id: number, name: string }> } };
 
 export type CategoryByIdQueryVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -774,7 +828,7 @@ export type AnnouncementsQueryVariables = Exact<{
 }>;
 
 
-export type AnnouncementsQuery = { announcements: { count: number, announcements: Array<{ id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, city: string, sku: string, views: number, createdAt: string, tariffs: Array<{ expirationAt: string, isLittleLeft: boolean, type: TariffType }> }> } };
+export type AnnouncementsQuery = { announcements: { count: number, announcements: Array<{ id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, city: string, sku: string, views: number, createdAt: string, orders: Array<{ expirationDate?: string | null, isLittleLeft?: boolean | null, tariff: { type: TariffType } }> }> } };
 
 export type ProductByIdQueryVariables = Exact<{
   id: Scalars['Int']['input'];
@@ -786,7 +840,7 @@ export type ProductByIdQuery = { productById: { name: string, about: string, sku
 export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UserQuery = { user: { role: UserRole, profile: { email: string, login: string, phone: string } } };
+export type UserQuery = { user: { role: UserRole, profile: { email?: string | null, login: string, phone?: string | null } } };
 
 
 export const LogoutDocument = gql`
@@ -952,6 +1006,46 @@ export function useJwtVerificationMutation(baseOptions?: Apollo.MutationHookOpti
 export type JwtVerificationMutationHookResult = ReturnType<typeof useJwtVerificationMutation>;
 export type JwtVerificationMutationResult = Apollo.MutationResult<JwtVerificationMutation>;
 export type JwtVerificationMutationOptions = Apollo.BaseMutationOptions<JwtVerificationMutation, JwtVerificationMutationVariables>;
+export const TelegramAuthDocument = gql`
+    mutation TelegramAuth($data: TelegramAuthInput!) {
+  telegramAuth(data: $data) {
+    user {
+      profile {
+        email
+        login
+        phone
+      }
+      role
+    }
+  }
+}
+    `;
+export type TelegramAuthMutationFn = Apollo.MutationFunction<TelegramAuthMutation, TelegramAuthMutationVariables>;
+
+/**
+ * __useTelegramAuthMutation__
+ *
+ * To run a mutation, you first call `useTelegramAuthMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useTelegramAuthMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [telegramAuthMutation, { data, loading, error }] = useTelegramAuthMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useTelegramAuthMutation(baseOptions?: Apollo.MutationHookOptions<TelegramAuthMutation, TelegramAuthMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<TelegramAuthMutation, TelegramAuthMutationVariables>(TelegramAuthDocument, options);
+      }
+export type TelegramAuthMutationHookResult = ReturnType<typeof useTelegramAuthMutation>;
+export type TelegramAuthMutationResult = Apollo.MutationResult<TelegramAuthMutation>;
+export type TelegramAuthMutationOptions = Apollo.BaseMutationOptions<TelegramAuthMutation, TelegramAuthMutationVariables>;
 export const CreateAdvertisingDocument = gql`
     mutation CreateAdvertising {
   createAdvertising {
@@ -1015,68 +1109,6 @@ export function useDeleteAdvertisingMutation(baseOptions?: Apollo.MutationHookOp
 export type DeleteAdvertisingMutationHookResult = ReturnType<typeof useDeleteAdvertisingMutation>;
 export type DeleteAdvertisingMutationResult = Apollo.MutationResult<DeleteAdvertisingMutation>;
 export type DeleteAdvertisingMutationOptions = Apollo.BaseMutationOptions<DeleteAdvertisingMutation, DeleteAdvertisingMutationVariables>;
-export const DuplicateAdvertisingDocument = gql`
-    mutation DuplicateAdvertising($id: Int!) {
-  duplicateAdvertising(id: $id)
-}
-    `;
-export type DuplicateAdvertisingMutationFn = Apollo.MutationFunction<DuplicateAdvertisingMutation, DuplicateAdvertisingMutationVariables>;
-
-/**
- * __useDuplicateAdvertisingMutation__
- *
- * To run a mutation, you first call `useDuplicateAdvertisingMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDuplicateAdvertisingMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [duplicateAdvertisingMutation, { data, loading, error }] = useDuplicateAdvertisingMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDuplicateAdvertisingMutation(baseOptions?: Apollo.MutationHookOptions<DuplicateAdvertisingMutation, DuplicateAdvertisingMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DuplicateAdvertisingMutation, DuplicateAdvertisingMutationVariables>(DuplicateAdvertisingDocument, options);
-      }
-export type DuplicateAdvertisingMutationHookResult = ReturnType<typeof useDuplicateAdvertisingMutation>;
-export type DuplicateAdvertisingMutationResult = Apollo.MutationResult<DuplicateAdvertisingMutation>;
-export type DuplicateAdvertisingMutationOptions = Apollo.BaseMutationOptions<DuplicateAdvertisingMutation, DuplicateAdvertisingMutationVariables>;
-export const ToggleAdvertisingDocument = gql`
-    mutation ToggleAdvertising($id: Int!) {
-  toggleAdvertising(id: $id)
-}
-    `;
-export type ToggleAdvertisingMutationFn = Apollo.MutationFunction<ToggleAdvertisingMutation, ToggleAdvertisingMutationVariables>;
-
-/**
- * __useToggleAdvertisingMutation__
- *
- * To run a mutation, you first call `useToggleAdvertisingMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useToggleAdvertisingMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [toggleAdvertisingMutation, { data, loading, error }] = useToggleAdvertisingMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useToggleAdvertisingMutation(baseOptions?: Apollo.MutationHookOptions<ToggleAdvertisingMutation, ToggleAdvertisingMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ToggleAdvertisingMutation, ToggleAdvertisingMutationVariables>(ToggleAdvertisingDocument, options);
-      }
-export type ToggleAdvertisingMutationHookResult = ReturnType<typeof useToggleAdvertisingMutation>;
-export type ToggleAdvertisingMutationResult = Apollo.MutationResult<ToggleAdvertisingMutation>;
-export type ToggleAdvertisingMutationOptions = Apollo.BaseMutationOptions<ToggleAdvertisingMutation, ToggleAdvertisingMutationVariables>;
 export const UpdateAdvertisingDocument = gql`
     mutation UpdateAdvertising($id: Int!, $data: AdvertisingInput!) {
   updateAdvertising(id: $id, data: $data)
@@ -1109,6 +1141,137 @@ export function useUpdateAdvertisingMutation(baseOptions?: Apollo.MutationHookOp
 export type UpdateAdvertisingMutationHookResult = ReturnType<typeof useUpdateAdvertisingMutation>;
 export type UpdateAdvertisingMutationResult = Apollo.MutationResult<UpdateAdvertisingMutation>;
 export type UpdateAdvertisingMutationOptions = Apollo.BaseMutationOptions<UpdateAdvertisingMutation, UpdateAdvertisingMutationVariables>;
+export const BalanceTopUpDocument = gql`
+    mutation BalanceTopUp($data: YookassaInput!) {
+  balanceTopUp(data: $data) {
+    paymentUrl
+  }
+}
+    `;
+export type BalanceTopUpMutationFn = Apollo.MutationFunction<BalanceTopUpMutation, BalanceTopUpMutationVariables>;
+
+/**
+ * __useBalanceTopUpMutation__
+ *
+ * To run a mutation, you first call `useBalanceTopUpMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBalanceTopUpMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [balanceTopUpMutation, { data, loading, error }] = useBalanceTopUpMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useBalanceTopUpMutation(baseOptions?: Apollo.MutationHookOptions<BalanceTopUpMutation, BalanceTopUpMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<BalanceTopUpMutation, BalanceTopUpMutationVariables>(BalanceTopUpDocument, options);
+      }
+export type BalanceTopUpMutationHookResult = ReturnType<typeof useBalanceTopUpMutation>;
+export type BalanceTopUpMutationResult = Apollo.MutationResult<BalanceTopUpMutation>;
+export type BalanceTopUpMutationOptions = Apollo.BaseMutationOptions<BalanceTopUpMutation, BalanceTopUpMutationVariables>;
+export const CreateBrandDocument = gql`
+    mutation CreateBrand($data: BrandInput!) {
+  createBrand(data: $data) {
+    id
+    name
+    about
+    balance
+    email
+    phone
+    whatsapp
+    telegram
+    logoPath
+    city
+    postedCount
+    subscribers
+    category {
+      id
+      name
+    }
+    createdAt
+  }
+}
+    `;
+export type CreateBrandMutationFn = Apollo.MutationFunction<CreateBrandMutation, CreateBrandMutationVariables>;
+
+/**
+ * __useCreateBrandMutation__
+ *
+ * To run a mutation, you first call `useCreateBrandMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateBrandMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createBrandMutation, { data, loading, error }] = useCreateBrandMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateBrandMutation(baseOptions?: Apollo.MutationHookOptions<CreateBrandMutation, CreateBrandMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateBrandMutation, CreateBrandMutationVariables>(CreateBrandDocument, options);
+      }
+export type CreateBrandMutationHookResult = ReturnType<typeof useCreateBrandMutation>;
+export type CreateBrandMutationResult = Apollo.MutationResult<CreateBrandMutation>;
+export type CreateBrandMutationOptions = Apollo.BaseMutationOptions<CreateBrandMutation, CreateBrandMutationVariables>;
+export const UpdateBrandDocument = gql`
+    mutation UpdateBrand($data: BrandInput!) {
+  updateBrand(data: $data) {
+    id
+    name
+    about
+    balance
+    email
+    phone
+    whatsapp
+    telegram
+    logoPath
+    city
+    postedCount
+    subscribers
+    category {
+      id
+      name
+    }
+    createdAt
+  }
+}
+    `;
+export type UpdateBrandMutationFn = Apollo.MutationFunction<UpdateBrandMutation, UpdateBrandMutationVariables>;
+
+/**
+ * __useUpdateBrandMutation__
+ *
+ * To run a mutation, you first call `useUpdateBrandMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateBrandMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateBrandMutation, { data, loading, error }] = useUpdateBrandMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useUpdateBrandMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBrandMutation, UpdateBrandMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateBrandMutation, UpdateBrandMutationVariables>(UpdateBrandDocument, options);
+      }
+export type UpdateBrandMutationHookResult = ReturnType<typeof useUpdateBrandMutation>;
+export type UpdateBrandMutationResult = Apollo.MutationResult<UpdateBrandMutation>;
+export type UpdateBrandMutationOptions = Apollo.BaseMutationOptions<UpdateBrandMutation, UpdateBrandMutationVariables>;
 export const CreateCategoryDocument = gql`
     mutation CreateCategory {
   createCategory
@@ -1170,68 +1333,6 @@ export function useDeleteCategoryMutation(baseOptions?: Apollo.MutationHookOptio
 export type DeleteCategoryMutationHookResult = ReturnType<typeof useDeleteCategoryMutation>;
 export type DeleteCategoryMutationResult = Apollo.MutationResult<DeleteCategoryMutation>;
 export type DeleteCategoryMutationOptions = Apollo.BaseMutationOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
-export const DuplicateCategoryDocument = gql`
-    mutation DuplicateCategory($id: Int!) {
-  duplicateCategory(id: $id)
-}
-    `;
-export type DuplicateCategoryMutationFn = Apollo.MutationFunction<DuplicateCategoryMutation, DuplicateCategoryMutationVariables>;
-
-/**
- * __useDuplicateCategoryMutation__
- *
- * To run a mutation, you first call `useDuplicateCategoryMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDuplicateCategoryMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [duplicateCategoryMutation, { data, loading, error }] = useDuplicateCategoryMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDuplicateCategoryMutation(baseOptions?: Apollo.MutationHookOptions<DuplicateCategoryMutation, DuplicateCategoryMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DuplicateCategoryMutation, DuplicateCategoryMutationVariables>(DuplicateCategoryDocument, options);
-      }
-export type DuplicateCategoryMutationHookResult = ReturnType<typeof useDuplicateCategoryMutation>;
-export type DuplicateCategoryMutationResult = Apollo.MutationResult<DuplicateCategoryMutation>;
-export type DuplicateCategoryMutationOptions = Apollo.BaseMutationOptions<DuplicateCategoryMutation, DuplicateCategoryMutationVariables>;
-export const ToggleCategoryDocument = gql`
-    mutation ToggleCategory($id: Int!) {
-  toggleCategory(id: $id)
-}
-    `;
-export type ToggleCategoryMutationFn = Apollo.MutationFunction<ToggleCategoryMutation, ToggleCategoryMutationVariables>;
-
-/**
- * __useToggleCategoryMutation__
- *
- * To run a mutation, you first call `useToggleCategoryMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useToggleCategoryMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [toggleCategoryMutation, { data, loading, error }] = useToggleCategoryMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useToggleCategoryMutation(baseOptions?: Apollo.MutationHookOptions<ToggleCategoryMutation, ToggleCategoryMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ToggleCategoryMutation, ToggleCategoryMutationVariables>(ToggleCategoryDocument, options);
-      }
-export type ToggleCategoryMutationHookResult = ReturnType<typeof useToggleCategoryMutation>;
-export type ToggleCategoryMutationResult = Apollo.MutationResult<ToggleCategoryMutation>;
-export type ToggleCategoryMutationOptions = Apollo.BaseMutationOptions<ToggleCategoryMutation, ToggleCategoryMutationVariables>;
 export const UpdateCategoryDocument = gql`
     mutation UpdateCategory($id: Int!, $data: CategoryInput!) {
   updateCategory(id: $id, data: $data)
@@ -1314,7 +1415,6 @@ export const UpdateProductDocument = gql`
       slug
       logoPath
     }
-    visibility
   }
 }
     `;
@@ -1402,7 +1502,6 @@ export const AdvertisementsDocument = gql`
       alt
       resolution
       type
-      visibility
     }
     count
   }
@@ -1683,7 +1782,6 @@ export const CurrentProductDocument = gql`
     }
     views
     createdAt
-    visibility
   }
 }
     `;
@@ -1740,7 +1838,6 @@ export const ProductsDocument = gql`
         slug
         logoPath
       }
-      visibility
     }
     count
   }
@@ -1869,56 +1966,73 @@ export type AdvertisingByIdQueryHookResult = ReturnType<typeof useAdvertisingByI
 export type AdvertisingByIdLazyQueryHookResult = ReturnType<typeof useAdvertisingByIdLazyQuery>;
 export type AdvertisingByIdSuspenseQueryHookResult = ReturnType<typeof useAdvertisingByIdSuspenseQuery>;
 export type AdvertisingByIdQueryResult = Apollo.QueryResult<AdvertisingByIdQuery, AdvertisingByIdQueryVariables>;
-export const AccountBrandDocument = gql`
-    query AccountBrand {
-  accountBrand {
-    id
-    name
-    balance
-    email
-    phone
-    whatsapp
-    telegram
-    logoPath
-    city
-    postedCount
-    subscribers
-    createdAt
+export const AccountDocument = gql`
+    query Account {
+  account {
+    brand {
+      id
+      name
+      about
+      balance
+      email
+      phone
+      whatsapp
+      telegram
+      logoPath
+      city
+      postedCount
+      subscribers
+      category {
+        id
+        name
+      }
+      createdAt
+    }
+    tariffs {
+      price
+      duration
+      description
+      type
+    }
+    categories {
+      id
+      name
+    }
   }
 }
     `;
 
 /**
- * __useAccountBrandQuery__
+ * __useAccountQuery__
  *
- * To run a query within a React component, call `useAccountBrandQuery` and pass it any options that fit your needs.
- * When your component renders, `useAccountBrandQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useAccountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useAccountBrandQuery({
+ * const { data, loading, error } = useAccountQuery({
  *   variables: {
  *   },
  * });
  */
-export function useAccountBrandQuery(baseOptions?: Apollo.QueryHookOptions<AccountBrandQuery, AccountBrandQueryVariables>) {
+export function useAccountQuery(baseOptions?: Apollo.QueryHookOptions<AccountQuery, AccountQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AccountBrandQuery, AccountBrandQueryVariables>(AccountBrandDocument, options);
+        return Apollo.useQuery<AccountQuery, AccountQueryVariables>(AccountDocument, options);
       }
-export function useAccountBrandLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountBrandQuery, AccountBrandQueryVariables>) {
+export function useAccountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountQuery, AccountQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AccountBrandQuery, AccountBrandQueryVariables>(AccountBrandDocument, options);
+          return Apollo.useLazyQuery<AccountQuery, AccountQueryVariables>(AccountDocument, options);
         }
-export function useAccountBrandSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AccountBrandQuery, AccountBrandQueryVariables>) {
+export function useAccountSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AccountQuery, AccountQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<AccountBrandQuery, AccountBrandQueryVariables>(AccountBrandDocument, options);
+          return Apollo.useSuspenseQuery<AccountQuery, AccountQueryVariables>(AccountDocument, options);
         }
-export type AccountBrandQueryHookResult = ReturnType<typeof useAccountBrandQuery>;
-export type AccountBrandLazyQueryHookResult = ReturnType<typeof useAccountBrandLazyQuery>;
-export type AccountBrandSuspenseQueryHookResult = ReturnType<typeof useAccountBrandSuspenseQuery>;
-export type AccountBrandQueryResult = Apollo.QueryResult<AccountBrandQuery, AccountBrandQueryVariables>;
+export type AccountQueryHookResult = ReturnType<typeof useAccountQuery>;
+export type AccountLazyQueryHookResult = ReturnType<typeof useAccountLazyQuery>;
+export type AccountSuspenseQueryHookResult = ReturnType<typeof useAccountSuspenseQuery>;
+export type AccountQueryResult = Apollo.QueryResult<AccountQuery, AccountQueryVariables>;
 export const CategoryByIdDocument = gql`
     query CategoryById($id: Int!) {
   categoryById(id: $id) {
@@ -1979,10 +2093,12 @@ export const AnnouncementsDocument = gql`
       sku
       views
       createdAt
-      tariffs {
-        expirationAt
+      orders {
+        expirationDate
         isLittleLeft
-        type
+        tariff {
+          type
+        }
       }
     }
     count

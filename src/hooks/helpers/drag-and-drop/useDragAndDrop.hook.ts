@@ -4,13 +4,11 @@ import {
 	VIDEO_EXTENSIONS_DATA,
 } from '@/data/extensions.data'
 import { MIME_IMAGE_TYPES, MIME_VIDEO_TYPES } from '@/data/mime-types.data'
-import { renameFile } from '@/utils/helpers/rename-file.util'
 import { type DropzoneOptions, useDropzone } from 'react-dropzone'
 import toast from 'react-hot-toast'
 
 export const useDragAndDrop = (
 	fileType: EnumFile,
-	uploadedFileName: string,
 	onChange: (file: File | null) => void,
 	options?: DropzoneOptions
 ) => {
@@ -25,13 +23,12 @@ export const useDragAndDrop = (
 		...options,
 		maxFiles: 1,
 		multiple: false,
-		noClick: true,
 		maxSize: (isImage ? 10 : 50) * 1024 * 1024,
 		accept,
 		onDrop: (acceptedFiles) => {
 			const file = acceptedFiles[0]
-			console.log(acceptedFiles)
-			onChange(renameFile(file, uploadedFileName))
+			console.log(file)
+			onChange(file)
 		},
 		onDropRejected: (rejectedFiles) => {
 			let uniqueErrorCodes = new Set<string>()

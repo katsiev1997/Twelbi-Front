@@ -9,7 +9,7 @@ import { formatNumber } from '@/utils/formats/format-number.util'
 import cn from 'clsx'
 import { Star } from 'lucide-react'
 import Link from 'next/link'
-import { type FC } from 'react'
+import type { FC } from 'react'
 import styles from './ProductCard.module.scss'
 import ProductCardActions from './actions/ProductCardActions'
 
@@ -91,11 +91,7 @@ const ProductCard: FC<IProductCard> = ({
 			</div>
 			<Link className={styles.link} href={PUBLIC_PAGES.PRODUCT(product.id)} />
 			{isAdmin && (
-				<ProductCardActions
-					productId={product.id}
-					visibility={product.visibility}
-					setProducts={setProducts}
-				/>
+				<ProductCardActions productId={product.id} setProducts={setProducts} />
 			)}
 		</div>
 	)

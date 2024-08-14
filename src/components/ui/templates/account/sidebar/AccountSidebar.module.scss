@@ -21,8 +21,12 @@
 	@apply flex flex-col items-start gap-2.5;
 }
 .logo {
-	@apply w-full aspect-square flex items-center justify-center p-4 rounded-xl bg-gray-100 mb-3;
+	@apply relative w-full aspect-square flex items-center justify-center p-4 rounded-xl bg-gray-100 mb-3;
 	max-width: 145px;
+
+	> img {
+		@apply image-like-bg-cover rounded-xl;
+	}
 }
 .name {
 	@apply font-semibold text-lg break-all;

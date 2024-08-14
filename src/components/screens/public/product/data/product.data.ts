@@ -1,4 +1,4 @@
-import { Visibility, type Product } from '@/__generated__/output'
+import type { Product } from '@/__generated__/output'
 
 export const PRODUCT_DATA: Product = {
 	id: 1,
@@ -76,5 +76,4 @@ export const PRODUCT_DATA: Product = {
 	},
 	views: 8351,
 	createdAt: '13 июля 2024',
-	visibility: Visibility.Visible,
 }

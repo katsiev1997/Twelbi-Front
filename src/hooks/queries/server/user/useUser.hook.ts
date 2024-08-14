@@ -1,40 +1,34 @@
-import {
-	type UserQuery,
-	type UserQueryVariables,
-	UserDocument,
-} from '@/__generated__/output'
-import { apolloClient } from '@/api/apollo/apollo.client'
-import {
-	destroySession,
-	getUser,
-	setUser,
-} from '@/server/auth/get-server-session'
-import { CookieService } from '@/services/cookie/cookie.service'
+import { useUserQuery } from '@/__generated__/output'
+import { EnumSession } from '@/constants/enums.constants'
+import { destroySession, setUser } from '@/server/auth/get-server-session'
+import type { TypeAuthUser } from '@/shared/types/auth/auth.type'
+import { useEffect, useState } from 'react'
 
-export const useUser = async () => {
-	const { cookie } = CookieService.getServerCookies()
-	let user = await getUser()
+export const useUser = (user?: TypeAuthUser) => {
+	const [isMounted, setIsMounted] = useState(false)
 
-	if (!user && cookie) {
-		const { data, error } = await apolloClient.query<
-			UserQuery,
-			UserQueryVariables
-		>({
-			context: {
-				headers: {
-					cookie,
-				},
-			},
-			query: UserDocument,
-		})
+	useEffect(() => {
+		setIsMounted(true)
+	}, [])
 
-		if (data) {
-			await setUser(data.user)
-			user = data.user
-		} else if (error) {
+	const isQueried =
+		isMounted && !!sessionStorage.getItem(EnumSession.QUERY_USER)
+
+	useUserQuery({
+		skip: !isMounted || (!!user && isQueried),
+		onCompleted: async ({ user }) => {
+			if (!user) {
+				await destroySession()
+				sessionStorage.removeItem(EnumSession.QUERY_USER)
+				return
+			}
+
+			await setUser(user)
+			sessionStorage.setItem(EnumSession.QUERY_USER, 'true')
+		},
+		onError: async () => {
 			await destroySession()
-		}
-	}
-
-	return { user }
+			sessionStorage.removeItem(EnumSession.QUERY_USER)
+		},
+	})
 }

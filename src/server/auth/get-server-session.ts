@@ -1,10 +1,9 @@
 'use server'
 
 import type { SessionUser } from '@/__generated__/output'
-import { getServerActionSession, sessionOptions } from '@/libs/iron-session.lib'
+import { getServerActionSession } from '@/libs/iron-session.lib'
 import type { TypeAuthUser } from '@/shared/types/auth/auth.type'
-import { getServerActionIronSession, type IronSessionData } from 'iron-session'
-import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const getUser = async () => {
 	const { user } = await getServerActionSession()
@@ -18,18 +17,19 @@ export const getExistUser = async () => {
 	return user as SessionUser
 }
 
-export const setUser = async (user: TypeAuthUser) => {
+export const setUser = async (user: TypeAuthUser, redirectPath?: string) => {
 	const session = await getServerActionSession()
 	session.user = user
 
 	await session.save()
+
+	if (redirectPath) {
+		redirect(redirectPath)
+	}
 }
 
 export const destroySession = async () => {
-	const { destroy } = await getServerActionIronSession<IronSessionData>(
-		sessionOptions,
-		cookies()
-	)
+	const { destroy } = await getServerActionSession()
 
-	await destroy()
+	destroy()
 }

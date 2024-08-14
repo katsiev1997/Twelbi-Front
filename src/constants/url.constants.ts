@@ -16,9 +16,6 @@ export const ERROR_PAGES = {
 
 export const PUBLIC_PAGES = {
 	HOME: '/',
-	LOGIN: '/auth?type=login',
-	REGISTER: '/auth?type=register',
-	LOST: '/auth?type=lost',
 	CATALOG: '/catalog',
 	TERMS: '/terms',
 	POLICY: '/policy',
@@ -34,4 +31,5 @@ export const PUBLIC_PAGES = {
 
 export const USER_PAGES = {
 	ACCOUNT: '/my-account',
+	ACCOUNT_EDIT: '/my-account?type=edit',
 }

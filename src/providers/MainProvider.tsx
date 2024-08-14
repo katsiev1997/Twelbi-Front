@@ -2,10 +2,12 @@
 
 import { apolloClient } from '@/api/apollo/apollo.client'
 import { ACCENT_COLOR, IS_PRODUCTION } from '@/constants/global.constants'
+import type { ISessionUser } from '@/shared/interfaces/api/user/user.interface'
 import { ApolloProvider } from '@apollo/client'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import NextTopLoader from 'nextjs-toploader'
 import type { PropsWithChildren } from 'react'
+import AuthProvider from './auth/AuthProvider'
 import AuthConfirmationProvider from './timer/AuthConfirmationProvider'
 import AuthVerificationProvider from './timer/AuthVerificationProvider'
 import ReactToaster from './toaster/ReactToaster'
@@ -15,7 +17,10 @@ if (!IS_PRODUCTION) {
 	loadErrorMessages()
 }
 
-export default function MainProvider({ children }: PropsWithChildren) {
+export default function MainProvider({
+	children,
+	user,
+}: PropsWithChildren & ISessionUser) {
 	return (
 		<>
 			<NextTopLoader
@@ -25,6 +30,7 @@ export default function MainProvider({ children }: PropsWithChildren) {
 				zIndex={10}
 			/>
 			<ApolloProvider client={apolloClient}>
+				<AuthProvider user={user} />
 				<AuthConfirmationProvider />
 				<AuthVerificationProvider />
 				{children}

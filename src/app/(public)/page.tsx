@@ -1,4 +1,3 @@
-import Home from '@/components/screens/public/home/Home'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -6,6 +5,6 @@ export const metadata: Metadata = {
 	description: '',
 }
 
-export default function HomePage() {
+export default async function HomePage() {
 	return ''
 }

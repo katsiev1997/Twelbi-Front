@@ -1,16 +1,13 @@
 /* React Select */
 .react-select {
 	&__control {
-		@apply px-4 py-2.5;
+		@apply px-4;
+		padding-top: 9px;
+		padding-bottom: 9px;
 		background-color: #fff !important;
-		border: none !important;
+		border: 1px solid #19bb4f !important;
 		border-radius: 5px !important;
-		border-bottom: none !important;
 		box-shadow: none !important;
-
-		&--menu-is-open {
-			border-color: var(--primary-color) !important;
-		}
 	}
 
 	&__value-container {

@@ -1,4 +1,4 @@
-import { AllProducts, Visibility } from '@/__generated__/output'
+import { AllProducts } from '@/__generated__/output'
 
 export const BRAND_PRODUCTS_DATA: AllProducts = {
 	products: [
@@ -19,7 +19,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 2,
@@ -38,7 +37,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 3,
@@ -57,7 +55,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 4,
@@ -76,7 +73,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 5,
@@ -95,7 +91,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 6,
@@ -114,7 +109,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 7,
@@ -133,7 +127,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 8,
@@ -152,7 +145,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 9,
@@ -171,7 +163,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 10,
@@ -190,7 +181,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 11,
@@ -209,7 +199,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 893,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 12,
@@ -228,7 +217,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.8,
 			ratesCount: 174,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 13,
@@ -247,7 +235,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 109,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 14,
@@ -266,7 +253,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.9,
 			ratesCount: 2431,
-			visibility: Visibility.Visible,
 		},
 		{
 			id: 15,
@@ -285,7 +271,6 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			},
 			rating: 4.7,
 			ratesCount: 230,
-			visibility: Visibility.Visible,
 		},
 	],
 	count: 15,

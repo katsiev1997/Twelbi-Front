@@ -1,0 +1,6 @@
+.form {
+	@apply flex flex-col items-center gap-4;
+}
+.submit {
+	@apply btn-green py-2.5 px-7 rounded-full font-medium text-medium-lg;
+}

@@ -41,6 +41,12 @@
 	.heading {
 		font-size: 21px;
 	}
+	.fill {
+		@apply py-6;
+	}
+	.top {
+		@apply gap-4;
+	}
 }
 
 @media (max-width: 550px) {

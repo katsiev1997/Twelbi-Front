@@ -3,13 +3,13 @@ import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
 
 export interface IReviewCard extends IClassName {
-	isAdmin: boolean
+	isAdmin?: boolean
 	review: ReviewCard
 	setReviews: Dispatch<SetStateAction<ReviewCard[]>>
 }
 
 export interface IReviews extends AllReviews {
-	isAdmin: boolean
+	isAdmin?: boolean
 	brandId?: number
 	productId?: number
 	wrapperClassName?: string

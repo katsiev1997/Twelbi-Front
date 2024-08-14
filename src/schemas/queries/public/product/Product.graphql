@@ -36,6 +36,5 @@ query CurrentProduct($id: Int!) {
 		}
 		views
 		createdAt
-		visibility
 	}
 }

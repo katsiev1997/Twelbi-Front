@@ -1,13 +1,36 @@
-import type { Metadata } from 'next'
-
+import NotFoundPage from '@/app/not-found'
 import Account from '@/components/screens/secure/account/Account'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+import { useAccount } from '@/hooks/queries/account/useAccount.hook'
+import { useFileByPath } from '@/hooks/queries/file/useFileByPath.hook'
+import { IPageSearchParam } from '@/shared/interfaces/common/param/param.interface'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	title: '',
 	...NO_INDEX_PAGE,
 }
 
-export default function MyAccountPage() {
-	return <Account />
+export default async function MyAccountPage({
+	searchParams,
+}: IPageSearchParam) {
+	const { error, brand, tariffs, categories } = await useAccount()
+
+	if (error) {
+		return <NotFoundPage />
+	}
+
+	let logoFile = null
+	if (brand && brand.logoPath) {
+		logoFile = await useFileByPath(brand.logoPath)
+	}
+
+	return (
+		<Account
+			searchParams={searchParams}
+			brand={brand}
+			tariffs={tariffs}
+			categories={categories}
+		/>
+	)
 }

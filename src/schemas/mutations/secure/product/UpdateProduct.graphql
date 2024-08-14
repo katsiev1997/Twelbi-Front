@@ -16,6 +16,5 @@ mutation UpdateProduct($id: Int!, $data: ProductInput!) {
 			slug
 			logoPath
 		}
-		visibility
 	}
 }

@@ -1,7 +1,56 @@
+.section {
+	@apply py-5;
+}
 .wrapper {
 	@apply flex items-start;
 	gap: 30px;
 	padding-bottom: 30px;
+}
+.fill {
+	@apply w-full;
+}
+.heading {
+	@apply font-bold mb-6;
+}
+.form,
+.contacts {
+	@apply flex flex-wrap gap-x-10 gap-y-5;
+}
+.left {
+	max-width: 220px;
+	min-width: 220px;
+}
+.right {
+	@apply w-full flex flex-col justify-between;
+	max-width: calc(100% - 260px);
+}
+.contacts {
+	@apply w-full items-start;
+}
+.uploadBtn {
+	@apply w-full py-8 px-4;
+	height: 220px;
+}
+.field,
+.select {
+	@apply w-full;
+}
+.social {
+	max-width: calc(100% / 3 - 27px);
+}
+.back,
+.submit {
+	@apply w-fit btn-green rounded-full font-medium;
+}
+.back {
+	@apply py-2 px-8 flex items-center gap-1.5 mb-4;
+
+	> svg {
+		@apply w-5 h-5;
+	}
+}
+.submit {
+	@apply mx-auto py-2.5 px-7 text-medium-lg;
 }
 
 @media (max-width: 1200px) {
@@ -10,19 +59,19 @@
 	}
 }
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
 	.wrapper {
 		@apply gap-2.5;
 	}
 }
 
-@media(max-width: 550px) {
+@media (max-width: 550px) {
 	.wrapper {
 		@apply pb-5;
 	}
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
 	.wrapper {
 		@apply pb-4;
 	}

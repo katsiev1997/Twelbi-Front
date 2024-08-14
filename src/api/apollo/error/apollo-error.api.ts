@@ -1,3 +1,4 @@
+import { EnumSession } from '@/constants/enums.constants'
 import { destroySession } from '@/server/auth/get-server-session'
 import { onError } from '@apollo/client/link/error'
 
@@ -6,6 +7,7 @@ export const errorLink = onError(({ graphQLErrors }) => {
 		graphQLErrors.forEach(({ extensions, message }) => {
 			if (extensions?.code === 'UNAUTHENTICATED' && message === 'Logout') {
 				destroySession()
+				sessionStorage.removeItem(EnumSession.QUERY_USER)
 			}
 		})
 	}

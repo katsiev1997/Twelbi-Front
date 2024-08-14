@@ -1,16 +1,33 @@
-query AccountBrand {
-	accountBrand {
-		id
-		name
-		balance
-		email
-		phone
-		whatsapp
-		telegram
-		logoPath
-		city
-		postedCount
-		subscribers
-		createdAt
+query Account {
+	account {
+		brand {
+			id
+			name
+			about
+			balance
+			email
+			phone
+			whatsapp
+			telegram
+			logoPath
+			city
+			postedCount
+			subscribers
+			category {
+				id
+				name
+			}
+			createdAt
+		}
+		tariffs {
+			price
+			duration
+			description
+			type
+		}
+		categories {
+			id
+			name
+		}
 	}
 }

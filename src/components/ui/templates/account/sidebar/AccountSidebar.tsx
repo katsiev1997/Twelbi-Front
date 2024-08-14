@@ -12,8 +12,9 @@ import Picture from '@/components/ui/common/picture/Picture'
 import List from '@/components/ui/elements/list/List'
 import Logout from '@/components/ui/elements/logout/Logout'
 import TopUp from '@/components/ui/elements/topUp/TopUp'
-import { PUBLIC_PAGES } from '@/constants/url.constants'
+import { PUBLIC_PAGES, USER_PAGES } from '@/constants/url.constants'
 import type { IAccountBrand } from '@/shared/interfaces/api/brand/brand.interface'
+import { formatNumber } from '@/utils/formats/format-number.util'
 import Link from 'next/link'
 import type { FC } from 'react'
 import styles from './AccountSidebar.module.scss'
@@ -83,7 +84,8 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 								{
 									label: (
 										<>
-											Размещено товаров: <span>{brand.postedCount}</span>
+											Размещено товаров:{' '}
+											<span>{formatNumber(brand.postedCount)}</span>
 										</>
 									),
 								},
@@ -99,7 +101,9 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 							listClassName={styles.contacts}
 							buttonClassName={styles.contact}
 						/>
-						<button className={styles.edit}>Редактировать данные</button>
+						<Link className={styles.edit} href={USER_PAGES.ACCOUNT_EDIT}>
+							Редактировать данные
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -109,7 +113,7 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 						<div className={styles.money}>
 							<Picture src={balanceIcon.src} alt="Баланс" />
 							<span>Баланс:</span>
-							<strong>{brand.balance} руб.</strong>
+							<strong>{formatNumber(brand.balance)} руб.</strong>
 						</div>
 						<TopUp className={styles.topUp}>
 							<span>+</span> Пополнить баланс
@@ -122,7 +126,7 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 									<>
 										<Picture src={packageIcon.src} alt="Товары" />
 										<span>Мои товары:</span>
-										<strong>{brand.postedCount}</strong>
+										<strong>{formatNumber(brand.postedCount)}</strong>
 									</>
 								),
 							},
@@ -131,7 +135,7 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 									<>
 										<Picture src={subscribersIcon.src} alt="Подписчики" />
 										<span>Мои подписчики:</span>
-										<strong>{brand.subscribers.length}</strong>
+										<strong>{formatNumber(brand.subscribers.length)}</strong>
 										<button className={styles.more}>
 											<Picture src={moreIcon.src} alt="Информация" />
 										</button>

@@ -10,10 +10,12 @@ query Announcements($query: ProductQueryInput!) {
 			sku
 			views
 			createdAt
-			tariffs {
-				expirationAt
+			orders {
+				expirationDate
 				isLittleLeft
-				type
+				tariff {
+					type
+				}
 			}
 		}
 		count

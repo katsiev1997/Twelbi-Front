@@ -22,16 +22,4 @@ export class CookieService {
 				.join('; '),
 		}
 	}
-
-	static setCookiesToContext() {
-		const { cookie } = this.getServerCookies()
-
-		return {
-			context: {
-				headers: {
-					cookie,
-				},
-			},
-		}
-	}
 }

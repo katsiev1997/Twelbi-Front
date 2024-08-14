@@ -1,3 +1,0 @@
-mutation DuplicateCategory($id: Int!) {
-	duplicateCategory(id: $id)
-}

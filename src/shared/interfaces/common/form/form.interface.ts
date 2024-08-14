@@ -38,8 +38,7 @@ export interface IMaskField extends IFieldProps {
 export interface IUploadField extends IFieldProps {
 	buttonClassName?: string
 	fileType: EnumFile
-	uploadedFileName: string
-	value: File
+	value?: string | null
 	onChange: (...event: any[]) => void
 	options?: DropzoneOptions
 }
@@ -79,4 +78,9 @@ export interface IReactSelect extends IFieldProps {
 	isCreatable?: boolean
 	isClearable?: boolean
 	isMenuFixed?: boolean
+}
+
+export interface ITextEditor extends Omit<IFieldProps, 'editorState'> {
+	onChange: (...event: any[]) => void
+	value?: string | null
 }

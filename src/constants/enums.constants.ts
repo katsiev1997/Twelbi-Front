@@ -9,6 +9,10 @@ export enum EnumStorage {
 	VERIFICATION_TIMER = 'TWELBI-VERIFICATION-TIMER',
 }
 
+export enum EnumSession {
+	QUERY_USER = 'TWELBI-IPT',
+}
+
 export enum EnumFile {
 	IMAGE = 'IMAGE',
 	VIDEO = 'VIDEO',

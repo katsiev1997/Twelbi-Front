@@ -1,0 +1,75 @@
+.form {
+	@apply flex flex-col items-start gap-2.5;
+}
+.submit {
+	@apply btn-green py-2.5 px-8 rounded-full font-medium mx-auto;
+}
+.lost {
+	@apply underline underline-offset-4;
+}
+.change {
+	@apply mt-6;
+}
+.line {
+	@apply relative w-full bg-gray-500;
+	height: 1px;
+
+	> span {
+		@apply w-fit absolute left-0 right-0 mx-auto bg-white -translate-y-2/4 px-3;
+	}
+}
+.changeBtn {
+	@apply block w-fit btn-green py-2.5 px-7 rounded-full mx-auto mt-6;
+}
+
+@media (max-width: 1400px) {
+	.submit,
+	.changeBtn,
+	.lost,
+	.line > span,
+	.field,
+	.password {
+		@apply text-medium-lg;
+	}
+}
+
+@media (max-width: 550px) {
+	.submit,
+	.changeBtn,
+	.lost,
+	.line > span,
+	.field,
+	.password {
+		@apply text-medium;
+	}
+}
+
+@media (max-width: 420px) {
+	.password button > svg {
+		@apply w-4 h-4;
+	}
+	.field,
+	.password {
+		input {
+			padding-top: 9px;
+			padding-bottom: 9px;
+		}
+	}
+	.lost {
+		@apply mt-2;
+	}
+	.change {
+		@apply mt-5;
+	}
+	.changeBtn {
+		@apply mt-4;
+	}
+	.submit,
+	.changeBtn,
+	.lost,
+	.line > span,
+	.field,
+	.password {
+		@apply text-small;
+	}
+}

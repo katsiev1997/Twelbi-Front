@@ -5,12 +5,22 @@ export const REQUIRED_VALIDATION = (name: string) => ({
 	required: `${name} обязательно.`,
 })
 
-export const LENGTH_VALIDATION = (name: string, length: number) => ({
+export const LENGTH_VALIDATION = (
+	name: string,
+	minLength: number,
+	maxLength?: number
+) => ({
 	required: `${name} обязательно.`,
 	minLength: {
-		value: length,
-		message: `Минимальная длина должна быть не менее ${length} символов.`,
+		value: minLength,
+		message: `Минимальная длина должна быть не менее ${minLength} символов.`,
 	},
+	...(maxLength && {
+		maxLength: {
+			value: maxLength,
+			message: `Максимальная длина должна быть не больше ${maxLength} символов.`,
+		},
+	}),
 })
 
 export const MIN_VALIDATION = (min: number) => ({
@@ -42,7 +52,11 @@ export const NUMBER_PATTERN_VALIDATION = (number: number) => ({
 	},
 })
 
-export const REQUIRED_EDITOR_VALIDATION = (name: string) => ({
+export const EDITOR_VALIDATION = (
+	name: string,
+	minLength?: number,
+	maxLength?: number
+) => ({
 	validate: {
 		required: (v: string) =>
 			(v && stripHtml(v).result.length > 0) || `${name} обязательно.`,

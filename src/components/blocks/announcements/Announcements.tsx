@@ -8,12 +8,19 @@ import Picture from '@/components/ui/common/picture/Picture'
 import Check from '@/components/ui/elements/check/Check'
 import Filter from '@/components/ui/elements/filters/Filter'
 import { SITE_NAME } from '@/constants/details.constants'
+import type { IAnnouncements } from '@/shared/interfaces/api/product/product.interface'
 import { useState, type FC } from 'react'
 import styles from './Announcements.module.scss'
 import AnnouncementSearch from './search/AnnouncementSearch'
+import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
 
-const Announcements: FC = () => {
+const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
+	const {} = useAnnouncements({
+		perPage: 15,
+		page: 1,
+	})
 	const [checked, setChecked] = useState<number[]>([])
+
 
 	const toggle = (announcementId: number) => {
 		setChecked((prev) =>
@@ -64,6 +71,7 @@ const Announcements: FC = () => {
 							</div>
 							<AnnouncementCard
 								key={announcement.id}
+								tariffs={tariffs}
 								announcement={announcement}
 							/>
 						</div>

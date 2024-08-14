@@ -11,13 +11,15 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.9.5",
+		"@telegram-auth/react": "^1.0.3",
 		"@types/fslightbox-react": "^1.7.7",
+		"add": "^2.0.6",
 		"apollo-upload-client": "^18.0.1",
 		"clsx": "^2.1.0",
 		"fslightbox-react": "^1.7.6",
 		"graphql": "^16.8.1",
 		"graphql-ws": "^5.16.0",
-		"iron-session": "github:renchris/iron-session#v8-as-dependency",
+		"iron-session": "^8.0.2",
 		"jodit-react": "^4.1.2",
 		"lucide-react": "^0.314.0",
 		"next": "14.2.4",
@@ -35,6 +37,7 @@
 		"sharp": "^0.33.3",
 		"slick-carousel": "^1.8.1",
 		"string-strip-html": "^13.4.8",
+		"yarn": "^1.22.22",
 		"zustand": "^4.5.2"
 	},
 	"devDependencies": {

@@ -163,9 +163,12 @@
 	.wrapper {
 		@apply pt-5;
 	}
-	.item:first-child,
-	.login {
-		@apply bg-transparent flex flex-col items-center gap-0.5 py-0;
+	.login,
+	.item {
+		@apply bg-transparent flex flex-col items-center justify-end p-0;
+	}
+	.item:first-child {
+		@apply bg-transparent;
 	}
 	.login img,
 	.item:first-child > img:first-child {
@@ -174,10 +177,8 @@
 	.item:first-child > svg:nth-child(2) {
 		@apply hidden;
 	}
-	.catalog,
-	.item:first-child,
-	.login {
-		@apply py-0.5 px-0;
+	.item:first-child {
+		@apply p-0;
 	}
 	.catalog {
 		@apply bg-transparent text-gray-base flex-col gap-0.5 text-medium-lg font-medium green-hover;
@@ -228,9 +229,9 @@
 		order: 4;
 	}
 	.catalog,
-	.item:first-child,
+	.item,
 	.login {
-		@apply py-0 items-center justify-end;
+		@apply flex flex-col py-0 px-0 items-center justify-end;
 	}
 }
 

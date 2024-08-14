@@ -29,6 +29,7 @@ export const useJwtAuthVerification = () => {
 		}
 
 		await sendVerification({
+			fetchPolicy: 'no-cache',
 			variables: {
 				data,
 			},

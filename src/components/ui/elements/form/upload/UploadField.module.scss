@@ -1,12 +1,17 @@
 .add {
-	@apply font-medium rounded-md flex flex-col gap-3 items-center justify-center border-2 bg-white transition-colors;
+	@apply relative cursor-pointer font-medium rounded-md flex flex-col gap-3 items-center justify-center border-2 bg-white transition-colors;
 
 	> svg {
 		@apply w-7 h-7;
 		stroke-width: 1.5px;
 	}
 
-	&:hover {
+	> img {
+		@apply image-like-bg-cover rounded-md;
+	}
+
+	&:hover,
+	&.dragged {
 		@apply border-green-base text-green-base;
 	}
 }

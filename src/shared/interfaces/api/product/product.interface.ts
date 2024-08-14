@@ -4,6 +4,7 @@ import type {
 	AnnouncementCard,
 	Product,
 	ProductCard,
+	Tariff,
 } from '@/__generated__/output'
 import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
@@ -15,8 +16,13 @@ export interface IProduct extends IPageSearchParam {
 	product: Product
 }
 
+export interface IAnnouncements {
+	tariffs: Tariff[]
+}
+
 export interface IAnnouncementCard extends IClassName {
 	announcement: AnnouncementCard
+	tariffs: Tariff[]
 }
 
 export interface IProductsFiltersProps {
@@ -39,13 +45,13 @@ export interface IProductState {
 }
 
 export interface IProductCard extends IClassName {
-	isAdmin: boolean
+	isAdmin?: boolean
 	product: ProductCard
 	setProducts: Dispatch<SetStateAction<ProductCard[]>>
 }
 
 export interface IProducts extends AllProducts {
-	isAdmin: boolean
+	isAdmin?: boolean
 	heading?: IHeading
 	filters?: IProductsFiltersProps
 	pagination?: IPagination
