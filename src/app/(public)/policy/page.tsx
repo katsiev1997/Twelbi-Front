@@ -1,4 +1,3 @@
-import Content from '@/components/blocks/content/Content'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function PolicyPage() {
-	return <Content />
+	return ''
 }
