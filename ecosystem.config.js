@@ -7,7 +7,7 @@ module.exports = {
 			watch: true,
 			ignore_watch: ['node_modules', 'logs', '.next/cache'],
 			env: {
-				BOT_USERNAME: 'twelbi_auth',
+				BOT_USERNAME: 'twelbi_auth_bot',
 				REACT_APP_ENV: 'production',
 				REACT_APP_DOMAIN: 'keeywork.store',
 				SITE_URL: 'https://keeywork.store',
