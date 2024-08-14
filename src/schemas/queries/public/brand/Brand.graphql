@@ -6,7 +6,9 @@ query Brand($slug: String!) {
 		city
 		postedCount
 		rating
-		phoneNumber
+		phone
+		whatsapp
+		telegram
 		isSubscribed
 		isBrandOwner
 		about

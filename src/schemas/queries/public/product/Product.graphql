@@ -27,7 +27,9 @@ query CurrentProduct($id: Int!) {
 		provider {
 			id
 			rating
-			phoneNumber
+			phone
+			whatsapp
+			telegram
 			name
 			slug
 			logoPath

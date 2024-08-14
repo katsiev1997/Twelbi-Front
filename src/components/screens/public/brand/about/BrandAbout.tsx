@@ -67,7 +67,9 @@ const BrandAbout: FC<IBrand> = ({ brand }) => {
 								isBrandOwner={brand.isBrandOwner}
 								isSubscribed={brand.isSubscribed}
 								brandId={brand.id}
-								phoneNumber={brand.phoneNumber}
+								phone={brand.phone}
+								whatsapp={brand.whatsapp}
+								telegram={brand.telegram}
 							/>
 						</div>
 					</div>

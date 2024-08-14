@@ -1,5 +1,5 @@
 import { PUBLIC_PAGES } from '@/constants/url.constants'
-import type { IBreadcrumb } from '@/shared/interfaces/common/breadcrumb.interface'
+import type { IBreadcrumb } from '@/shared/interfaces/common/breadcrumb/breadcrumb.interface'
 import type { IClassName } from '@/shared/interfaces/common/class-name/class-name.interface'
 import cn from 'clsx'
 import { Undo2 } from 'lucide-react'

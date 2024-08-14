@@ -16,34 +16,48 @@ const Contact: FC<IContact> = ({
 	isBrandOwner,
 	isSubscribed,
 	brandId,
-	phoneNumber,
+	phone,
+	whatsapp,
+	telegram,
 }) => {
 	return (
 		<div className={cn(styles.buttons, className && className)}>
-			<Phone
-				className={cn(styles.phone, phoneClassName && phoneClassName)}
-				phone={phoneNumber}
-			/>
+			{phone && (
+				<Phone
+					className={cn(styles.phone, phoneClassName && phoneClassName)}
+					phone={phone}
+				/>
+			)}
 			<List
 				items={[
-					{
-						image: {
-							src: telegramIcon.src,
-							width: telegramIcon.width,
-							height: telegramIcon.height,
-							alt: 'Telegram',
-						},
-						href: `https://t.me/${phoneNumber}`,
-					},
-					{
-						image: {
-							src: whatsappIcon.src,
-							width: whatsappIcon.width,
-							height: whatsappIcon.height,
-							alt: 'Whatsapp',
-						},
-						href: `https://api.whatsapp.com/send?phone=${phoneNumber.slice(1)}`,
-					},
+					...(telegram
+						? [
+								{
+									image: {
+										src: telegramIcon.src,
+										width: telegramIcon.width,
+										height: telegramIcon.height,
+										alt: 'Telegram',
+									},
+									href: `https://t.me/${telegram.slice(1)}`,
+								},
+						  ]
+						: []),
+					...(whatsapp
+						? [
+								{
+									image: {
+										src: whatsappIcon.src,
+										width: whatsappIcon.width,
+										height: whatsappIcon.height,
+										alt: 'Whatsapp',
+									},
+									href: `https://api.whatsapp.com/send?phone=${whatsapp.slice(
+										1
+									)}`,
+								},
+						  ]
+						: []),
 				]}
 				listClassName={cn(styles.social, socialClassName && socialClassName)}
 			/>

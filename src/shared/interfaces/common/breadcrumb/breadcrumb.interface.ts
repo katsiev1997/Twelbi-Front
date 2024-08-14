@@ -1,4 +1,4 @@
-import type { IList } from './list/list.interface'
+import type { IList } from '../list/list.interface'
 
 export interface IBreadcrumb extends IList {
 	className?: string

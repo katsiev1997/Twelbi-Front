@@ -7,7 +7,9 @@ export const BRAND_DATA: Brand = {
 	city: 'Москва',
 	postedCount: 157,
 	rating: '5.0',
-	phoneNumber: '79999999999',
+	phone: '+7 (879) 478-54-74',
+	whatsapp: '+7 (879) 478-54-74',
+	telegram: '@lacoste',
 	isSubscribed: false,
 	isBrandOwner: false,
 	about:

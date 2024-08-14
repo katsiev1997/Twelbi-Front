@@ -67,7 +67,9 @@ export const PRODUCT_DATA: Product = {
 	provider: {
 		id: 1,
 		rating: '4.8',
-		phoneNumber: '79999999999',
+		phone: '+7 (879) 478-54-74',
+		whatsapp: '+7 (879) 478-54-74',
+		telegram: '@lacoste',
 		name: 'Lacoste Россия',
 		slug: 'lacoste-russia',
 		isBrandOwner: false,

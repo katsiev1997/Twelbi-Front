@@ -123,7 +123,9 @@ const ProductContentAbout: FC<IProduct> = ({ product }) => {
 						isBrandOwner={product.provider.isBrandOwner}
 						isSubscribed={product.provider.isSubscribed}
 						brandId={product.provider.id}
-						phoneNumber={product.provider.phoneNumber}
+						phone={product.provider.phone}
+						whatsapp={product.provider.whatsapp}
+						telegram={product.provider.telegram}
 					/>
 				</div>
 			</div>

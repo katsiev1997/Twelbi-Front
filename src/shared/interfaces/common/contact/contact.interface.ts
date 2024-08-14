@@ -7,5 +7,7 @@ export interface IContact extends IClassName {
 	isBrandOwner: boolean
 	isSubscribed: boolean
 	brandId: number
-	phoneNumber: string
+	phone?: string | null
+	whatsapp?: string | null
+	telegram?: string | null
 }
