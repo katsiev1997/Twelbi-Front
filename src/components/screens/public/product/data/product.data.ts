@@ -20,16 +20,16 @@ export const PRODUCT_DATA: Product = {
 	],
 	prices: [
 		{
-			price: 4501,
-			minQuantity: 5,
+			price: '4501',
+			minQuantity: '5',
 		},
 		{
-			price: 4000,
-			minQuantity: 500,
+			price: '4000',
+			minQuantity: '500',
 		},
 		{
-			price: 3500,
-			minQuantity: 1000,
+			price: '3500',
+			minQuantity: '1000',
 		},
 	],
 	rating: '4.7',

@@ -102,7 +102,7 @@ const ProductContentAbout: FC<IProduct> = ({ product }) => {
 								label: (
 									<>
 										<div className={styles.cost}>
-											{formatNumber(price)}{' '}
+											{formatNumber(+price)}{' '}
 											<Picture src={rubleIcon.src} alt="Рубли" />
 										</div>
 										<span className={styles.quantity}>
