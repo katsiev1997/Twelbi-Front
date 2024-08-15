@@ -1,0 +1,53 @@
+.uploads,
+.form,
+.cols {
+	@apply w-full flex gap-y-3 gap-x-6;
+}
+.form,
+.cols,
+.uploads {
+	@apply flex-wrap;
+}
+.uploads {
+	@apply py-5 gap-y-3;
+}
+.submit {
+	@apply w-fit py-2.5 px-6 btn-green rounded-full font-medium mx-auto;
+}
+.box {
+	@apply w-full pt-4;
+}
+.title {
+	@apply font-semibold mb-3 text-3lg;
+}
+.col {
+	@apply w-full flex items-center gap-2;
+	max-width: calc(100% / 3 - 16px);
+}
+.files {
+	@apply flex;
+}
+.fields {
+	@apply w-full flex flex-col gap-3;
+}
+.remove {
+	@apply btn-red p-2.5 rounded-full;
+
+	> svg {
+		@apply w-4 h-4;
+	}
+}
+.add {
+	@apply btn-green mt-3 py-2.5 px-5 font-medium text-medium-lg rounded-full;
+}
+.uploadField {
+	@apply max-w-fit;
+}
+.poster {
+	width: 250px;
+	height: 300px;
+}
+.video {
+	width: 300px;
+	height: 300px;
+}

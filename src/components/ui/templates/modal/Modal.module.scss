@@ -4,8 +4,15 @@
 .window {
 	@apply w-full flex flex-col rounded-sm bg-white animate-windowTransform;
 	max-height: 90%;
-	max-width: 600px;
 	margin: 0 25px;
+
+	&.md {
+		max-width: 600px;
+	}
+
+	&.lg {
+		max-width: 90%;
+	}
 }
 .fill {
 	@apply h-full py-8 px-5 scrollbar-y;

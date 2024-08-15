@@ -9,6 +9,7 @@ import styles from './Modal.module.scss'
 const Modal: FC<PropsWithChildren<IModal>> = ({
 	children,
 	heading,
+	size = 'md',
 	closeModal,
 	className,
 }) => {
@@ -18,7 +19,7 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
 
 	return ReactDOM.createPortal(
 		<div className={cn(styles.overlay, className && className)}>
-			<div className={styles.window}>
+			<div className={cn(styles.window, size === 'md' ? styles.md : styles.lg)}>
 				<div className={styles.top}>
 					<h2 className={styles.heading}>{heading}</h2>
 					<button onClick={closeModal} className={styles.close}>

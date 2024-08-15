@@ -62,7 +62,6 @@ const AccountEdit: FC<IAccountEdit> = ({
 						defaultValue=""
 						render={({ field: { onChange }, fieldState: { error } }) => (
 							<UploadField
-								className="triq"
 								buttonClassName={styles.uploadBtn}
 								{...useFileUploadProps(
 									onChange,

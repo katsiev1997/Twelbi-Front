@@ -6,8 +6,15 @@
 		stroke-width: 1.5px;
 	}
 
-	> img {
-		@apply image-like-bg-cover rounded-md;
+	> img,
+	video,
+	.video {
+		@apply rounded-md;
+	}
+
+	> img,
+	video {
+		@apply image-like-bg-cover object-cover object-center;
 	}
 
 	&:hover,

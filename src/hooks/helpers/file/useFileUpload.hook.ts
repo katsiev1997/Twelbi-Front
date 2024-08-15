@@ -21,7 +21,7 @@ export const useFileUploadProps = (
 		setValue(fileName, file)
 	}
 
-	const value = watch(pathName) || watch('logoFile')
+	const value = watch(pathName) || watch(fileName)
 
 	return {
 		value,

@@ -1,7 +1,6 @@
 'use client'
 
 import loginIcon from '@/assets/images/icons/login.png'
-import { IS_PRODUCTION } from '@/constants/global.constants'
 import { useAuth } from '@/hooks/mutations/auth/useAuth'
 import { LoginButton as TelegramAuth } from '@telegram-auth/react'
 import type { ButtonHTMLAttributes, FC } from 'react'
@@ -60,18 +59,7 @@ const Auth: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({ ...rest }) => {
 							Забыли пароль?
 						</button>
 					)}
-					<div className={styles.change}>
-						<div className={styles.line}>
-							<span>{isLogin ? 'Ещё нет аккаунта?' : 'Уже есть аккаунт?'}</span>
-						</div>
-						<button
-							type="button"
-							className={styles.changeBtn}
-							onClick={() => changeType(isLogin ? 'register' : 'login')}
-						>
-							{isLogin ? 'Зарегистрироваться' : 'Войти'}
-						</button>
-					</div>
+					<div className={styles.telegram}>
 						<TelegramAuth
 							botUsername={process.env.BOT_USERNAME as string}
 							onAuthCallback={(data) => {
@@ -86,10 +74,23 @@ const Auth: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({ ...rest }) => {
 								})
 							}}
 							buttonSize="large"
-							cornerRadius={5}
-							showAvatar={true}
+							cornerRadius={20}
+							showAvatar={false}
 							lang="ru"
 						/>
+					</div>
+					<div className={styles.change}>
+						<div className={styles.line}>
+							<span>{isLogin ? 'Ещё нет аккаунта?' : 'Уже есть аккаунт?'}</span>
+						</div>
+						<button
+							type="button"
+							className={styles.changeBtn}
+							onClick={() => changeType(isLogin ? 'register' : 'login')}
+						>
+							{isLogin ? 'Зарегистрироваться' : 'Войти'}
+						</button>
+					</div>
 				</Modal>
 			)}
 		</>

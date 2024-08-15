@@ -7,11 +7,15 @@
 .lost {
 	@apply underline underline-offset-4;
 }
-.change {
+.telegram {
+	@apply pt-4 border-t border-gray-300 flex justify-center;
+}
+.change,
+.telegram {
 	@apply mt-6;
 }
 .line {
-	@apply relative w-full bg-gray-500;
+	@apply relative w-full bg-gray-300;
 	height: 1px;
 
 	> span {
@@ -58,7 +62,8 @@
 	.lost {
 		@apply mt-2;
 	}
-	.change {
+	.change,
+	.telegram {
 		@apply mt-5;
 	}
 	.changeBtn {

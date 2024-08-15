@@ -1,0 +1,20 @@
+mutation EditAnnouncement($data: ProductInput!, $announcementId: Int) {
+	editAnnouncement(data: $data, announcementId: $announcementId) {
+		id
+		name
+		posterPath
+		minPrice
+		maxPrice
+		city
+		sku
+		views
+		createdAt
+		orders {
+			expirationDate
+			isLittleLeft
+			tariff {
+				type
+			}
+		}
+	}
+}

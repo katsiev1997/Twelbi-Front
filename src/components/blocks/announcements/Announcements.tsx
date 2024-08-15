@@ -1,5 +1,6 @@
 'use client'
 
+import { Sort } from '@/__generated__/output'
 import plusIcon from '@/assets/images/icons/plus.png'
 import sortIcon from '@/assets/images/icons/sort.png'
 import AnnouncementCard from '@/components/parts/announcement-card/AnnouncementCard'
@@ -7,28 +8,38 @@ import { ACCOUNT_ANNOUNCEMENTS_DATA } from '@/components/screens/secure/account/
 import Picture from '@/components/ui/common/picture/Picture'
 import Check from '@/components/ui/elements/check/Check'
 import Filter from '@/components/ui/elements/filters/Filter'
+import MiniLoader from '@/components/ui/elements/loaders/mini/MiniLoader'
 import { SITE_NAME } from '@/constants/details.constants'
+import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
 import type { IAnnouncements } from '@/shared/interfaces/api/product/product.interface'
-import { useState, type FC } from 'react'
+import type { FC } from 'react'
 import styles from './Announcements.module.scss'
 import AnnouncementSearch from './search/AnnouncementSearch'
-import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
 
 const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
-	// const {} = useAnnouncements({
-	// 	perPage: 15,
-	// 	page: 1,
-	// })
-	const [checked, setChecked] = useState<number[]>([])
+	const {
+		// categories,
+		// get,
+		// create,
+		// update,
+		toggle,
+		checked,
+		setChecked,
+		// scrollRef,
+		// announcements,
+		// count,
+		// error,
+		// loading,
+		// form,
+		// pricesForm,
+		// imagesForm,
+	} = useAnnouncements({
+		perPage: 15,
+		page: 1,
+		sort: Sort.Desc,
+	})
 
-
-	const toggle = (announcementId: number) => {
-		setChecked((prev) =>
-			prev.includes(announcementId)
-				? prev.filter((id) => id !== announcementId)
-				: [...prev, announcementId]
-		)
-	}
+	// if (error) return null
 
 	return (
 		<div className={styles.wrapper}>
@@ -60,27 +71,59 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 				<AnnouncementSearch />
 			</div>
 			<div className={styles.fill}>
-				<div className={styles.announcements}>
-					{ACCOUNT_ANNOUNCEMENTS_DATA.map((announcement) => (
-						<div key={announcement.id} className={styles.announcement}>
-							<div className={styles.pick}>
-								<Check
-									isChecked={checked.includes(announcement.id)}
-									toggle={() => toggle(announcement.id)}
-								/>
-							</div>
-							<AnnouncementCard
-								key={announcement.id}
-								tariffs={tariffs}
-								announcement={announcement}
-							/>
-						</div>
-					))}
-				</div>
-				<button type="button" className={styles.add}>
+				{/* Count and scrollRef */}
+				{true ? (
+					<div ref={undefined} className={styles.announcements}>
+						{/* !Loading */}
+						{true ? (
+							ACCOUNT_ANNOUNCEMENTS_DATA.map((announcement) => (
+								<div key={announcement.id} className={styles.announcement}>
+									<div className={styles.pick}>
+										<Check
+											isChecked={checked.includes(announcement.id)}
+											toggle={() => toggle(announcement.id)}
+										/>
+									</div>
+									<AnnouncementCard
+										key={announcement.id}
+										tariffs={tariffs}
+										announcement={announcement}
+									/>
+								</div>
+							))
+						) : (
+							<MiniLoader className={styles.loader} />
+						)}
+					</div>
+				) : (
+					''
+				)}
+				<button className={styles.add} type="button">
 					<Picture src={plusIcon.src} alt="Плюс" />
 					Добавить объявление
 				</button>
+				{/* <Edit
+					type="product"
+					button={{
+						type: 'button',
+						className: styles.add,
+						children: (
+							<>
+								<Picture src={plusIcon.src} alt="Плюс" />
+								Добавить объявление
+							</>
+						),
+					}}
+					form={{
+						arrays: [pricesForm, imagesForm],
+						props: form,
+					}}
+					heading="Добавить объявление"
+					create={{
+						handler: create,
+					}}
+					categories={categories}
+				/> */}
 			</div>
 		</div>
 	)

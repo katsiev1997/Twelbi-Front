@@ -105,6 +105,17 @@ export type AllReviews = {
   reviews: Array<ReviewCard>;
 };
 
+export type Announcement = {
+  about: Scalars['String']['output'];
+  category: SelectCategory;
+  imagesPaths: Array<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  posterPath: Scalars['String']['output'];
+  prices: Array<Price>;
+  sku: Scalars['String']['output'];
+  videoPath: Scalars['String']['output'];
+};
+
 export type AnnouncementCard = {
   city: Scalars['String']['output'];
   createdAt: Scalars['String']['output'];
@@ -254,10 +265,11 @@ export type Mutation = {
   createAdvertising: Id;
   createBrand: AccountBrand;
   createCategory: Scalars['Boolean']['output'];
-  createProduct: ProductCard;
   deleteAdvertising: Scalars['Boolean']['output'];
   deleteCategory: Scalars['Boolean']['output'];
   deleteProduct: Scalars['Int']['output'];
+  editAnnouncement: AnnouncementCard;
+  editProduct: ProductCard;
   jwtConfirmation: Scalars['Boolean']['output'];
   jwtLogin: SessionUserResponse;
   jwtReset: Scalars['Boolean']['output'];
@@ -267,7 +279,6 @@ export type Mutation = {
   updateAdvertising: Scalars['Boolean']['output'];
   updateBrand: AccountBrand;
   updateCategory: Scalars['Boolean']['output'];
-  updateProduct: ProductCard;
 };
 
 
@@ -286,11 +297,6 @@ export type MutationCreateBrandArgs = {
 };
 
 
-export type MutationCreateProductArgs = {
-  data: ProductInput;
-};
-
-
 export type MutationDeleteAdvertisingArgs = {
   id: Scalars['Int']['input'];
 };
@@ -303,6 +309,18 @@ export type MutationDeleteCategoryArgs = {
 
 export type MutationDeleteProductArgs = {
   id: Scalars['Int']['input'];
+};
+
+
+export type MutationEditAnnouncementArgs = {
+  announcementId?: InputMaybe<Scalars['Int']['input']>;
+  data: ProductInput;
+};
+
+
+export type MutationEditProductArgs = {
+  data: ProductInput;
+  productId?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -347,12 +365,6 @@ export type MutationUpdateCategoryArgs = {
   id: Scalars['Int']['input'];
 };
 
-
-export type MutationUpdateProductArgs = {
-  data: ProductInput;
-  id: Scalars['Int']['input'];
-};
-
 export type NestedBrand = {
   logoPath: Scalars['String']['output'];
   name: Scalars['String']['output'];
@@ -393,13 +405,13 @@ export type OrderInput = {
 };
 
 export type Price = {
-  minQuantity: Scalars['Int']['output'];
-  price: Scalars['Int']['output'];
+  minQuantity: Scalars['String']['output'];
+  price: Scalars['String']['output'];
 };
 
 export type PriceInput = {
-  minQuantity: Scalars['Int']['input'];
-  price: Scalars['Int']['input'];
+  minQuantity: Scalars['String']['input'];
+  price: Scalars['String']['input'];
 };
 
 export type Product = {
@@ -435,12 +447,15 @@ export type ProductCard = {
 export type ProductInput = {
   about: Scalars['String']['input'];
   category: SelectInput;
-  images: Array<Scalars['Upload']['input']>;
+  imagesFiles?: InputMaybe<Array<Scalars['Upload']['input']>>;
+  imagesPaths?: InputMaybe<Array<Scalars['String']['input']>>;
   name: Scalars['String']['input'];
-  poster: Scalars['Upload']['input'];
+  posterFile?: InputMaybe<Scalars['Upload']['input']>;
+  posterPath?: InputMaybe<Scalars['String']['input']>;
   prices: Array<PriceInput>;
   sku: Scalars['String']['input'];
-  video?: InputMaybe<Scalars['Upload']['input']>;
+  videoFile?: InputMaybe<Scalars['Upload']['input']>;
+  videoPath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductQueryInput = {
@@ -464,6 +479,7 @@ export type Query = {
   advertisements: AllAdvertisements;
   advertisementsByTypes: Array<Advertising>;
   advertisingById: CurrentAdvertising;
+  announcementById: Announcement;
   announcements: AllAnnouncements;
   brand: Brand;
   brands: AllBrands;
@@ -474,6 +490,7 @@ export type Query = {
   productById: Product;
   products: AllProducts;
   reviews: AllReviews;
+  selectCategories: Array<SelectCategory>;
   user: SessionUser;
 };
 
@@ -489,6 +506,11 @@ export type QueryAdvertisementsByTypesArgs = {
 
 
 export type QueryAdvertisingByIdArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type QueryAnnouncementByIdArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -737,13 +759,13 @@ export type DeleteProductMutationVariables = Exact<{
 
 export type DeleteProductMutation = { deleteProduct: number };
 
-export type UpdateProductMutationVariables = Exact<{
-  id: Scalars['Int']['input'];
+export type EditAnnouncementMutationVariables = Exact<{
   data: ProductInput;
+  announcementId?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
-export type UpdateProductMutation = { updateProduct: { id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, rating: number, ratesCount: number, category: { name: string, slug: string }, provider: { name: string, slug: string, logoPath: string } } };
+export type EditAnnouncementMutation = { editAnnouncement: { id: number, name: string, posterPath: string, minPrice: number, maxPrice: number, city: string, sku: string, views: number, createdAt: string, orders: Array<{ expirationDate?: string | null, isLittleLeft?: boolean | null, tariff: { type: TariffType } }> } };
 
 export type AdvertisementsByTypesQueryVariables = Exact<{
   types: Array<AdvertisingType> | AdvertisingType;
@@ -787,12 +809,17 @@ export type CategoriesQueryVariables = Exact<{
 
 export type CategoriesQuery = { categories: { count: number, categories: Array<{ name: string, slug: string, smallImagePath: string, bigImagePath: string }> } };
 
+export type SelectCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SelectCategoriesQuery = { selectCategories: Array<{ id: number, name: string }> };
+
 export type CurrentProductQueryVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
 
 
-export type CurrentProductQuery = { currentProduct: { id: number, name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, rating: string, reviewsCount: number, views: number, createdAt: string, prices: Array<{ price: number, minQuantity: number }>, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }>, category: { name: string, slug: string }, provider: { id: number, rating: string, phone?: string | null, whatsapp?: string | null, telegram?: string | null, name: string, slug: string, logoPath: string, isSubscribed: boolean, isBrandOwner: boolean } } };
+export type CurrentProductQuery = { currentProduct: { id: number, name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, rating: string, reviewsCount: number, views: number, createdAt: string, prices: Array<{ price: string, minQuantity: string }>, reviews: Array<{ id: number, authorName: string, comment: string, rating: number, createdAt: string }>, category: { name: string, slug: string }, provider: { id: number, rating: string, phone?: string | null, whatsapp?: string | null, telegram?: string | null, name: string, slug: string, logoPath: string, isSubscribed: boolean, isBrandOwner: boolean } } };
 
 export type ProductsQueryVariables = Exact<{
   query: ProductQueryInput;
@@ -827,6 +854,13 @@ export type CategoryByIdQueryVariables = Exact<{
 
 export type CategoryByIdQuery = { categoryById: { name: string, slug: string, smallImagePath: string, bigImagePath: string, seo: { title: string, description: string } } };
 
+export type AnnouncementByIdQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+
+export type AnnouncementByIdQuery = { announcementById: { name: string, about: string, sku: string, posterPath: string, videoPath: string, imagesPaths: Array<string>, prices: Array<{ price: string, minQuantity: string }>, category: { id: number, name: string } } };
+
 export type AnnouncementsQueryVariables = Exact<{
   query: ProductQueryInput;
 }>;
@@ -839,7 +873,7 @@ export type ProductByIdQueryVariables = Exact<{
 }>;
 
 
-export type ProductByIdQuery = { productById: { name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, prices: Array<{ price: number, minQuantity: number }> } };
+export type ProductByIdQuery = { productById: { name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, prices: Array<{ price: string, minQuantity: string }> } };
 
 export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1400,55 +1434,55 @@ export function useDeleteProductMutation(baseOptions?: Apollo.MutationHookOption
 export type DeleteProductMutationHookResult = ReturnType<typeof useDeleteProductMutation>;
 export type DeleteProductMutationResult = Apollo.MutationResult<DeleteProductMutation>;
 export type DeleteProductMutationOptions = Apollo.BaseMutationOptions<DeleteProductMutation, DeleteProductMutationVariables>;
-export const UpdateProductDocument = gql`
-    mutation UpdateProduct($id: Int!, $data: ProductInput!) {
-  updateProduct(id: $id, data: $data) {
+export const EditAnnouncementDocument = gql`
+    mutation EditAnnouncement($data: ProductInput!, $announcementId: Int) {
+  editAnnouncement(data: $data, announcementId: $announcementId) {
     id
     name
     posterPath
     minPrice
     maxPrice
-    rating
-    ratesCount
-    category {
-      name
-      slug
-    }
-    provider {
-      name
-      slug
-      logoPath
+    city
+    sku
+    views
+    createdAt
+    orders {
+      expirationDate
+      isLittleLeft
+      tariff {
+        type
+      }
     }
   }
 }
     `;
-export type UpdateProductMutationFn = Apollo.MutationFunction<UpdateProductMutation, UpdateProductMutationVariables>;
+export type EditAnnouncementMutationFn = Apollo.MutationFunction<EditAnnouncementMutation, EditAnnouncementMutationVariables>;
 
 /**
- * __useUpdateProductMutation__
+ * __useEditAnnouncementMutation__
  *
- * To run a mutation, you first call `useUpdateProductMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateProductMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useEditAnnouncementMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditAnnouncementMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateProductMutation, { data, loading, error }] = useUpdateProductMutation({
+ * const [editAnnouncementMutation, { data, loading, error }] = useEditAnnouncementMutation({
  *   variables: {
- *      id: // value for 'id'
  *      data: // value for 'data'
+ *      announcementId: // value for 'announcementId'
  *   },
  * });
  */
-export function useUpdateProductMutation(baseOptions?: Apollo.MutationHookOptions<UpdateProductMutation, UpdateProductMutationVariables>) {
+export function useEditAnnouncementMutation(baseOptions?: Apollo.MutationHookOptions<EditAnnouncementMutation, EditAnnouncementMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateProductMutation, UpdateProductMutationVariables>(UpdateProductDocument, options);
+        return Apollo.useMutation<EditAnnouncementMutation, EditAnnouncementMutationVariables>(EditAnnouncementDocument, options);
       }
-export type UpdateProductMutationHookResult = ReturnType<typeof useUpdateProductMutation>;
-export type UpdateProductMutationResult = Apollo.MutationResult<UpdateProductMutation>;
-export type UpdateProductMutationOptions = Apollo.BaseMutationOptions<UpdateProductMutation, UpdateProductMutationVariables>;
+export type EditAnnouncementMutationHookResult = ReturnType<typeof useEditAnnouncementMutation>;
+export type EditAnnouncementMutationResult = Apollo.MutationResult<EditAnnouncementMutation>;
+export type EditAnnouncementMutationOptions = Apollo.BaseMutationOptions<EditAnnouncementMutation, EditAnnouncementMutationVariables>;
 export const AdvertisementsByTypesDocument = gql`
     query AdvertisementsByTypes($types: [AdvertisingType!]!) {
   advertisementsByTypes(types: $types) {
@@ -1749,6 +1783,46 @@ export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesSuspenseQueryHookResult = ReturnType<typeof useCategoriesSuspenseQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const SelectCategoriesDocument = gql`
+    query SelectCategories {
+  selectCategories {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useSelectCategoriesQuery__
+ *
+ * To run a query within a React component, call `useSelectCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSelectCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSelectCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSelectCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<SelectCategoriesQuery, SelectCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SelectCategoriesQuery, SelectCategoriesQueryVariables>(SelectCategoriesDocument, options);
+      }
+export function useSelectCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SelectCategoriesQuery, SelectCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SelectCategoriesQuery, SelectCategoriesQueryVariables>(SelectCategoriesDocument, options);
+        }
+export function useSelectCategoriesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SelectCategoriesQuery, SelectCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<SelectCategoriesQuery, SelectCategoriesQueryVariables>(SelectCategoriesDocument, options);
+        }
+export type SelectCategoriesQueryHookResult = ReturnType<typeof useSelectCategoriesQuery>;
+export type SelectCategoriesLazyQueryHookResult = ReturnType<typeof useSelectCategoriesLazyQuery>;
+export type SelectCategoriesSuspenseQueryHookResult = ReturnType<typeof useSelectCategoriesSuspenseQuery>;
+export type SelectCategoriesQueryResult = Apollo.QueryResult<SelectCategoriesQuery, SelectCategoriesQueryVariables>;
 export const CurrentProductDocument = gql`
     query CurrentProduct($id: Int!) {
   currentProduct(id: $id) {
@@ -2088,6 +2162,59 @@ export type CategoryByIdQueryHookResult = ReturnType<typeof useCategoryByIdQuery
 export type CategoryByIdLazyQueryHookResult = ReturnType<typeof useCategoryByIdLazyQuery>;
 export type CategoryByIdSuspenseQueryHookResult = ReturnType<typeof useCategoryByIdSuspenseQuery>;
 export type CategoryByIdQueryResult = Apollo.QueryResult<CategoryByIdQuery, CategoryByIdQueryVariables>;
+export const AnnouncementByIdDocument = gql`
+    query AnnouncementById($id: Int!) {
+  announcementById(id: $id) {
+    name
+    about
+    sku
+    posterPath
+    videoPath
+    imagesPaths
+    prices {
+      price
+      minQuantity
+    }
+    category {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useAnnouncementByIdQuery__
+ *
+ * To run a query within a React component, call `useAnnouncementByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAnnouncementByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAnnouncementByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useAnnouncementByIdQuery(baseOptions: Apollo.QueryHookOptions<AnnouncementByIdQuery, AnnouncementByIdQueryVariables> & ({ variables: AnnouncementByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>(AnnouncementByIdDocument, options);
+      }
+export function useAnnouncementByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>(AnnouncementByIdDocument, options);
+        }
+export function useAnnouncementByIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>(AnnouncementByIdDocument, options);
+        }
+export type AnnouncementByIdQueryHookResult = ReturnType<typeof useAnnouncementByIdQuery>;
+export type AnnouncementByIdLazyQueryHookResult = ReturnType<typeof useAnnouncementByIdLazyQuery>;
+export type AnnouncementByIdSuspenseQueryHookResult = ReturnType<typeof useAnnouncementByIdSuspenseQuery>;
+export type AnnouncementByIdQueryResult = Apollo.QueryResult<AnnouncementByIdQuery, AnnouncementByIdQueryVariables>;
 export const AnnouncementsDocument = gql`
     query Announcements($query: ProductQueryInput!) {
   announcements(query: $query) {

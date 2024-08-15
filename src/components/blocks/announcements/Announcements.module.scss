@@ -47,6 +47,9 @@
 .announcement {
 	@apply flex items-center gap-4;
 }
+.loader {
+	@apply w-10 h-10 mx-auto mb-5 mt-10;
+}
 
 @media (max-width: 1600px) {
 	.select {

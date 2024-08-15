@@ -1,4 +1,5 @@
 import Picture from '@/components/ui/common/picture/Picture'
+import Video from '@/components/ui/common/video/Video'
 import { EnumFile } from '@/constants/enums.constants'
 import { useDragAndDrop } from '@/hooks/helpers/drag-and-drop/useDragAndDrop.hook'
 import type { IUploadField } from '@/shared/interfaces/common/form/form.interface'
@@ -35,6 +36,8 @@ const UploadField = forwardRef<HTMLInputElement, IUploadField>(
 				: URL.createObjectURL(value)
 			: null
 
+		console.log(fileUrl)
+
 		return (
 			<div className={cn(globalStyles.field, className && className)}>
 				{label && <label className={globalStyles.label}>{label}</label>}
@@ -50,7 +53,11 @@ const UploadField = forwardRef<HTMLInputElement, IUploadField>(
 					{...getRootProps()}
 				>
 					{fileUrl ? (
-						<Picture src={fileUrl} alt="" />
+						fileType === EnumFile.IMAGE ? (
+							<Picture src={fileUrl} alt="" />
+						) : (
+							<Video className={styles.video} src={fileUrl} />
+						)
 					) : (
 						<>
 							<PlusCircle />
