@@ -11,14 +11,8 @@ import { Star } from 'lucide-react'
 import Link from 'next/link'
 import type { FC } from 'react'
 import styles from './ProductCard.module.scss'
-import ProductCardActions from './actions/ProductCardActions'
 
-const ProductCard: FC<IProductCard> = ({
-	isAdmin,
-	product,
-	setProducts,
-	className,
-}) => {
+const ProductCard: FC<IProductCard> = ({ product, setProducts, className }) => {
 	return (
 		<div
 			className={cn(
@@ -90,9 +84,6 @@ const ProductCard: FC<IProductCard> = ({
 				</div>
 			</div>
 			<Link className={styles.link} href={PUBLIC_PAGES.PRODUCT(product.id)} />
-			{isAdmin && (
-				<ProductCardActions productId={product.id} setProducts={setProducts} />
-			)}
 		</div>
 	)
 }
