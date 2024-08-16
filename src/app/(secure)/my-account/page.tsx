@@ -2,7 +2,6 @@ import NotFoundPage from '@/app/not-found'
 import Account from '@/components/screens/secure/account/Account'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 import { useAccount } from '@/hooks/queries/account/useAccount.hook'
-import { useFileByPath } from '@/hooks/queries/file/useFileByPath.hook'
 import { IPageSearchParam } from '@/shared/interfaces/common/param/param.interface'
 import type { Metadata } from 'next'
 
@@ -18,11 +17,6 @@ export default async function MyAccountPage({
 
 	if (error) {
 		return <NotFoundPage />
-	}
-
-	let logoFile = null
-	if (brand && brand.logoPath) {
-		logoFile = await useFileByPath(brand.logoPath)
 	}
 
 	return (

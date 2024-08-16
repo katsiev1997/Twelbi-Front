@@ -6,8 +6,9 @@ export const errorLink = onError(({ graphQLErrors }) => {
 	if (graphQLErrors) {
 		graphQLErrors.forEach(({ extensions, message }) => {
 			if (extensions?.code === 'UNAUTHENTICATED' && message === 'Logout') {
-				destroySession()
-				sessionStorage.removeItem(EnumSession.QUERY_USER)
+				destroySession().finally(() =>
+					sessionStorage.removeItem(EnumSession.QUERY_USER)
+				)
 			}
 		})
 	}
