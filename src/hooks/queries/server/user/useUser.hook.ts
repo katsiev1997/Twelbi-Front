@@ -1,10 +1,9 @@
 import { useUserQuery } from '@/__generated__/output'
 import { EnumSession } from '@/constants/enums.constants'
 import { destroySession, setUser } from '@/server/auth/get-server-session'
-import type { TypeAuthUser } from '@/shared/types/auth/auth.type'
 import { useEffect, useState } from 'react'
 
-export const useUser = (user?: TypeAuthUser) => {
+export const useUser = () => {
 	const [isMounted, setIsMounted] = useState(false)
 
 	useEffect(() => {
@@ -15,7 +14,7 @@ export const useUser = (user?: TypeAuthUser) => {
 		isMounted && !!sessionStorage.getItem(EnumSession.QUERY_USER)
 
 	useUserQuery({
-		skip: !isMounted || (!!user && isQueried),
+		skip: !isMounted || isQueried,
 		onCompleted: async ({ user }) => {
 			if (!user) {
 				await destroySession()

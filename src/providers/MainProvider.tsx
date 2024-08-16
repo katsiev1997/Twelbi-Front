@@ -30,7 +30,7 @@ export default function MainProvider({
 				zIndex={10}
 			/>
 			<ApolloProvider client={apolloClient}>
-				<AuthProvider user={user} />
+				<AuthProvider />
 				<AuthConfirmationProvider />
 				<AuthVerificationProvider />
 				{children}
