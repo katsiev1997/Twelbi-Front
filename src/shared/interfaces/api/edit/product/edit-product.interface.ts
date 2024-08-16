@@ -1,5 +1,6 @@
 import type { ProductInput } from '@/__generated__/output'
 import type { IOption } from '@/shared/interfaces/common/form/form.interface'
+import { IModal } from '@/shared/interfaces/common/modal/modal.interface'
 import type { ApolloError } from '@apollo/client'
 import type { ButtonHTMLAttributes } from 'react'
 import type { UseFieldArrayReturn, UseFormReturn } from 'react-hook-form'
@@ -31,7 +32,10 @@ export interface IEditProducts extends IEditProps {
 }
 
 export interface IEdit extends IEditProps {
+	modal: IModal & {
+		isShow: boolean
+		openModal: () => void
+	}
 	type: 'product'
 	button: ButtonHTMLAttributes<HTMLButtonElement>
-	heading: string
 }

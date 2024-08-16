@@ -2,7 +2,6 @@
 
 import { apolloClient } from '@/api/apollo/apollo.client'
 import { ACCENT_COLOR, IS_PRODUCTION } from '@/constants/global.constants'
-import type { ISessionUser } from '@/shared/interfaces/api/user/user.interface'
 import { ApolloProvider } from '@apollo/client'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import NextTopLoader from 'nextjs-toploader'
@@ -17,10 +16,7 @@ if (!IS_PRODUCTION) {
 	loadErrorMessages()
 }
 
-export default function MainProvider({
-	children,
-	user,
-}: PropsWithChildren & ISessionUser) {
+export default function MainProvider({ children }: PropsWithChildren) {
 	return (
 		<>
 			<NextTopLoader

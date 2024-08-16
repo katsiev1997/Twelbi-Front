@@ -23,7 +23,6 @@ const Products: FC<IProducts> = ({
 	pagination,
 	hasMoreBtn,
 	products: queriedProducts,
-	count,
 	hasWrapper = true,
 	wrapperClassName,
 	filtersClassName,

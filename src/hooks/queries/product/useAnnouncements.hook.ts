@@ -13,6 +13,8 @@ import toast from 'react-hot-toast'
 import { useSelectCategories } from '../category/useSelectCategories.hook'
 
 export const useAnnouncements = (query: ProductQueryInput) => {
+	const [isShow, setIsShow] = useState(false)
+
 	const form = useForm<ProductInput>({
 		mode: 'onChange',
 		defaultValues: {
@@ -32,6 +34,9 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 		name: 'imagesPaths',
 		control: form.control,
 	})
+
+	const openModal = () => setIsShow(true)
+	const closeModal = () => setIsShow(false)
 
 	const [checked, setChecked] = useState<number[]>([])
 	const [announcements, setAnnouncements] = useState<AnnouncementCard[]>([])
@@ -127,6 +132,7 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 
 					return newData.slice(query.perPage || 15)
 				})
+				closeModal()
 			},
 			onError: ({ message }) => {
 				toast.error(message)
@@ -148,6 +154,7 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 
 					return [editAnnouncement, ...newData].slice(0, query.perPage || 15)
 				})
+				closeModal()
 			},
 			onError: ({ message }) => {
 				toast.error(message)
@@ -171,5 +178,8 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 		form,
 		pricesForm,
 		imagesForm,
+		openModal,
+		closeModal,
+		isShow,
 	}
 }

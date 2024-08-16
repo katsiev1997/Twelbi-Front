@@ -229,7 +229,6 @@ const EditProduct: FC<IEditProducts> = ({
 													)}
 													error={error}
 													fileType={EnumFile.IMAGE}
-													label="Видео"
 												/>
 											)}
 											rules={{
@@ -255,7 +254,7 @@ const EditProduct: FC<IEditProducts> = ({
 						<button
 							className={styles.add}
 							type="button"
-							onClick={() => imagesAppend('')}
+							onClick={() => imagesAppend(null)}
 						>
 							Добавить картинку
 						</button>

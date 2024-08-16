@@ -7,6 +7,7 @@ import AnnouncementCard from '@/components/parts/announcement-card/AnnouncementC
 import { ACCOUNT_ANNOUNCEMENTS_DATA } from '@/components/screens/secure/account/data/announcements.data'
 import Picture from '@/components/ui/common/picture/Picture'
 import Check from '@/components/ui/elements/check/Check'
+import Edit from '@/components/ui/elements/edits/Edit'
 import Filter from '@/components/ui/elements/filters/Filter'
 import MiniLoader from '@/components/ui/elements/loaders/mini/MiniLoader'
 import { SITE_NAME } from '@/constants/details.constants'
@@ -18,28 +19,31 @@ import AnnouncementSearch from './search/AnnouncementSearch'
 
 const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 	const {
-		// categories,
-		// get,
-		// create,
-		// update,
+		categories,
+		get,
+		create,
+		update,
 		toggle,
 		checked,
 		setChecked,
-		// scrollRef,
-		// announcements,
-		// count,
-		// error,
-		// loading,
-		// form,
-		// pricesForm,
-		// imagesForm,
+		scrollRef,
+		announcements,
+		count,
+		error,
+		loading,
+		form,
+		pricesForm,
+		imagesForm,
+		openModal,
+		closeModal,
+		isShow,
 	} = useAnnouncements({
 		perPage: 15,
 		page: 1,
 		sort: Sort.Desc,
 	})
 
-	// if (error) return null
+	if (error) return null
 
 	return (
 		<div className={styles.wrapper}>
@@ -71,12 +75,10 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 				<AnnouncementSearch />
 			</div>
 			<div className={styles.fill}>
-				{/* Count and scrollRef */}
-				{true ? (
-					<div ref={undefined} className={styles.announcements}>
-						{/* !Loading */}
-						{true ? (
-							ACCOUNT_ANNOUNCEMENTS_DATA.map((announcement) => (
+				{count ? (
+					<div ref={scrollRef} className={styles.announcements}>
+						{!loading ? (
+							announcements.map((announcement) => (
 								<div key={announcement.id} className={styles.announcement}>
 									<div className={styles.pick}>
 										<Check
@@ -98,11 +100,7 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 				) : (
 					''
 				)}
-				<button className={styles.add} type="button">
-					<Picture src={plusIcon.src} alt="Плюс" />
-					Добавить объявление
-				</button>
-				{/* <Edit
+				<Edit
 					type="product"
 					button={{
 						type: 'button',
@@ -118,12 +116,18 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 						arrays: [pricesForm, imagesForm],
 						props: form,
 					}}
-					heading="Добавить объявление"
+					modal={{
+						isShow,
+						openModal,
+						closeModal,
+						heading: 'Добавить объявление',
+						size: 'lg',
+					}}
 					create={{
 						handler: create,
 					}}
 					categories={categories}
-				/> */}
+				/>
 			</div>
 		</div>
 	)

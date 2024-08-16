@@ -47,7 +47,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang="en">
 			<body className={montserrat.variable}>
-				<MainProvider user={user}>
+				<MainProvider>
 					{user && user.role === UserRole.Provider ? (
 						<AccountHeader
 							iron={{

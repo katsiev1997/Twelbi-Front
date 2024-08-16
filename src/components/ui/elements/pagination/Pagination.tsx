@@ -26,7 +26,7 @@ const Pagination: FC<IClassName & IPagination> = ({
 		setPage,
 	})
 
-	if(pagesCount % step !== 0) return null
+	if (pagesCount <= 1) return null
 
 	return (
 		<div className={cn(styles.pagination, className)}>

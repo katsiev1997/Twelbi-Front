@@ -46,6 +46,7 @@ export const usePagination = ({
 			if (scrollTop + clientHeight >= scrollHeight * 0.9) {
 				if (page % step !== 0) {
 					setPage((prev) => prev + 1)
+					console.log(page)
 				}
 			}
 		}

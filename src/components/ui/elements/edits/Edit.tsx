@@ -1,20 +1,18 @@
 import type { IEdit } from '@/shared/interfaces/api/edit/product/edit-product.interface'
-import { useState, type FC } from 'react'
+import type { FC } from 'react'
 import Modal from '../../templates/modal/Modal'
 import styles from './Edit.module.scss'
 import EditProduct from './product/EditProduct'
 
 const Edit: FC<IEdit> = ({
 	type,
+	modal,
 	button,
-	heading,
 	form,
 	create,
 	update,
 	categories,
 }) => {
-	const [isShow, setIsShow] = useState(false)
-
 	if (!create && !update) return null
 
 	const content =
@@ -31,13 +29,13 @@ const Edit: FC<IEdit> = ({
 
 	return (
 		<>
-			<button
-				className={styles.toggle}
-				onClick={() => setIsShow(!isShow)}
-				{...button}
-			/>
-			{isShow && (
-				<Modal heading={heading} closeModal={() => setIsShow(false)} size="lg">
+			<button className={styles.toggle} onClick={modal.openModal} {...button} />
+			{modal.isShow && (
+				<Modal
+					heading={modal.heading}
+					closeModal={modal.closeModal}
+					size={modal.size}
+				>
 					{content}
 				</Modal>
 			)}
