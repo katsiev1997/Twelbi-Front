@@ -1,6 +1,5 @@
 schema:
-  - ${GRAPHQL_SERVER_URL: "			url: 'https://back.keeywork.store/api/mygraphql',
-"}
+  - ${GRAPHQL_SERVER_URL: "https://back.keeywork.store/api/mygraphql"}
 documents:
   - 'src/schemas/**/*.graphql'
 generates:

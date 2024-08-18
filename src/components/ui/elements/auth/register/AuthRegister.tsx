@@ -58,11 +58,7 @@ const AuthRegister: FC = () => {
 				rules={PHONE_VALIDATION('Телефон')}
 			/>
 			<PasswordField
-				{...registerInput('password', {
-					...LENGTH_VALIDATION('Пароль', 6),
-					validate: (value) =>
-						value !== watch('confirmPassword') && 'Пароли не совпадают',
-				})}
+				{...registerInput('password', LENGTH_VALIDATION('Пароль', 6))}
 				className={styles.password}
 				placeholder="Пароль"
 				error={errors.password}
@@ -71,7 +67,7 @@ const AuthRegister: FC = () => {
 				{...registerInput('confirmPassword', {
 					...REQUIRED_VALIDATION('Подтвердить пароль'),
 					validate: (value) =>
-						value !== watch('password') && 'Пароли не совпадают',
+						value === watch('password') ? true : 'Пароли не совпадают.',
 				})}
 				className={styles.password}
 				placeholder="Подтвердить пароль"

@@ -23,6 +23,7 @@ export const useJwtAuthConfirmation = () => {
 	const [sendConfirmation, { loading }] = useJwtConfirmationMutation()
 
 	const onSubmit: SubmitHandler<JwtAuthConfirmationInput> = async (data) => {
+		console.log('asa')
 		if (remainingTime) {
 			return toast.error(
 				`Мы уже отправили ссылку для подтверждения на вашу электронную почту. Вы можете попробовать снова через ${formatTimer(
