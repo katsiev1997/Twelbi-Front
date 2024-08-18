@@ -25,7 +25,7 @@ import { useSelectCategories } from '../category/useSelectCategories.hook'
 
 export const useAnnouncements = (
 	query: ProductQueryInput,
-	setBalance: Dispatch<SetStateAction<number | undefined>>
+	setBalance: Dispatch<SetStateAction<number>>
 ) => {
 	const { searchTerm, debounceSearch, handleSearch } = useSearchFilter()
 	const [modal, setModal] = useState({

@@ -25,6 +25,9 @@
 .changeBtn {
 	@apply block w-fit btn-green py-2.5 px-7 rounded-full mx-auto mt-6;
 }
+.loader {
+	@apply block w-7 h-7 mx-auto;
+}
 
 @media (max-width: 1400px) {
 	.submit,

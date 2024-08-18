@@ -16,7 +16,7 @@ const Account: FC<IAccount> = ({
 	categories,
 }) => {
 	const [brand, setBrand] = useState(queriedBrand)
-	const [balance, setBalance] = useState(queriedBrand?.balance)
+	const [balance, setBalance] = useState(queriedBrand?.balance || 0)
 	const isEdit = searchParams && searchParams.type === 'edit'
 
 	return (

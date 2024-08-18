@@ -20,7 +20,7 @@ export interface IProduct extends IPageSearchParam {
 }
 
 export interface IAnnouncements {
-	setBalance: Dispatch<SetStateAction<number | undefined>>
+	setBalance: Dispatch<SetStateAction<number>>
 	tariffs: Tariff[]
 }
 
