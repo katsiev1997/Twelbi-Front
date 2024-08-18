@@ -19,7 +19,7 @@ import Link from 'next/link'
 import type { FC } from 'react'
 import styles from './AccountSidebar.module.scss'
 
-const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
+const AccountSidebar: FC<IAccountBrand> = ({ brand, balance }) => {
 	const getContactItems = (brand: AccountBrand) => {
 		const items = [
 			{
@@ -113,7 +113,7 @@ const AccountSidebar: FC<IAccountBrand> = ({ brand }) => {
 						<div className={styles.money}>
 							<Picture src={balanceIcon.src} alt="Баланс" />
 							<span>Баланс:</span>
-							<strong>{formatNumber(brand.balance)} руб.</strong>
+							<strong>{formatNumber(balance)} руб.</strong>
 						</div>
 						<TopUp className={styles.topUp}>
 							<span>+</span> Пополнить баланс

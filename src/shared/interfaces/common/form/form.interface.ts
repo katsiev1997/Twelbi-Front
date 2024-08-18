@@ -29,6 +29,11 @@ export interface IField extends IFieldProps {
 	onChange: (...event: any[]) => void
 }
 
+export interface ITextarea extends IFieldProps {
+	onChange: (...event: any[]) => void
+	value?: string
+}
+
 export interface IMaskField extends IFieldProps {
 	mask: string
 	value: string

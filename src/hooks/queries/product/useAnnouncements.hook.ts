@@ -1,19 +1,69 @@
 import {
 	type AnnouncementCard,
-	ProductInput,
+	AnnouncementsDocument,
+	type OrderInput,
+	type ProductInput,
 	type ProductQueryInput,
 	useAnnouncementByIdQuery,
 	useAnnouncementsQuery,
+	useDeleteProductMutation,
 	useEditAnnouncementMutation,
+	usePlaceOrderMutation,
 } from '@/__generated__/output'
+import { useSearchFilter } from '@/hooks/helpers/filters/useSearchFilter'
 import { getKeys } from '@/utils/helpers/get-keys.util'
-import { useEffect, useRef, useState } from 'react'
+import {
+	type Dispatch,
+	type SetStateAction,
+	useEffect,
+	useRef,
+	useState,
+} from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useSelectCategories } from '../category/useSelectCategories.hook'
 
-export const useAnnouncements = (query: ProductQueryInput) => {
-	const [isShow, setIsShow] = useState(false)
+export const useAnnouncements = (
+	query: ProductQueryInput,
+	setBalance: Dispatch<SetStateAction<number | undefined>>
+) => {
+	const { searchTerm, debounceSearch, handleSearch } = useSearchFilter()
+	const [modal, setModal] = useState({
+		isShow: false,
+		type: 'create' || 'update',
+		id: null as number | null,
+	})
+
+	const [checked, setChecked] = useState<number[]>([])
+	const [announcements, setAnnouncements] = useState<AnnouncementCard[]>([])
+	const [page, setPage] = useState(1)
+
+	const scrollRef = useRef<HTMLDivElement>(null)
+
+	const openCreateModal = () =>
+		setModal({
+			isShow: true,
+			type: 'create',
+			id: null,
+		})
+	const closeCreateModal = () =>
+		setModal({
+			isShow: false,
+			type: 'create',
+			id: null,
+		})
+	const openUpdateModal = (id: number) =>
+		setModal({
+			isShow: true,
+			type: 'update',
+			id,
+		})
+	const closeUpdateModal = (id: number) =>
+		setModal({
+			isShow: false,
+			type: 'update',
+			id,
+		})
 
 	const form = useForm<ProductInput>({
 		mode: 'onChange',
@@ -24,34 +74,76 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 					minQuantity: '10',
 				},
 			],
+			imagesPaths: [
+				{
+					url: '',
+				},
+			],
 		},
 	})
+
 	const pricesForm = useFieldArray({
 		name: 'prices',
 		control: form.control,
 	})
+
 	const imagesForm = useFieldArray({
 		name: 'imagesPaths',
 		control: form.control,
 	})
 
-	const openModal = () => setIsShow(true)
-	const closeModal = () => setIsShow(false)
-
-	const [checked, setChecked] = useState<number[]>([])
-	const [announcements, setAnnouncements] = useState<AnnouncementCard[]>([])
-
-	const scrollRef = useRef<HTMLDivElement>(null)
-	const [page, setPage] = useState(1)
-	const { data, error, loading } = useAnnouncementsQuery({
-		variables: {
-			query,
+	const [editAnnouncement] = useEditAnnouncementMutation({
+		fetchPolicy: 'no-cache',
+	})
+	const [deleteAnnouncement] = useDeleteProductMutation({
+		fetchPolicy: 'no-cache',
+	})
+	const [placeOrderMutate] = usePlaceOrderMutation({
+		fetchPolicy: 'no-cache',
+		onError: ({ message }) => {
+			toast.error(message)
 		},
 	})
 
-	const count = data?.announcements.count || 0
+	const placeOrder = (
+		data: OrderInput,
+		price: number,
+		closeModal: () => void
+	) =>
+		placeOrderMutate({
+			variables: {
+				data,
+			},
+			onCompleted: ({ placeOrder }) => {
+				setAnnouncements((prev) => {
+					return prev.map((item) => {
+						if (item.id !== data.productId) {
+							return item
+						}
+
+						return {
+							...item,
+							orders: [...item.orders, placeOrder],
+						}
+					})
+				})
+				setBalance((prev) => prev && (prev - price < 0 ? prev : prev - price))
+				closeModal()
+			},
+		})
+	const { categories } = useSelectCategories()
+	const { data, error } = useAnnouncementsQuery({
+		fetchPolicy: 'no-cache',
+		variables: {
+			query: {
+				...query,
+				searchTerm: debounceSearch,
+			},
+		},
+	})
 
 	useEffect(() => {
+		const count = data?.announcements.count || 0
 		const pagesCount = Math.ceil(count / (query.perPage || 15))
 		const scrollArea = scrollRef.current
 
@@ -69,10 +161,11 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
 		}
-	}, [page, count])
+	}, [page])
 
 	useEffect(() => {
 		const announcements = data?.announcements.announcements
+
 		if (announcements) {
 			setAnnouncements(announcements)
 		}
@@ -86,18 +179,16 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 		)
 	}
 
-	const { categories } = useSelectCategories()
-	const [editAnnouncements] = useEditAnnouncementMutation()
-
 	const get = (id: number) => {
 		const { loading, error } = useAnnouncementByIdQuery({
+			fetchPolicy: 'no-cache',
 			variables: {
 				id,
 			},
 			onCompleted: ({ announcementById }) => {
 				const { category, posterPath, videoPath, ...response } =
 					announcementById
-
+				console.log(announcementById)
 				form.setValue('category', {
 					name: category.name,
 					value: category.id,
@@ -122,7 +213,7 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 	}
 
 	const create = (data: ProductInput) => {
-		editAnnouncements({
+		editAnnouncement({
 			variables: {
 				data,
 			},
@@ -130,9 +221,10 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 				setAnnouncements((prev) => {
 					const newData = [editAnnouncement, ...prev]
 
-					return newData.slice(query.perPage || 15)
+					return newData.slice(0, query.perPage || 15)
 				})
-				closeModal()
+				closeCreateModal()
+				form.reset()
 			},
 			onError: ({ message }) => {
 				toast.error(message)
@@ -141,7 +233,7 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 	}
 
 	const update = (announcementId: number, data: ProductInput) => {
-		editAnnouncements({
+		editAnnouncement({
 			variables: {
 				data,
 				announcementId,
@@ -152,12 +244,27 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 						item.id === announcementId ? editAnnouncement : item
 					)
 
-					return [editAnnouncement, ...newData].slice(0, query.perPage || 15)
+					return newData.slice(0, query.perPage || 15)
 				})
-				closeModal()
+				closeUpdateModal(announcementId)
 			},
 			onError: ({ message }) => {
 				toast.error(message)
+			},
+		})
+	}
+
+	const remove = (id: number) => {
+		deleteAnnouncement({
+			refetchQueries: [AnnouncementsDocument],
+			variables: {
+				id,
+			},
+			onCompleted: () => {
+				toast.success('Продукт успешно удален.')
+			},
+			onError: () => {
+				toast.error('Возникла ошибка.Пожалуйста попробуйте позже.')
 			},
 		})
 	}
@@ -167,19 +274,23 @@ export const useAnnouncements = (query: ProductQueryInput) => {
 		get,
 		create,
 		update,
+		remove,
 		toggle,
 		checked,
 		setChecked,
 		scrollRef,
 		announcements,
-		count: data?.announcements.count || 0,
 		error,
-		loading,
 		form,
 		pricesForm,
 		imagesForm,
-		openModal,
-		closeModal,
-		isShow,
+		openCreateModal,
+		closeCreateModal,
+		openUpdateModal,
+		closeUpdateModal,
+		modal,
+		searchTerm,
+		handleSearch,
+		placeOrder,
 	}
 }

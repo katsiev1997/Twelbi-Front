@@ -37,9 +37,13 @@
 	padding-right: 22px;
 }
 .announcements {
-	@apply flex flex-col scrollbar-y pr-16;
+	@apply flex flex-col scrollbar-y;
 	max-height: 660px;
 	gap: 30px;
+
+	&.big {
+		@apply pr-16;
+	}
 }
 .add {
 	@apply w-fit mx-auto mt-10 flex items-center gap-1.5 font-medium text-medium-lg px-9 py-2 rounded-full bg-gray-100;
@@ -49,6 +53,9 @@
 }
 .loader {
 	@apply w-10 h-10 mx-auto mb-5 mt-10;
+}
+.pick {
+	@apply flex;
 }
 
 @media (max-width: 1600px) {
@@ -149,7 +156,7 @@
 		@apply relative;
 	}
 	.pick {
-		@apply absolute z-1 top-0 left-0 px-1.5 pb-1.5 pt-2 flex items-center justify-center rounded-br-sm bg-white black-shadow border border-gray-100;
+		@apply absolute z-1 top-0 left-0 px-1.5 pb-1.5 pt-2 items-center justify-center rounded-br-sm bg-white black-shadow border border-gray-100;
 		border-top-left-radius: 14px;
 	}
 	.search {

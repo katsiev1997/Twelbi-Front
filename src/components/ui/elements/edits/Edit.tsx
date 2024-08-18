@@ -29,7 +29,13 @@ const Edit: FC<IEdit> = ({
 
 	return (
 		<>
-			<button className={styles.toggle} onClick={modal.openModal} {...button} />
+			{button && (
+				<button
+					className={styles.toggle}
+					onClick={modal.openModal}
+					{...button}
+				/>
+			)}
 			{modal.isShow && (
 				<Modal
 					heading={modal.heading}

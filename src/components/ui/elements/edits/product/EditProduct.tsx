@@ -4,11 +4,11 @@ import { useFileUploadProps } from '@/hooks/helpers/file/useFileUpload.hook'
 import type { IEditProducts } from '@/shared/interfaces/api/edit/product/edit-product.interface'
 import cn from 'clsx'
 import { Trash2 } from 'lucide-react'
-import { useState, type FC } from 'react'
+import { type FC } from 'react'
 import { Controller } from 'react-hook-form'
 import Field from '../../form/field/Field'
 import ReactSelect from '../../form/react-select/ReactSelect'
-import TextEditor from '../../form/text-editor/TextEditor'
+import Textarea from '../../form/textarea/Textarea'
 import UploadField from '../../form/upload/UploadField'
 import {
 	EDITOR_VALIDATION,
@@ -17,7 +17,8 @@ import {
 	REQUIRED_VALIDATION,
 } from '../../form/validation/form.validation'
 import MiniLoader from '../../loaders/mini/MiniLoader'
-import styles from '../Edit.module.scss'
+import globalStyles from '../Edit.module.scss'
+import styles from './EditProduct.module.scss'
 
 const EditProduct: FC<IEditProducts> = ({
 	categories,
@@ -39,20 +40,9 @@ const EditProduct: FC<IEditProducts> = ({
 		],
 	},
 }) => {
-	const [{ loading, error }, setState] = useState({
-		loading: false,
-		error: undefined as any,
-	})
+	const props = update && update.get(update.id)
 
-	if (update) {
-		const { loading, error } = update.get(update.id)
-		setState({
-			loading,
-			error,
-		})
-	}
-
-	if (error) return null
+	if (props?.error) return null
 
 	const onSubmit = (data: ProductInput) => {
 		if (create) {
@@ -62,8 +52,8 @@ const EditProduct: FC<IEditProducts> = ({
 		}
 	}
 
-	return !loading ? (
-		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+	return !props?.loading ? (
+		<form className={globalStyles.form} onSubmit={handleSubmit(onSubmit)}>
 			<Field
 				{...register('name', LENGTH_VALIDATION('Название', 5, 100))}
 				className={styles.field}
@@ -90,13 +80,13 @@ const EditProduct: FC<IEditProducts> = ({
 				)}
 				rules={REQUIRED_VALIDATION('Категория')}
 			/>
-			<div className={styles.box}>
-				<h4 className={styles.title}>Цена</h4>
-				<div className={styles.object}>
-					<div className={styles.cols}>
+			<div className={styles.priceBox}>
+				<h4 className={globalStyles.title}>Цена</h4>
+				<div className={styles.priceObject}>
+					<div className={styles.prices}>
 						{priceFields.map((field, index) => (
-							<div className={cn(styles.col, styles.prices)} key={field.id}>
-								<div className={styles.fields}>
+							<div className={styles.price} key={field.id}>
+								<div className={styles.priceFields}>
 									<Field
 										{...register(`prices.${index}.price`, {
 											...REQUIRED_VALIDATION('Цена'),
@@ -118,7 +108,7 @@ const EditProduct: FC<IEditProducts> = ({
 								</div>
 								{priceFields.length > 1 && (
 									<button
-										className={styles.remove}
+										className={globalStyles.remove}
 										type="button"
 										onClick={() => priceRemove(index)}
 									>
@@ -130,7 +120,7 @@ const EditProduct: FC<IEditProducts> = ({
 					</div>
 					{priceFields.length < 3 && (
 						<button
-							className={styles.add}
+							className={globalStyles.add}
 							type="button"
 							onClick={() =>
 								priceAppend({
@@ -144,14 +134,72 @@ const EditProduct: FC<IEditProducts> = ({
 					)}
 				</div>
 			</div>
-			<div className={styles.uploads}>
+			<div className={styles.imagesBox}>
+				<h4 className={globalStyles.title}>Картинки</h4>
+				<div className={styles.imagesObject}>
+					<div className={styles.images}>
+						{imagesFields.map((field, index) => (
+							<div className={styles.file} key={field.id}>
+								<Controller
+									name={`imagesPaths.${index}.url`}
+									control={control}
+									defaultValue=""
+									render={({ field: { onChange }, fieldState: { error } }) => (
+										<UploadField
+											className={styles.uploadField}
+											buttonClassName={cn(styles.uploadBtn, styles.image)}
+											{...useFileUploadProps(
+												onChange,
+												watch,
+												setValue,
+												resetField,
+												`imagesPaths.${index}.url`,
+												`imagesFiles.${index}.file`
+											)}
+											error={error}
+											fileType={EnumFile.IMAGE}
+										/>
+									)}
+									rules={{
+										validate: {
+											required: (value) =>
+												value || watch(`imagesFiles.${index}.file`)
+													? true
+													: 'Картинка обязательно.',
+										},
+									}}
+								/>
+								<button
+									className={globalStyles.remove}
+									type="button"
+									onClick={() => imagesRemove(index)}
+								>
+									<Trash2 />
+								</button>
+							</div>
+						))}
+					</div>
+					<button
+						className={globalStyles.add}
+						type="button"
+						onClick={() => {
+							imagesAppend({
+								url: '',
+							})
+						}}
+					>
+						Добавить картинку
+					</button>
+				</div>
+			</div>
+			<div className={styles.bottom}>
 				<Controller
 					name="posterPath"
 					control={control}
 					defaultValue=""
 					render={({ field: { onChange }, fieldState: { error } }) => (
 						<UploadField
-							className={styles.uploadField}
+							className={styles.uploadPoster}
 							buttonClassName={cn(styles.uploadBtn, styles.poster)}
 							{...useFileUploadProps(
 								onChange,
@@ -179,7 +227,7 @@ const EditProduct: FC<IEditProducts> = ({
 					defaultValue=""
 					render={({ field: { onChange }, fieldState: { error } }) => (
 						<UploadField
-							className={styles.uploadField}
+							className={styles.uploadVideo}
 							buttonClassName={cn(styles.uploadBtn, styles.video)}
 							{...useFileUploadProps(
 								onChange,
@@ -201,82 +249,23 @@ const EditProduct: FC<IEditProducts> = ({
 						},
 					}}
 				/>
-				<div className={cn(styles.box, styles.images)}>
-					<h4 className={styles.title}>Картинки</h4>
-					<div className={styles.object}>
-						<div className={styles.cols}>
-							{imagesFields.map((field, index) => (
-								<div className={styles.col} key={field.id}>
-									<div className={styles.files}>
-										<Controller
-											name={`imagesPaths.${index}`}
-											control={control}
-											defaultValue=""
-											render={({
-												field: { onChange },
-												fieldState: { error },
-											}) => (
-												<UploadField
-													className={styles.uploadField}
-													buttonClassName={cn(styles.uploadBtn, styles.video)}
-													{...useFileUploadProps(
-														onChange,
-														watch,
-														setValue,
-														resetField,
-														`imagesPaths.${index}`,
-														`imagesFiles.${index}`
-													)}
-													error={error}
-													fileType={EnumFile.IMAGE}
-												/>
-											)}
-											rules={{
-												validate: {
-													required: (value) =>
-														value || watch(`imagesFiles.${index}`)
-															? true
-															: 'Картинка обязательно.',
-												},
-											}}
-										/>
-									</div>
-									<button
-										className={styles.remove}
-										type="button"
-										onClick={() => imagesRemove(index)}
-									>
-										<Trash2 />
-									</button>
-								</div>
-							))}
-						</div>
-						<button
-							className={styles.add}
-							type="button"
-							onClick={() => imagesAppend(null)}
-						>
-							Добавить картинку
-						</button>
-					</div>
-				</div>
+				<Controller
+					name="about"
+					control={control}
+					defaultValue=""
+					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						<Textarea
+							className={styles.editor}
+							onChange={onChange}
+							error={error}
+							value={value}
+							label="Описание"
+						/>
+					)}
+					rules={EDITOR_VALIDATION('Описание', 100, 1500)}
+				/>
 			</div>
-			<Controller
-				name="about"
-				control={control}
-				defaultValue=""
-				render={({ field: { value, onChange }, fieldState: { error } }) => (
-					<TextEditor
-						className={styles.editor}
-						onChange={onChange}
-						error={error}
-						value={value}
-						label="Описание"
-					/>
-				)}
-				rules={EDITOR_VALIDATION('Описание', 100, 1500)}
-			/>
-			<button className={styles.submit}>Сохранить</button>
+			<button className={globalStyles.submit}>Сохранить</button>
 		</form>
 	) : (
 		<MiniLoader />

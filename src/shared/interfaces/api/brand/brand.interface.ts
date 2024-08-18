@@ -17,6 +17,11 @@ export interface IBrand extends IPageSearchParam {
 
 export interface IAccountBrand {
 	brand: AccountBrand
+	balance?: number
+}
+
+export interface IAccountBalance {
+	balance: number
 }
 
 export interface IAccount extends IPageSearchParam {

@@ -226,6 +226,14 @@ export type CurrentAdvertising = {
   weekPrice: Scalars['String']['output'];
 };
 
+export type FileInput = {
+  file?: InputMaybe<Scalars['Upload']['input']>;
+};
+
+export type FilePathInput = {
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type FullestQueryInput = {
   page?: InputMaybe<Scalars['Int']['input']>;
   perPage?: InputMaybe<Scalars['Int']['input']>;
@@ -261,7 +269,6 @@ export type JwtAuthVerificationInput = {
 
 export type Mutation = {
   balanceTopUp: YookassaPayment;
-  buyTariff: NestedOrder;
   createAdvertising: Id;
   createBrand: AccountBrand;
   createCategory: Scalars['Boolean']['output'];
@@ -275,6 +282,7 @@ export type Mutation = {
   jwtReset: Scalars['Boolean']['output'];
   jwtVerification: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
+  placeOrder: NestedOrder;
   telegramAuth: SessionUserResponse;
   updateAdvertising: Scalars['Boolean']['output'];
   updateBrand: AccountBrand;
@@ -284,11 +292,6 @@ export type Mutation = {
 
 export type MutationBalanceTopUpArgs = {
   data: YookassaInput;
-};
-
-
-export type MutationBuyTariffArgs = {
-  data: OrderInput;
 };
 
 
@@ -341,6 +344,11 @@ export type MutationJwtResetArgs = {
 
 export type MutationJwtVerificationArgs = {
   data: JwtAuthVerificationInput;
+};
+
+
+export type MutationPlaceOrderArgs = {
+  data: OrderInput;
 };
 
 
@@ -444,11 +452,29 @@ export type ProductCard = {
   rating: Scalars['Int']['output'];
 };
 
+export type ProductEdit = {
+  about: Scalars['String']['output'];
+  category: SelectCategory;
+  createdAt: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  imagesPaths: Array<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  posterPath: Scalars['String']['output'];
+  prices: Array<Price>;
+  provider: NestedProductBrand;
+  rating: Scalars['String']['output'];
+  reviews: Array<ReviewCard>;
+  reviewsCount: Scalars['Int']['output'];
+  sku: Scalars['String']['output'];
+  videoPath?: Maybe<Scalars['String']['output']>;
+  views: Scalars['Int']['output'];
+};
+
 export type ProductInput = {
   about: Scalars['String']['input'];
   category: SelectInput;
-  imagesFiles?: InputMaybe<Array<Scalars['Upload']['input']>>;
-  imagesPaths?: InputMaybe<Array<Scalars['String']['input']>>;
+  imagesFiles?: InputMaybe<Array<FileInput>>;
+  imagesPaths?: InputMaybe<Array<FilePathInput>>;
   name: Scalars['String']['input'];
   posterFile?: InputMaybe<Scalars['Upload']['input']>;
   posterPath?: InputMaybe<Scalars['String']['input']>;
@@ -487,7 +513,7 @@ export type Query = {
   categoryById: Category;
   currentProduct: Product;
   jwtRegister: SessionUserResponse;
-  productById: Product;
+  productById: ProductEdit;
   products: AllProducts;
   reviews: AllReviews;
   selectCategories: Array<SelectCategory>;
@@ -752,6 +778,13 @@ export type UpdateCategoryMutationVariables = Exact<{
 
 export type UpdateCategoryMutation = { updateCategory: boolean };
 
+export type PlaceOrderMutationVariables = Exact<{
+  data: OrderInput;
+}>;
+
+
+export type PlaceOrderMutation = { placeOrder: { expirationDate?: string | null, isLittleLeft?: boolean | null, tariff: { type: TariffType } } };
+
 export type DeleteProductMutationVariables = Exact<{
   id: Scalars['Int']['input'];
 }>;
@@ -873,7 +906,7 @@ export type ProductByIdQueryVariables = Exact<{
 }>;
 
 
-export type ProductByIdQuery = { productById: { name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, prices: Array<{ price: string, minQuantity: string }> } };
+export type ProductByIdQuery = { productById: { name: string, about: string, sku: string, posterPath: string, videoPath?: string | null, imagesPaths: Array<string>, category: { id: number, name: string }, prices: Array<{ price: string, minQuantity: string }> } };
 
 export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1403,6 +1436,43 @@ export function useUpdateCategoryMutation(baseOptions?: Apollo.MutationHookOptio
 export type UpdateCategoryMutationHookResult = ReturnType<typeof useUpdateCategoryMutation>;
 export type UpdateCategoryMutationResult = Apollo.MutationResult<UpdateCategoryMutation>;
 export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
+export const PlaceOrderDocument = gql`
+    mutation PlaceOrder($data: OrderInput!) {
+  placeOrder(data: $data) {
+    expirationDate
+    isLittleLeft
+    tariff {
+      type
+    }
+  }
+}
+    `;
+export type PlaceOrderMutationFn = Apollo.MutationFunction<PlaceOrderMutation, PlaceOrderMutationVariables>;
+
+/**
+ * __usePlaceOrderMutation__
+ *
+ * To run a mutation, you first call `usePlaceOrderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePlaceOrderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [placeOrderMutation, { data, loading, error }] = usePlaceOrderMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function usePlaceOrderMutation(baseOptions?: Apollo.MutationHookOptions<PlaceOrderMutation, PlaceOrderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PlaceOrderMutation, PlaceOrderMutationVariables>(PlaceOrderDocument, options);
+      }
+export type PlaceOrderMutationHookResult = ReturnType<typeof usePlaceOrderMutation>;
+export type PlaceOrderMutationResult = Apollo.MutationResult<PlaceOrderMutation>;
+export type PlaceOrderMutationOptions = Apollo.BaseMutationOptions<PlaceOrderMutation, PlaceOrderMutationVariables>;
 export const DeleteProductDocument = gql`
     mutation DeleteProduct($id: Int!) {
   deleteProduct(id: $id)
@@ -2282,6 +2352,10 @@ export const ProductByIdDocument = gql`
     posterPath
     videoPath
     imagesPaths
+    category {
+      id
+      name
+    }
     prices {
       price
       minQuantity

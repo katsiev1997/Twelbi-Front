@@ -34,7 +34,7 @@ const UploadField = forwardRef<HTMLInputElement, IUploadField>(
 			? typeof value === 'string'
 				? value
 				: URL.createObjectURL(value)
-			: null
+			: ''
 
 		console.log(fileUrl)
 

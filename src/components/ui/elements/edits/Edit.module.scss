@@ -1,12 +1,5 @@
-.uploads,
-.form,
-.cols {
-	@apply w-full flex gap-y-3 gap-x-6;
-}
-.form,
-.cols,
-.uploads {
-	@apply flex-wrap;
+.form {
+	@apply w-full flex flex-wrap gap-y-3 gap-x-6;
 }
 .uploads {
 	@apply py-5 gap-y-3;

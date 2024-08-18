@@ -2,7 +2,9 @@ import { useSelectCategoriesQuery } from '@/__generated__/output'
 import type { IOption } from '@/shared/interfaces/common/form/form.interface'
 
 export const useSelectCategories = () => {
-	const { data } = useSelectCategoriesQuery()
+	const { data } = useSelectCategoriesQuery({
+		fetchPolicy: 'no-cache',
+	})
 
 	return {
 		categories: data?.selectCategories.map(

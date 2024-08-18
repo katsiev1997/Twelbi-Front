@@ -51,8 +51,11 @@ const ProductCard: FC<IProductCard> = ({ product, setProducts, className }) => {
 						</>
 					) : (
 						<>
-							{formatNumber(product.minPrice)} -{' '}
-							{formatNumber(product.maxPrice)}
+							{product.minPrice === product.maxPrice
+								? formatNumber(product.minPrice)
+								: formatNumber(product.minPrice) +
+								  ' - ' +
+								  formatNumber(product.maxPrice)}
 						</>
 					)}
 					{}

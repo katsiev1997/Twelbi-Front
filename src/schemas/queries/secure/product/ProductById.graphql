@@ -6,6 +6,10 @@ query ProductById($id: Int!) {
 		posterPath
 		videoPath
 		imagesPaths
+		category {
+			id
+			name
+		}
 		prices {
 			price
 			minQuantity

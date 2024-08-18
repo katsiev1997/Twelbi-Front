@@ -1,0 +1,56 @@
+.uploads,
+.cols {
+	@apply w-full flex flex-wrap gap-y-3 gap-x-6;
+}
+.priceBox {
+	@apply w-full;
+}
+.prices {
+	@apply w-full flex items-start gap-3;
+}
+.price {
+	@apply w-full;
+	max-width: calc(100% / 3 - 8px);
+}
+.priceFields {
+	@apply flex flex-col gap-3;
+}
+.images {
+	@apply w-full flex flex-wrap items-start gap-3;
+}
+.file {
+	@apply w-full;
+	max-width: calc(20% - 10px);
+}
+.imagesBox {
+	@apply w-full;
+}
+.poster,
+.image {
+	@apply w-full;
+	aspect-ratio: 3 / 4;
+}
+.poster {
+	width: 300px;
+}
+.video {
+	@apply aspect-square;
+	width: 400px;
+}
+.uploadPoster,
+.uploadVideo {
+	@apply w-fit;
+}
+.file {
+	@apply flex items-center gap-2;
+}
+.bottom {
+	@apply w-full flex items-start gap-3;
+}
+.editor {
+	@apply w-full h-full;
+
+	textarea {
+		@apply h-full resize-none;
+	}
+}

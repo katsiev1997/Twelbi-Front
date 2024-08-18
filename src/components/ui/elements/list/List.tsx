@@ -27,17 +27,13 @@ const List: FC<IList> = ({
 		</>
 	)
 
-	const renderItem = (item: IListItem, index: number) => {
+	const renderItem = ({ onClick, ...item }: IListItem, index: number) => {
 		const content = renderContent(item)
 
 		return (
 			<li className={itemClassName} key={index}>
-				{item.onClick ? (
-					<button
-						className={buttonClassName}
-						type="button"
-						onClick={item.onClick}
-					>
+				{onClick ? (
+					<button className={buttonClassName} type="button" onClick={onClick}>
 						{content}
 					</button>
 				) : item.href ? (

@@ -81,7 +81,7 @@
 	}
 
 	&.payed {
-		@apply bg-gray-100;
+		@apply bg-gray-100 text-gray-500;
 	}
 
 	&.left {
@@ -89,10 +89,33 @@
 	}
 }
 .info {
-	min-width: 19px;
-	max-width: 19px;
-	min-height: 19px;
-	max-height: 19px;
+	@apply relative;
+
+	> img {
+		min-width: 19px;
+		max-width: 19px;
+		min-height: 19px;
+		max-height: 19px;
+	}
+
+	&:hover .about {
+		@apply opacity-100 visible pointer-events-auto;
+	}
+}
+.about {
+	@apply opacity-0 invisible pointer-events-none absolute bottom-full right-0 transition-opacity pb-4;
+	min-width: 208px;
+	max-width: 208px;
+}
+.description {
+	@apply w-full h-full px-3 py-2 rounded-lg bg-black text-white text-small font-medium leading-2lg scrollbar-y;
+	max-height: 90px;
+}
+.modalDescription {
+	@apply leading-3lg font-medium;
+}
+.buy {
+	@apply block w-fit mx-auto mt-4 btn-green py-2.5 px-7 font-medium rounded-full text-medium-lg;
 }
 
 @media (max-width: 1400px) {
@@ -148,7 +171,7 @@
 }
 
 @media (max-width: 900px) {
-	.info {
+	.info > img {
 		min-width: 17px;
 		max-width: 17px;
 		min-height: 17px;
@@ -257,7 +280,7 @@
 			@apply max-w-3;
 		}
 	}
-	.info {
+	.info > img {
 		min-width: 15px;
 		max-width: 15px;
 		min-height: 15px;
@@ -310,7 +333,7 @@
 	.payments {
 		@apply flex-row;
 	}
-	.info {
+	.info > img {
 		@apply hidden;
 	}
 	.pay {

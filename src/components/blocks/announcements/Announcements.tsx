@@ -4,44 +4,50 @@ import { Sort } from '@/__generated__/output'
 import plusIcon from '@/assets/images/icons/plus.png'
 import sortIcon from '@/assets/images/icons/sort.png'
 import AnnouncementCard from '@/components/parts/announcement-card/AnnouncementCard'
-import { ACCOUNT_ANNOUNCEMENTS_DATA } from '@/components/screens/secure/account/data/announcements.data'
 import Picture from '@/components/ui/common/picture/Picture'
 import Check from '@/components/ui/elements/check/Check'
 import Edit from '@/components/ui/elements/edits/Edit'
 import Filter from '@/components/ui/elements/filters/Filter'
-import MiniLoader from '@/components/ui/elements/loaders/mini/MiniLoader'
 import { SITE_NAME } from '@/constants/details.constants'
 import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
 import type { IAnnouncements } from '@/shared/interfaces/api/product/product.interface'
+import cn from 'clsx'
 import type { FC } from 'react'
 import styles from './Announcements.module.scss'
 import AnnouncementSearch from './search/AnnouncementSearch'
 
-const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
+const Announcements: FC<IAnnouncements> = ({ tariffs, setBalance }) => {
 	const {
 		categories,
 		get,
 		create,
 		update,
+		remove,
 		toggle,
 		checked,
 		setChecked,
 		scrollRef,
 		announcements,
-		count,
 		error,
-		loading,
 		form,
 		pricesForm,
 		imagesForm,
-		openModal,
-		closeModal,
-		isShow,
-	} = useAnnouncements({
-		perPage: 15,
-		page: 1,
-		sort: Sort.Desc,
-	})
+		openCreateModal,
+		closeCreateModal,
+		openUpdateModal,
+		closeUpdateModal,
+		modal,
+		searchTerm,
+		handleSearch,
+		placeOrder,
+	} = useAnnouncements(
+		{
+			perPage: 15,
+			page: 1,
+			sort: Sort.Desc,
+		},
+		setBalance
+	)
 
 	if (error) return null
 
@@ -50,16 +56,20 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 			<div className={styles.top}>
 				<div className={styles.select}>
 					<Check
-						isChecked={ACCOUNT_ANNOUNCEMENTS_DATA.length === checked.length}
+						isChecked={
+							announcements.length === 0
+								? false
+								: announcements.length === checked.length
+						}
 						toggle={() =>
 							setChecked(
-								ACCOUNT_ANNOUNCEMENTS_DATA.length === checked.length
+								announcements.length === checked.length
 									? []
-									: [...ACCOUNT_ANNOUNCEMENTS_DATA.map((a) => a.id)]
+									: [...announcements.map((a) => a.id)]
 							)
 						}
 					/>
-					Выбрать {checked.length} из {ACCOUNT_ANNOUNCEMENTS_DATA.length}
+					Выбрать {checked.length} из {announcements.length}
 				</div>
 				<div className={styles.filter}>
 					<span className={styles.label}>сортировка</span>
@@ -72,33 +82,59 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 						label={`По дням на ${SITE_NAME}`}
 					/>
 				</div>
-				<AnnouncementSearch />
+				<AnnouncementSearch
+					searchTerm={searchTerm}
+					handleSearch={handleSearch}
+				/>
 			</div>
 			<div className={styles.fill}>
-				{count ? (
-					<div ref={scrollRef} className={styles.announcements}>
-						{!loading ? (
-							announcements.map((announcement) => (
-								<div key={announcement.id} className={styles.announcement}>
-									<div className={styles.pick}>
-										<Check
-											isChecked={checked.includes(announcement.id)}
-											toggle={() => toggle(announcement.id)}
-										/>
-									</div>
-									<AnnouncementCard
-										key={announcement.id}
-										tariffs={tariffs}
-										announcement={announcement}
+				{announcements.length > 0 && (
+					<div
+						ref={scrollRef}
+						className={cn(styles.announcements, {
+							[styles.big]: announcements.length > 3,
+						})}
+					>
+						{announcements.map((announcement) => (
+							<div key={announcement.id} className={styles.announcement}>
+								<div className={styles.pick}>
+									<Check
+										isChecked={checked.includes(announcement.id)}
+										toggle={() => toggle(announcement.id)}
 									/>
 								</div>
-							))
-						) : (
-							<MiniLoader className={styles.loader} />
-						)}
+								<AnnouncementCard
+									key={announcement.id}
+									placeOrder={placeOrder}
+									tariffs={tariffs}
+									announcement={announcement}
+									categories={categories}
+									form={{
+										arrays: [pricesForm, imagesForm],
+										props: form,
+									}}
+									modal={{
+										isShow:
+											modal.isShow &&
+											modal.type === 'update' &&
+											modal.id === announcement.id,
+										openModal: openUpdateModal,
+										closeModal: closeUpdateModal,
+										heading: 'Изменить объявление',
+										size: 'lg',
+									}}
+									remove={{
+										handler: remove,
+									}}
+									update={{
+										id: announcement.id,
+										get,
+										handler: update,
+									}}
+								/>
+							</div>
+						))}
 					</div>
-				) : (
-					''
 				)}
 				<Edit
 					type="product"
@@ -117,9 +153,9 @@ const Announcements: FC<IAnnouncements> = ({ tariffs }) => {
 						props: form,
 					}}
 					modal={{
-						isShow,
-						openModal,
-						closeModal,
+						isShow: modal.type === 'create' && modal.isShow,
+						openModal: openCreateModal,
+						closeModal: closeCreateModal,
 						heading: 'Добавить объявление',
 						size: 'lg',
 					}}

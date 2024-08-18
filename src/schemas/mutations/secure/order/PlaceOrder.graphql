@@ -1,0 +1,9 @@
+mutation PlaceOrder($data: OrderInput!) {
+	placeOrder(data: $data) {
+		expirationDate
+		isLittleLeft
+		tariff {
+			type
+		}
+	}
+}
