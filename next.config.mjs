@@ -16,12 +16,12 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
-				source: '/twelbi/:path*',
+				source: '/uploads/:path*',
 				destination: `${
 					this.env.APP_ENV === 'production'
 						? this.env.APP_CDN_URL
 						: this.env.APP_SERVER_URL
-				}/twelbi/:path*`,
+				}/uploads/:path*`,
 			},
 		]
 	},
