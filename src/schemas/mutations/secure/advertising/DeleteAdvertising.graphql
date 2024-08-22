@@ -1,3 +1,0 @@
-mutation DeleteAdvertising($id: Int!) {
-	deleteAdvertising(id: $id)
-}

@@ -10,10 +10,8 @@ import type {
 import type { Dispatch, SetStateAction } from 'react'
 import type { IClassName } from '../../common/class-name/class-name.interface'
 import type { IHeading } from '../../common/heading/heading.interface'
-import type { IModal } from '../../common/modal/modal.interface'
 import type { IPagination } from '../../common/pagination/pagination.interface'
 import type { IPageSearchParam } from '../../common/param/param.interface'
-import type { IActions } from '../edit/product/edit-product.interface'
 
 export interface IProduct extends IPageSearchParam {
 	product: Product
@@ -24,16 +22,11 @@ export interface IAnnouncements {
 	tariffs: Tariff[]
 }
 
-export interface IAnnouncementCard extends IActions {
+export interface IAnnouncementCard {
 	placeOrder: (data: OrderInput, price: number, closeModal: () => void) => void
 	className?: string
 	announcement: AnnouncementCard
 	tariffs: Tariff[]
-	modal: Pick<IModal, 'size' | 'heading'> & {
-		isShow: boolean
-		openModal: (id: number) => void
-		closeModal: (id: number) => void
-	}
 }
 
 export interface IProductsFiltersProps {

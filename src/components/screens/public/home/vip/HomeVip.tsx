@@ -56,10 +56,10 @@ const HomeVip: FC<IUserIsAdmin> = async ({ isAdmin }) => {
 								advertising={bannerAd}
 							/>
 						)} */}
-						<Advertising
+						{/* <Advertising
 							className={styles.sellerAdd}
 							advertising={HOME_BANNER_ADVERTISING_DATA.advertising}
-						/>
+						/> */}
 						<div className={styles.box}>
 							{/* {!advertisementsError && smallAd && (
 								<Advertising

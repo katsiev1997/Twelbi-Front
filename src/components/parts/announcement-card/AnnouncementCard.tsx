@@ -11,7 +11,6 @@ import rubleGreenIcon from '@/assets/images/icons/ruble-green.png'
 import vipGrayIcon from '@/assets/images/icons/vip-gray.png'
 import vipIcon from '@/assets/images/icons/vip.png'
 import Picture from '@/components/ui/common/picture/Picture'
-import Edit from '@/components/ui/elements/edits/Edit'
 import List from '@/components/ui/elements/list/List'
 import Modal from '@/components/ui/templates/modal/Modal'
 import type { IAnnouncementCard } from '@/shared/interfaces/api/product/product.interface'
@@ -25,12 +24,7 @@ const AnnouncementCard: FC<IAnnouncementCard> = ({
 	placeOrder,
 	tariffs,
 	announcement,
-	update,
-	remove,
 	className,
-	form,
-	modal,
-	categories,
 }) => {
 	const [{ isShow, type }, setModalState] = useState({
 		isShow: false,
@@ -96,45 +90,6 @@ const AnnouncementCard: FC<IAnnouncementCard> = ({
 							<Picture src={cityIcon.src} alt="Город" />
 							{announcement.city}
 						</div>
-						<List
-							items={[
-								...(update
-									? [
-											{
-												label: (
-													<Edit
-														type="product"
-														form={form}
-														button={{
-															className: styles.action,
-															children: 'Изменить объявление',
-														}}
-														modal={{
-															...modal,
-															openModal: () => modal.openModal(announcement.id),
-															closeModal: () =>
-																modal.closeModal(announcement.id),
-														}}
-														update={update}
-														remove={remove}
-														categories={categories}
-													/>
-												),
-											},
-									  ]
-									: []),
-								...(remove
-									? [
-											{
-												label: 'Удалить объявление',
-												onClick: () => remove.handler(announcement.id),
-											},
-									  ]
-									: []),
-							]}
-							listClassName={styles.actions}
-							buttonClassName={styles.action}
-						/>
 					</div>
 				</div>
 				<div className={styles.payments}>

@@ -1,12 +1,9 @@
 'use client'
 
 import { Sort } from '@/__generated__/output'
-import plusIcon from '@/assets/images/icons/plus.png'
 import sortIcon from '@/assets/images/icons/sort.png'
 import AnnouncementCard from '@/components/parts/announcement-card/AnnouncementCard'
-import Picture from '@/components/ui/common/picture/Picture'
 import Check from '@/components/ui/elements/check/Check'
-import Edit from '@/components/ui/elements/edits/Edit'
 import Filter from '@/components/ui/elements/filters/Filter'
 import { SITE_NAME } from '@/constants/details.constants'
 import { useAnnouncements } from '@/hooks/queries/product/useAnnouncements.hook'
@@ -18,25 +15,12 @@ import AnnouncementSearch from './search/AnnouncementSearch'
 
 const Announcements: FC<IAnnouncements> = ({ tariffs, setBalance }) => {
 	const {
-		categories,
-		get,
-		create,
-		update,
-		remove,
 		toggle,
 		checked,
 		setChecked,
 		scrollRef,
 		announcements,
 		error,
-		form,
-		pricesForm,
-		imagesForm,
-		openCreateModal,
-		closeCreateModal,
-		openUpdateModal,
-		closeUpdateModal,
-		modal,
 		searchTerm,
 		handleSearch,
 		placeOrder,
@@ -108,62 +92,11 @@ const Announcements: FC<IAnnouncements> = ({ tariffs, setBalance }) => {
 									placeOrder={placeOrder}
 									tariffs={tariffs}
 									announcement={announcement}
-									categories={categories}
-									form={{
-										arrays: [pricesForm, imagesForm],
-										props: form,
-									}}
-									modal={{
-										isShow:
-											modal.isShow &&
-											modal.type === 'update' &&
-											modal.id === announcement.id,
-										openModal: openUpdateModal,
-										closeModal: closeUpdateModal,
-										heading: 'Изменить объявление',
-										size: 'lg',
-									}}
-									remove={{
-										handler: remove,
-									}}
-									update={{
-										id: announcement.id,
-										get,
-										handler: update,
-									}}
 								/>
 							</div>
 						))}
 					</div>
 				)}
-				<Edit
-					type="product"
-					button={{
-						type: 'button',
-						className: styles.add,
-						children: (
-							<>
-								<Picture src={plusIcon.src} alt="Плюс" />
-								Добавить объявление
-							</>
-						),
-					}}
-					form={{
-						arrays: [pricesForm, imagesForm],
-						props: form,
-					}}
-					modal={{
-						isShow: modal.type === 'create' && modal.isShow,
-						openModal: openCreateModal,
-						closeModal: closeCreateModal,
-						heading: 'Добавить объявление',
-						size: 'lg',
-					}}
-					create={{
-						handler: create,
-					}}
-					categories={categories}
-				/>
 			</div>
 		</div>
 	)

@@ -17,7 +17,6 @@ const Categories: FC<ICategories> = ({
 	isAdmin,
 	heading,
 	categories: queriedCategories,
-	count,
 	variant,
 	wrapperClassName,
 	listClassName,

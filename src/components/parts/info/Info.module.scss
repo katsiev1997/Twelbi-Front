@@ -1,0 +1,114 @@
+.heading {
+	@apply text-4lg font-bold mb-5;
+}
+.fill {
+	@apply relative;
+}
+.content {
+	@apply text-2lg overflow-hidden leading-3lg;
+	max-height: 115px;
+
+	&.visible {
+		max-height: none;
+	}
+}
+.gradient {
+	@apply opacity-100 absolute left-0 right-0 top-0 bottom-0 w-full h-full transition-opacity;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0) 20%,
+		rgba(255, 255, 255, 0.8) 100%
+	);
+
+	&.visible {
+		@apply opacity-0;
+	}
+}
+.toggle {
+	@apply mt-4 text-3lg font-semibold flex items-center gap-1 green-hover;
+
+	> svg {
+		@apply w-5 h-5 transition-transform;
+		stroke-width: 1.3px;
+	}
+
+	&.toggled {
+		> svg {
+			@apply rotate-180;
+		}
+	}
+}
+
+@media (max-width: 1400px) {
+	.heading {
+		@apply mb-4;
+		font-size: 22px;
+	}
+	.toggle {
+		font-size: 18px;
+	}
+	.content {
+		@apply text-medium-xl;
+		max-height: 105px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.heading {
+		@apply text-3lg mb-2.5;
+	}
+	.toggle {
+		@apply text-2lg mt-3;
+	}
+	.content {
+		font-size: 13px;
+		max-height: 95px;
+	}
+}
+
+@media (max-width: 800px) {
+	.heading {
+		font-size: 19px;
+	}
+	.toggle {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 550px) {
+	.heading {
+		@apply mb-2;
+		font-size: 16px;
+	}
+	.toggle {
+		@apply text-medium-lg mt-2;
+
+		> svg {
+			width: 18px;
+			height: 18px;
+			stroke-width: 1.4px;
+		}
+	}
+	.content {
+		@apply text-small;
+		max-height: 90px;
+	}
+}
+
+@media (max-width: 440px) {
+	.heading {
+		@apply mb-1.5;
+		font-size: 13px;
+	}
+	.toggle {
+		@apply mt-1.5 text-small;
+
+		> svg {
+			@apply w-3.5 h-3.5;
+			stroke-width: 1.8px;
+		}
+	}
+	.content {
+		max-height: 73px;
+	}
+}
