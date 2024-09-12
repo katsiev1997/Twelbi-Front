@@ -11,12 +11,12 @@ export const PRODUCT_DATA: Product = {
 	<br /> <br />
 	Не упустите возможность обновить свой гардероб с помощью футболки Lacoste - надежной и стильной базовой вещи, которая дополнит любой ваш образ.`,
 	sku: '1595804283',
-	posterPath: '/twelbi/products/current-product-poster.png',
-	videoPath: '/twelbi/products/current-product-video.mp4',
+	posterPath: '/uploads/products/current-product-poster.png',
+	videoPath: '/uploads/products/current-product-video.mp4',
 	imagesPaths: [
-		'/twelbi/products/current-product-image-1.png',
-		'/twelbi/products/current-product-image-2.png',
-		'/twelbi/products/current-product-image-3.png',
+		'/uploads/products/current-product-image-1.png',
+		'/uploads/products/current-product-image-2.png',
+		'/uploads/products/current-product-image-3.png',
 	],
 	prices: [
 		{
@@ -74,7 +74,7 @@ export const PRODUCT_DATA: Product = {
 		slug: 'lacoste-russia',
 		isBrandOwner: false,
 		isSubscribed: false,
-		logoPath: '/twelbi/brands/brand-6.png',
+		logoPath: '/uploads/brands/brand-6.png',
 	},
 	views: 8351,
 	createdAt: '13 июля 2024',

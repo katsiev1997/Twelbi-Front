@@ -7,16 +7,14 @@ import AccountSidebar from '@/components/ui/templates/account/sidebar/AccountSid
 import type { IAccount } from '@/shared/interfaces/api/brand/brand.interface'
 import { useState, type FC } from 'react'
 import styles from './Account.module.scss'
-import AccountEdit from './edit/AccountEdit'
 
 const Account: FC<IAccount> = ({
 	searchParams,
-	brand: queriedBrand,
+	brand,
 	tariffs,
 	categories,
 }) => {
-	const [brand, setBrand] = useState(queriedBrand)
-	const [balance, setBalance] = useState(queriedBrand?.balance || 0)
+	const [balance, setBalance] = useState(brand?.balance || 0)
 	const isEdit = searchParams && searchParams.type === 'edit'
 
 	return (
@@ -24,12 +22,8 @@ const Account: FC<IAccount> = ({
 			<Container>
 				<div className={styles.wrapper}>
 					{!brand || isEdit ? (
-						<AccountEdit
-							type={isEdit ? 'edit' : 'create'}
-							categories={categories}
-							brand={brand}
-							setBrand={setBrand}
-						/>
+						// Create Brand
+						<></>
 					) : (
 						<>
 							<AccountSidebar balance={balance} brand={brand} />

@@ -12,7 +12,7 @@ export const HOME_BRANDS_DATA: AllBrands = {
 			},
 			rating: '4.7',
 			reviewsCount: 109,
-			logoPath: '/twelbi/brands/brand-1.png',
+			logoPath: '/uploads/brands/brand-1.png',
 		},
 		{
 			id: 2,
@@ -24,7 +24,7 @@ export const HOME_BRANDS_DATA: AllBrands = {
 			},
 			rating: '4.9',
 			reviewsCount: 9898,
-			logoPath: '/twelbi/brands/brand-2.png',
+			logoPath: '/uploads/brands/brand-2.png',
 		},
 		{
 			id: 3,
@@ -36,7 +36,7 @@ export const HOME_BRANDS_DATA: AllBrands = {
 			},
 			rating: '4.7',
 			reviewsCount: 1885,
-			logoPath: '/twelbi/brands/brand-3.png',
+			logoPath: '/uploads/brands/brand-3.png',
 		},
 		{
 			id: 4,
@@ -48,7 +48,7 @@ export const HOME_BRANDS_DATA: AllBrands = {
 			},
 			rating: '4.8',
 			reviewsCount: 221,
-			logoPath: '/twelbi/brands/brand-4.png',
+			logoPath: '/uploads/brands/brand-4.png',
 		},
 		{
 			id: 5,
@@ -60,7 +60,7 @@ export const HOME_BRANDS_DATA: AllBrands = {
 			},
 			rating: '4.8',
 			reviewsCount: 109,
-			logoPath: '/twelbi/brands/brand-5.png',
+			logoPath: '/uploads/brands/brand-5.png',
 		},
 	],
 	count: 5,

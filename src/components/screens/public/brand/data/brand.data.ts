@@ -3,7 +3,7 @@ import type { Brand } from '@/__generated__/output'
 export const BRAND_DATA: Brand = {
 	id: 1,
 	name: 'Lacoste Россия',
-	logoPath: '/twelbi/brands/brand-6.png',
+	logoPath: '/uploads/brands/brand-6.png',
 	city: 'Москва',
 	postedCount: 157,
 	rating: '5.0',

@@ -4,7 +4,7 @@ import type { IAdvertising } from '@/shared/interfaces/api/advertising/advertisi
 export const HOME_LARGE_ADVERTISING: IAdvertising = {
 	advertising: {
 		id: 1,
-		bigImagePath: '/twelbi/advertisements/advertising-1-big-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-1-big-image.png',
 		url: '/',
 		alt: 'Реклама',
 		type: AdvertisingType.Large,
@@ -14,8 +14,8 @@ export const HOME_LARGE_ADVERTISING: IAdvertising = {
 export const HOME_BANNER_ADVERTISING_DATA: IAdvertising = {
 	advertising: {
 		id: 2,
-		bigImagePath: '/twelbi/advertisements/advertising-2-big-image.png',
-		smallImagePath: '/twelbi/advertisements/advertising-2-small-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-2-big-image.png',
+		smallImagePath: '/uploads/advertisements/advertising-2-small-image.png',
 		url: '/youtube.com',
 		alt: 'Реклама',
 		resolution: '550',
@@ -26,7 +26,7 @@ export const HOME_BANNER_ADVERTISING_DATA: IAdvertising = {
 export const HOME_SMALL_ADVERTISING_DATA: IAdvertising = {
 	advertising: {
 		id: 3,
-		bigImagePath: '/twelbi/advertisements/advertising-3-big-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-3-big-image.png',
 		url: '/',
 		alt: 'Реклама',
 		type: AdvertisingType.Small,
@@ -46,8 +46,8 @@ export const HOME_SMALL_ADVERTISING_DATA: IAdvertising = {
 export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 	{
 		id: 1,
-		bigImagePath: '/twelbi/advertisements/advertising-4-big-image.png',
-		smallImagePath: '/twelbi/advertisements/advertising-4-small-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-4-big-image.png',
+		smallImagePath: '/uploads/advertisements/advertising-4-small-image.png',
 		url: '/',
 		alt: 'Реклама',
 		resolution: '550',
@@ -55,8 +55,8 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 	},
 	{
 		id: 2,
-		bigImagePath: '/twelbi/advertisements/advertising-5-big-image.png',
-		smallImagePath: '/twelbi/advertisements/advertising-5-small-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-5-big-image.png',
+		smallImagePath: '/uploads/advertisements/advertising-5-small-image.png',
 		url: '/',
 		alt: 'Реклама',
 		resolution: '550',
@@ -64,8 +64,8 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 	},
 	{
 		id: 3,
-		bigImagePath: '/twelbi/advertisements/advertising-6-big-image.png',
-		smallImagePath: '/twelbi/advertisements/advertising-6-small-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-6-big-image.png',
+		smallImagePath: '/uploads/advertisements/advertising-6-small-image.png',
 		url: '/',
 		alt: 'Реклама',
 		resolution: '550',
@@ -76,8 +76,8 @@ export const HOME_CARD_ADVERTISEMENTS_DATA: Advertising[] = [
 export const HOME_CATALOG_ADVERTISING_DATA: IAdvertising = {
 	advertising: {
 		id: 7,
-		bigImagePath: '/twelbi/advertisements/advertising-7-big-image.png',
-		smallImagePath: '/twelbi/advertisements/advertising-7-small-image.png',
+		bigImagePath: '/uploads/advertisements/advertising-7-big-image.png',
+		smallImagePath: '/uploads/advertisements/advertising-7-small-image.png',
 		url: '/',
 		alt: 'Реклама',
 		resolution: '550',

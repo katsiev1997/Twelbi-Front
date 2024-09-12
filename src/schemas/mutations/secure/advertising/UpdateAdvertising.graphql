@@ -1,3 +1,0 @@
-mutation UpdateAdvertising($id: Int!, $data: AdvertisingInput!) {
-	updateAdvertising(id: $id, data: $data)
-}

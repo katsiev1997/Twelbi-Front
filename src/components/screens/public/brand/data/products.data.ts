@@ -5,7 +5,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 1,
 			name: 'Майка PUMA',
-			posterPath: '/twelbi/products/product-1-poster.png',
+			posterPath: '/uploads/products/product-1-poster.png',
 			minPrice: 930,
 			maxPrice: 1050,
 			category: {
@@ -15,7 +15,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Sports Store',
 				slug: 'sports-store',
-				logoPath: '/twelbi/brands/brand-1-logo.png',
+				logoPath: '/uploads/brands/brand-1-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 893,
@@ -23,7 +23,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 2,
 			name: 'Посудомоечная машина',
-			posterPath: '/twelbi/products/product-2-poster.png',
+			posterPath: '/uploads/products/product-2-poster.png',
 			minPrice: 10984358,
 			maxPrice: 10984480,
 			category: {
@@ -33,7 +33,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Kuppersberg',
 				slug: 'kuppersberg',
-				logoPath: '/twelbi/brands/brand-2-logo.png',
+				logoPath: '/uploads/brands/brand-2-logo.png',
 			},
 			rating: 4.8,
 			ratesCount: 174,
@@ -41,7 +41,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 3,
 			name: 'Сушилка для белья',
-			posterPath: '/twelbi/products/product-3-poster.png',
+			posterPath: '/uploads/products/product-3-poster.png',
 			minPrice: 1326,
 			maxPrice: 1583,
 			category: {
@@ -51,7 +51,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'ООО “RNV”',
 				slug: 'ooo-rnv',
-				logoPath: '/twelbi/brands/brand-3-logo.png',
+				logoPath: '/uploads/brands/brand-3-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 109,
@@ -59,7 +59,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 4,
 			name: 'Витамин Д Д3 UltraBalance премиум',
-			posterPath: '/twelbi/products/product-4-poster.png',
+			posterPath: '/uploads/products/product-4-poster.png',
 			minPrice: 668,
 			maxPrice: 753,
 			category: {
@@ -69,7 +69,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'РУСТРЕЙД, ООО',
 				slug: 'rustreyd-ooo',
-				logoPath: '/twelbi/brands/brand-4-logo.png',
+				logoPath: '/uploads/brands/brand-4-logo.png',
 			},
 			rating: 4.9,
 			ratesCount: 2431,
@@ -77,7 +77,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 5,
 			name: 'Велостойка, Кронштейн',
-			posterPath: '/twelbi/products/product-5-poster.png',
+			posterPath: '/uploads/products/product-5-poster.png',
 			minPrice: 5500,
 			maxPrice: 6350,
 			category: {
@@ -87,7 +87,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'COZYMIR',
 				slug: 'cozymir',
-				logoPath: '/twelbi/brands/brand-5-logo.png',
+				logoPath: '/uploads/brands/brand-5-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 230,
@@ -95,7 +95,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 6,
 			name: 'Майка PUMA',
-			posterPath: '/twelbi/products/product-1-poster.png',
+			posterPath: '/uploads/products/product-1-poster.png',
 			minPrice: 930,
 			maxPrice: 1050,
 			category: {
@@ -105,7 +105,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Sports Store',
 				slug: 'sports-store',
-				logoPath: '/twelbi/brands/brand-1-logo.png',
+				logoPath: '/uploads/brands/brand-1-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 893,
@@ -113,7 +113,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 7,
 			name: 'Посудомоечная машина',
-			posterPath: '/twelbi/products/product-2-poster.png',
+			posterPath: '/uploads/products/product-2-poster.png',
 			minPrice: 10984358,
 			maxPrice: 10984480,
 			category: {
@@ -123,7 +123,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Kuppersberg',
 				slug: 'kuppersberg',
-				logoPath: '/twelbi/brands/brand-2-logo.png',
+				logoPath: '/uploads/brands/brand-2-logo.png',
 			},
 			rating: 4.8,
 			ratesCount: 174,
@@ -131,7 +131,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 8,
 			name: 'Сушилка для белья',
-			posterPath: '/twelbi/products/product-3-poster.png',
+			posterPath: '/uploads/products/product-3-poster.png',
 			minPrice: 1326,
 			maxPrice: 1583,
 			category: {
@@ -141,7 +141,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'ООО “RNV”',
 				slug: 'ooo-rnv',
-				logoPath: '/twelbi/brands/brand-3-logo.png',
+				logoPath: '/uploads/brands/brand-3-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 109,
@@ -149,7 +149,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 9,
 			name: 'Витамин Д Д3 UltraBalance премиум',
-			posterPath: '/twelbi/products/product-4-poster.png',
+			posterPath: '/uploads/products/product-4-poster.png',
 			minPrice: 668,
 			maxPrice: 753,
 			category: {
@@ -159,7 +159,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'РУСТРЕЙД, ООО',
 				slug: 'rustreyd-ooo',
-				logoPath: '/twelbi/brands/brand-4-logo.png',
+				logoPath: '/uploads/brands/brand-4-logo.png',
 			},
 			rating: 4.9,
 			ratesCount: 2431,
@@ -167,7 +167,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 10,
 			name: 'Велостойка, Кронштейн',
-			posterPath: '/twelbi/products/product-5-poster.png',
+			posterPath: '/uploads/products/product-5-poster.png',
 			minPrice: 5500,
 			maxPrice: 6350,
 			category: {
@@ -177,7 +177,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'COZYMIR',
 				slug: 'cozymir',
-				logoPath: '/twelbi/brands/brand-5-logo.png',
+				logoPath: '/uploads/brands/brand-5-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 230,
@@ -185,7 +185,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 11,
 			name: 'Майка PUMA',
-			posterPath: '/twelbi/products/product-1-poster.png',
+			posterPath: '/uploads/products/product-1-poster.png',
 			minPrice: 930,
 			maxPrice: 1050,
 			category: {
@@ -195,7 +195,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Sports Store',
 				slug: 'sports-store',
-				logoPath: '/twelbi/brands/brand-1-logo.png',
+				logoPath: '/uploads/brands/brand-1-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 893,
@@ -203,7 +203,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 12,
 			name: 'Посудомоечная машина',
-			posterPath: '/twelbi/products/product-2-poster.png',
+			posterPath: '/uploads/products/product-2-poster.png',
 			minPrice: 10984358,
 			maxPrice: 10984480,
 			category: {
@@ -213,7 +213,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'Kuppersberg',
 				slug: 'kuppersberg',
-				logoPath: '/twelbi/brands/brand-2-logo.png',
+				logoPath: '/uploads/brands/brand-2-logo.png',
 			},
 			rating: 4.8,
 			ratesCount: 174,
@@ -221,7 +221,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 13,
 			name: 'Сушилка для белья',
-			posterPath: '/twelbi/products/product-3-poster.png',
+			posterPath: '/uploads/products/product-3-poster.png',
 			minPrice: 1326,
 			maxPrice: 1583,
 			category: {
@@ -231,7 +231,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'ООО “RNV”',
 				slug: 'ooo-rnv',
-				logoPath: '/twelbi/brands/brand-3-logo.png',
+				logoPath: '/uploads/brands/brand-3-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 109,
@@ -239,7 +239,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 14,
 			name: 'Витамин Д Д3 UltraBalance премиум',
-			posterPath: '/twelbi/products/product-4-poster.png',
+			posterPath: '/uploads/products/product-4-poster.png',
 			minPrice: 668,
 			maxPrice: 753,
 			category: {
@@ -249,7 +249,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'РУСТРЕЙД, ООО',
 				slug: 'rustreyd-ooo',
-				logoPath: '/twelbi/brands/brand-4-logo.png',
+				logoPath: '/uploads/brands/brand-4-logo.png',
 			},
 			rating: 4.9,
 			ratesCount: 2431,
@@ -257,7 +257,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 		{
 			id: 15,
 			name: 'Велостойка, Кронштейн',
-			posterPath: '/twelbi/products/product-5-poster.png',
+			posterPath: '/uploads/products/product-5-poster.png',
 			minPrice: 5500,
 			maxPrice: 6350,
 			category: {
@@ -267,7 +267,7 @@ export const BRAND_PRODUCTS_DATA: AllProducts = {
 			provider: {
 				name: 'COZYMIR',
 				slug: 'cozymir',
-				logoPath: '/twelbi/brands/brand-5-logo.png',
+				logoPath: '/uploads/brands/brand-5-logo.png',
 			},
 			rating: 4.7,
 			ratesCount: 230,
